@@ -1,0 +1,51 @@
+{
+  "collectionName": "components_default_company_infos",
+  "info": {
+    "name": "companyInfo",
+    "icon": "info-circle"
+  },
+  "options": {},
+  "attributes": {
+    "legalName": {
+      "type": "string"
+    },
+    "knownAs": {
+      "type": "string"
+    },
+    "activity": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "ICF": {
+      "type": "string"
+    },
+    "IF": {
+      "type": "string"
+    },
+    "CNSS": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "products": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "billings",
+  "info": {
+    "name": "Billings"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "invoices": {
+      "type": "component",
+      "repeatable": true,
+      "component": "default.articles"
+    },
+    "client": {
+      "via": "billing",
+      "model": "clients"
+    }
+  }
+}

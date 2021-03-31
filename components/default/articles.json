@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_default_articles",
+  "info": {
+    "name": "article",
+    "icon": "book-open",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "code": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "unitPrice": {
+      "type": "decimal"
+    },
+    "subTotal": {
+      "type": "decimal"
+    }
+  }
+}

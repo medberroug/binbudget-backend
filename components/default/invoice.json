@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_default_invoices",
+  "info": {
+    "name": "invoice",
+    "icon": "money-bill-alt"
+  },
+  "options": {},
+  "attributes": {
+    "subTotal": {
+      "type": "decimal"
+    },
+    "discount": {
+      "type": "decimal"
+    },
+    "tax": {
+      "type": "decimal"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "articles": {
+      "type": "component",
+      "repeatable": true,
+      "component": "default.articles"
+    },
+    "invoiceStatus": {
+      "type": "component",
+      "repeatable": false,
+      "component": "default.invoice-status"
+    },
+    "comments": {
+      "type": "json"
+    }
+  }
+}

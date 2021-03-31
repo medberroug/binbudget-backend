@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_default_invoice_statuses",
+  "info": {
+    "name": "invoiceStatus",
+    "icon": "sync-alt"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "by": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "text"
+    }
+  }
+}
