@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_restauration_menu_items",
+  "info": {
+    "name": "menuItems",
+    "icon": "asterisk"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "price": {
+      "type": "decimal"
+    }
+  }
+}

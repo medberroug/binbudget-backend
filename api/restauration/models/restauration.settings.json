@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "restaurations",
+  "info": {
+    "name": "restauration"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "knownName": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "restauration.address"
+    },
+    "speciality": {
+      "type": "component",
+      "repeatable": true,
+      "component": "restauration.speciality"
+    },
+    "ratingTotal": {
+      "type": "decimal"
+    },
+    "rating": {
+      "type": "component",
+      "repeatable": true,
+      "component": "restauration.rating"
+    },
+    "topImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "smallDescription": {
+      "type": "text",
+      "required": true
+    },
+    "status": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "restauration.items"
+    },
+    "shownIn": {
+      "type": "component",
+      "repeatable": true,
+      "component": "restauration.shown-in"
+    },
+    "textMenu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "restauration.text-menu"
+    }
+  }
+}

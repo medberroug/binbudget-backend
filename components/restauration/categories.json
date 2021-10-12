@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_restauration_categories",
+  "info": {
+    "name": "categories",
+    "icon": "cut"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

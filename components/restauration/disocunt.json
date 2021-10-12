@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_restauration_disocunts",
+  "info": {
+    "name": "disocunt",
+    "icon": "divide"
+  },
+  "options": {},
+  "attributes": {
+    "percentage": {
+      "type": "biginteger"
+    },
+    "from": {
+      "type": "datetime"
+    },
+    "to": {
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_restauration_text_menus",
+  "info": {
+    "name": "textMenu",
+    "icon": "mug-hot"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "menuItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "restauration.menu-items"
+    }
+  }
+}

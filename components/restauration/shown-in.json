@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_restauration_shown_ins",
+  "info": {
+    "name": "shownIn",
+    "icon": "network-wired"
+  },
+  "options": {},
+  "attributes": {
+    "serviceName": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

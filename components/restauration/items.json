@@ -1,0 +1,58 @@
+{
+  "collectionName": "components_restauration_items",
+  "info": {
+    "name": "items",
+    "icon": "cubes"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "categories": {
+      "type": "component",
+      "repeatable": true,
+      "component": "restauration.categories"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "disocunt": {
+      "type": "component",
+      "repeatable": false,
+      "component": "restauration.disocunt"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "firstImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "specification": {
+      "type": "component",
+      "repeatable": true,
+      "component": "restauration.specification"
+    },
+    "shownIn": {
+      "type": "component",
+      "repeatable": true,
+      "component": "restauration.shown-in"
+    }
+  }
+}

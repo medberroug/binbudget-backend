@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_restauration_specialities",
+  "info": {
+    "name": "speciality",
+    "icon": "apple-alt"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

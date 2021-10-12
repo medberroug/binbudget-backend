@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_restauration_specifications",
+  "info": {
+    "name": "specification",
+    "icon": "atom"
+  },
+  "options": {},
+  "attributes": {
+    "specText": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

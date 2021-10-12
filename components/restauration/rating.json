@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_restauration_ratings",
+  "info": {
+    "name": "rating",
+    "icon": "grin"
+  },
+  "options": {},
+  "attributes": {
+    "rating": {
+      "type": "decimal"
+    },
+    "comment": {
+      "type": "text"
+    }
+  }
+}
