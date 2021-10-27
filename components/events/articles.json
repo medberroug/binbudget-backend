@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_events_articles",
+  "info": {
+    "name": "articles",
+    "icon": "igloo"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "discount": {
+      "type": "integer"
+    },
+    "quantity": {
+      "type": "integer"
+    },
+    "comment": {
+      "type": "richtext"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_events_specifications",
+  "info": {
+    "name": "specification",
+    "icon": "dharmachakra"
+  },
+  "options": {},
+  "attributes": {
+    "specText": {
+      "type": "text"
+    }
+  }
+}

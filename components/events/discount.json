@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_events_discounts",
+  "info": {
+    "name": "discount",
+    "icon": "percent"
+  },
+  "options": {},
+  "attributes": {
+    "percentage": {
+      "type": "decimal"
+    },
+    "from": {
+      "type": "datetime"
+    },
+    "to": {
+      "type": "datetime"
+    }
+  }
+}

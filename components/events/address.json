@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_events_addresses",
+  "info": {
+    "name": "address",
+    "icon": "archway"
+  },
+  "options": {},
+  "attributes": {
+    "address": {
+      "type": "text"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    }
+  }
+}

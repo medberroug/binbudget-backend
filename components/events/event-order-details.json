@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_events_event_order_details",
+  "info": {
+    "name": "eventOrderDetails",
+    "icon": "atlas",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "articles": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.articles"
+    },
+    "subTotal": {
+      "type": "decimal"
+    },
+    "discount": {
+      "type": "integer"
+    },
+    "tax": {
+      "type": "decimal"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "status": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.status"
+    },
+    "type": {
+      "type": "string"
+    },
+    "eventServiceProvider": {
+      "model": "event-service-provider"
+    }
+  }
+}

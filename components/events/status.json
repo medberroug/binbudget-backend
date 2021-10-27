@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_events_statuses",
+  "info": {
+    "name": "status",
+    "icon": "tasks"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "richtext"
+    }
+  }
+}

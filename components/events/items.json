@@ -1,0 +1,57 @@
+{
+  "collectionName": "components_events_items",
+  "info": {
+    "name": "items",
+    "icon": "dice-d6"
+  },
+  "options": {},
+  "attributes": {
+    "discount": {
+      "type": "component",
+      "repeatable": false,
+      "component": "events.discount"
+    },
+    "showIn": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.show-in"
+    },
+    "specification": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.specification"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "firstImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "name": {
+      "type": "string"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "categories": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.categories"
+    },
+    "description": {
+      "type": "richtext"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_events_show_ins",
+  "info": {
+    "name": "showIn",
+    "icon": "folder"
+  },
+  "options": {},
+  "attributes": {
+    "serviceName": {
+      "type": "string"
+    }
+  }
+}

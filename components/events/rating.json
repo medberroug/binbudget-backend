@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_events_ratings",
+  "info": {
+    "name": "rating",
+    "icon": "chart-line"
+  },
+  "options": {},
+  "attributes": {
+    "rating": {
+      "type": "decimal"
+    },
+    "comment": {
+      "type": "text"
+    }
+  }
+}

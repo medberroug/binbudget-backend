@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "event_service_providers",
+  "info": {
+    "name": "eventServiceProvider",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "knownName": {
+      "type": "string",
+      "required": true
+    },
+    "ratingTotal": {
+      "type": "decimal"
+    },
+    "topImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "logo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "smallDescription": {
+      "type": "richtext"
+    },
+    "status": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "events.address"
+    },
+    "rating": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.rating"
+    },
+    "showIn": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.show-in"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.items"
+    }
+  }
+}

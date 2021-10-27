@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_events_categories",
+  "info": {
+    "name": "categories",
+    "icon": "candy-cane"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

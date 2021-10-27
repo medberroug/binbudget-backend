@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "name": "events",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "city": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "datetime"
+    },
+    "endDate": {
+      "type": "datetime"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "numberOfAttendees": {
+      "type": "integer"
+    },
+    "checkPlace": {
+      "type": "boolean"
+    },
+    "checkHosting": {
+      "type": "boolean"
+    },
+    "checkRestauration": {
+      "type": "boolean"
+    },
+    "eventOrderDetails": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.event-order-details"
+    },
+    "status": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.status"
+    },
+    "checkTMS": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
