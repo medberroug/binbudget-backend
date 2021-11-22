@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/events": {
+    "/marketcategories": {
       "get": {
         "deprecated": false,
-        "description": "Find all the events's records",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Events"
+                    "$ref": "#/components/schemas/Marketcategory"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Marketcategory"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new events record",
+        "description": "Create a new record",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Events"
+                  "$ref": "#/components/schemas/Marketcategory"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Marketcategory"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewEvents"
+                "$ref": "#/components/schemas/NewMarketcategory"
               }
             }
           }
         }
       }
     },
-    "/events/count": {
+    "/marketcategories/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of events documents",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Marketcategory"
         ],
         "parameters": []
       }
     },
-    "/events/{id}": {
+    "/marketcategories/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one events record",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Events"
+                  "$ref": "#/components/schemas/Marketcategory"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Marketcategory"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single events record",
+        "description": "Update a record",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Events"
+                  "$ref": "#/components/schemas/Marketcategory"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Marketcategory"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewEvents"
+                "$ref": "#/components/schemas/NewMarketcategory"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single events record",
+        "description": "Delete a record",
         "responses": {
           "200": {
-            "description": "deletes a single events based on the ID supplied",
+            "description": "deletes a single record based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Marketcategory"
         ],
         "parameters": [
           {
@@ -514,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Events": {
+      "Marketcategory": {
         "required": [
           "id"
         ],
@@ -522,111 +522,10 @@
           "id": {
             "type": "string"
           },
-          "city": {
+          "name": {
             "type": "string"
           },
-          "startDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "endDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "description": {
-            "type": "string"
-          },
-          "numberOfAttendees": {
-            "type": "integer"
-          },
-          "checkPlace": {
-            "type": "boolean"
-          },
-          "checkHosting": {
-            "type": "boolean"
-          },
-          "checkRestauration": {
-            "type": "boolean"
-          },
-          "eventOrderDetails": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "articles": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "price": {
-                        "type": "number"
-                      },
-                      "discount": {
-                        "type": "integer"
-                      },
-                      "quantity": {
-                        "type": "integer"
-                      },
-                      "comment": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "subTotal": {
-                  "type": "number"
-                },
-                "discount": {
-                  "type": "integer"
-                },
-                "tax": {
-                  "type": "number"
-                },
-                "total": {
-                  "type": "number"
-                },
-                "status": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "comment": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "type": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "status": {
+          "subCategories": {
             "type": "array",
             "items": {
               "type": "object",
@@ -639,19 +538,147 @@
                 },
                 "name": {
                   "type": "string"
+                }
+              }
+            }
+          },
+          "image": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "description": {
+            "type": "string"
+          },
+          "marketitems": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
                 },
-                "comment": {
+                "name": {
+                  "type": "string"
+                },
+                "subCategory": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "discount": {
+                  "type": "number"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "images": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "stock": {
+                  "type": "component"
+                },
+                "stockBalance": {
+                  "type": "integer"
+                },
+                "minQuantity": {
+                  "type": "integer"
+                },
+                "maxQuantity": {
+                  "type": "integer"
+                },
+                "unit": {
+                  "type": "string"
+                },
+                "spec": {
+                  "type": "component"
+                },
+                "marketcategory": {
+                  "type": "string"
+                },
+                "published_at": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
                   "type": "string"
                 }
               }
             }
           },
-          "checkTMS": {
+          "status": {
             "type": "boolean",
-            "default": false
-          },
-          "name": {
-            "type": "string"
+            "default": true
           },
           "published_at": {
             "type": "string",
@@ -659,113 +686,12 @@
           }
         }
       },
-      "NewEvents": {
+      "NewMarketcategory": {
         "properties": {
-          "city": {
+          "name": {
             "type": "string"
           },
-          "startDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "endDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "description": {
-            "type": "string"
-          },
-          "numberOfAttendees": {
-            "type": "integer"
-          },
-          "checkPlace": {
-            "type": "boolean"
-          },
-          "checkHosting": {
-            "type": "boolean"
-          },
-          "checkRestauration": {
-            "type": "boolean"
-          },
-          "eventOrderDetails": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "articles": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "price": {
-                        "type": "number"
-                      },
-                      "discount": {
-                        "type": "integer"
-                      },
-                      "quantity": {
-                        "type": "integer"
-                      },
-                      "comment": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "subTotal": {
-                  "type": "number"
-                },
-                "discount": {
-                  "type": "integer"
-                },
-                "tax": {
-                  "type": "number"
-                },
-                "total": {
-                  "type": "number"
-                },
-                "status": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "comment": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "type": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "status": {
+          "subCategories": {
             "type": "array",
             "items": {
               "type": "object",
@@ -778,19 +704,22 @@
                 },
                 "name": {
                   "type": "string"
-                },
-                "comment": {
-                  "type": "string"
                 }
               }
             }
           },
-          "checkTMS": {
-            "type": "boolean",
-            "default": false
-          },
-          "name": {
+          "description": {
             "type": "string"
+          },
+          "marketitems": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "boolean",
+            "default": true
           },
           "published_at": {
             "type": "string",
@@ -808,7 +737,7 @@
   },
   "tags": [
     {
-      "name": "Events"
+      "name": "Marketcategory"
     }
   ]
 }

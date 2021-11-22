@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/marketitems",
+      "handler": "marketitems.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/marketitems/count",
+      "handler": "marketitems.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/marketitems/:id",
+      "handler": "marketitems.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/marketitems",
+      "handler": "marketitems.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/marketitems/:id",
+      "handler": "marketitems.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/marketitems/:id",
+      "handler": "marketitems.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

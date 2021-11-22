@@ -2,7 +2,8 @@
   "collectionName": "components_restauration_items",
   "info": {
     "name": "items",
-    "icon": "cubes"
+    "icon": "cubes",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -53,6 +54,10 @@
       "type": "component",
       "repeatable": true,
       "component": "restauration.shown-in"
+    },
+    "status": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

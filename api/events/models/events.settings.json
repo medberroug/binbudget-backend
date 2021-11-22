@@ -48,6 +48,9 @@
     "checkTMS": {
       "type": "boolean",
       "default": false
+    },
+    "name": {
+      "type": "text"
     }
   }
 }

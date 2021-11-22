@@ -1,0 +1,43 @@
+{
+  "kind": "collectionType",
+  "collectionName": "marketcategories",
+  "info": {
+    "name": "marketcategory",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "subCategories": {
+      "type": "component",
+      "repeatable": true,
+      "component": "marketcategory.sub-categories"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "description": {
+      "type": "text"
+    },
+    "marketitems": {
+      "collection": "marketitems",
+      "via": "marketcategory"
+    },
+    "status": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

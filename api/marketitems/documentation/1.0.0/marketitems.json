@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/events": {
+    "/marketitems": {
       "get": {
         "deprecated": false,
-        "description": "Find all the events's records",
+        "description": "Find all the marketitems's records",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "Retrieve marketitems document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Events"
+                    "$ref": "#/components/schemas/Marketitems"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Marketitems"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new events record",
+        "description": "Create a new marketitems record",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "Retrieve marketitems document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Events"
+                  "$ref": "#/components/schemas/Marketitems"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Marketitems"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewEvents"
+                "$ref": "#/components/schemas/NewMarketitems"
               }
             }
           }
         }
       }
     },
-    "/events/count": {
+    "/marketitems/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of events documents",
+        "description": "Retrieve the numver of marketitems documents",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "Retrieve marketitems document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Marketitems"
         ],
         "parameters": []
       }
     },
-    "/events/{id}": {
+    "/marketitems/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one events record",
+        "description": "Find one marketitems record",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "Retrieve marketitems document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Events"
+                  "$ref": "#/components/schemas/Marketitems"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Marketitems"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single events record",
+        "description": "Update a single marketitems record",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "Retrieve marketitems document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Events"
+                  "$ref": "#/components/schemas/Marketitems"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Marketitems"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewEvents"
+                "$ref": "#/components/schemas/NewMarketitems"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single events record",
+        "description": "Delete a single marketitems record",
         "responses": {
           "200": {
-            "description": "deletes a single events based on the ID supplied",
+            "description": "deletes a single marketitems based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Marketitems"
         ],
         "parameters": [
           {
@@ -514,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Events": {
+      "Marketitems": {
         "required": [
           "id"
         ],
@@ -522,116 +522,32 @@
           "id": {
             "type": "string"
           },
-          "city": {
+          "name": {
             "type": "string"
           },
-          "startDate": {
-            "type": "string",
-            "format": "date-time"
+          "subCategory": {
+            "type": "string"
           },
-          "endDate": {
-            "type": "string",
-            "format": "date-time"
+          "price": {
+            "type": "number"
+          },
+          "discount": {
+            "type": "number"
           },
           "description": {
             "type": "string"
           },
-          "numberOfAttendees": {
-            "type": "integer"
-          },
-          "checkPlace": {
-            "type": "boolean"
-          },
-          "checkHosting": {
-            "type": "boolean"
-          },
-          "checkRestauration": {
-            "type": "boolean"
-          },
-          "eventOrderDetails": {
+          "images": {
             "type": "array",
             "items": {
-              "type": "object",
               "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "articles": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "price": {
-                        "type": "number"
-                      },
-                      "discount": {
-                        "type": "integer"
-                      },
-                      "quantity": {
-                        "type": "integer"
-                      },
-                      "comment": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "subTotal": {
-                  "type": "number"
-                },
-                "discount": {
-                  "type": "integer"
-                },
-                "tax": {
-                  "type": "number"
-                },
-                "total": {
-                  "type": "number"
-                },
-                "status": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "comment": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "type": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "status": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
+                "id",
+                "name",
+                "hash",
+                "mime",
+                "size",
+                "url",
+                "provider"
               ],
               "properties": {
                 "id": {
@@ -640,18 +556,155 @@
                 "name": {
                   "type": "string"
                 },
-                "comment": {
+                "alternativeText": {
+                  "type": "string"
+                },
+                "caption": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "formats": {
+                  "type": "object"
+                },
+                "hash": {
+                  "type": "string"
+                },
+                "ext": {
+                  "type": "string"
+                },
+                "mime": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "previewUrl": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "provider_metadata": {
+                  "type": "object"
+                },
+                "related": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
                   "type": "string"
                 }
               }
             }
           },
-          "checkTMS": {
-            "type": "boolean",
-            "default": false
+          "stock": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "entry": {
+                  "type": "integer"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "warehouse": {
+                  "type": "string"
+                },
+                "costPerUnit": {
+                  "type": "number"
+                }
+              }
+            }
           },
-          "name": {
+          "stockBalance": {
+            "type": "integer"
+          },
+          "minQuantity": {
+            "type": "integer"
+          },
+          "maxQuantity": {
+            "type": "integer"
+          },
+          "unit": {
             "type": "string"
+          },
+          "spec": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "specText": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "marketcategory": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "subCategories": {
+                "type": "component"
+              },
+              "image": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "marketitems": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "status": {
+                "type": "boolean"
+              },
+              "published_at": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -659,35 +712,24 @@
           }
         }
       },
-      "NewEvents": {
+      "NewMarketitems": {
         "properties": {
-          "city": {
+          "name": {
             "type": "string"
           },
-          "startDate": {
-            "type": "string",
-            "format": "date-time"
+          "subCategory": {
+            "type": "string"
           },
-          "endDate": {
-            "type": "string",
-            "format": "date-time"
+          "price": {
+            "type": "number"
+          },
+          "discount": {
+            "type": "number"
           },
           "description": {
             "type": "string"
           },
-          "numberOfAttendees": {
-            "type": "integer"
-          },
-          "checkPlace": {
-            "type": "boolean"
-          },
-          "checkHosting": {
-            "type": "boolean"
-          },
-          "checkRestauration": {
-            "type": "boolean"
-          },
-          "eventOrderDetails": {
+          "stock": {
             "type": "array",
             "items": {
               "type": "object",
@@ -698,98 +740,55 @@
                 "id": {
                   "type": "string"
                 },
-                "articles": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "price": {
-                        "type": "number"
-                      },
-                      "discount": {
-                        "type": "integer"
-                      },
-                      "quantity": {
-                        "type": "integer"
-                      },
-                      "comment": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "subTotal": {
-                  "type": "number"
-                },
-                "discount": {
+                "entry": {
                   "type": "integer"
-                },
-                "tax": {
-                  "type": "number"
-                },
-                "total": {
-                  "type": "number"
-                },
-                "status": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "comment": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "type": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "status": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
                 },
                 "comment": {
                   "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "warehouse": {
+                  "type": "string"
+                },
+                "costPerUnit": {
+                  "type": "number"
                 }
               }
             }
           },
-          "checkTMS": {
-            "type": "boolean",
-            "default": false
+          "stockBalance": {
+            "type": "integer"
           },
-          "name": {
+          "minQuantity": {
+            "type": "integer"
+          },
+          "maxQuantity": {
+            "type": "integer"
+          },
+          "unit": {
+            "type": "string"
+          },
+          "spec": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "specText": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "marketcategory": {
             "type": "string"
           },
           "published_at": {
@@ -808,7 +807,7 @@
   },
   "tags": [
     {
-      "name": "Events"
+      "name": "Marketitems"
     }
   ]
 }

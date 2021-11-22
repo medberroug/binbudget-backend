@@ -1,0 +1,60 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/eventserviceproviders",
+      "handler": "eventserviceprovider.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/eventserviceproviders/count",
+      "handler": "eventserviceprovider.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/eventserviceproviders/:id",
+      "handler": "eventserviceprovider.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/eventserviceproviders",
+      "handler": "eventserviceprovider.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/eventserviceproviders/:id",
+      "handler": "eventserviceprovider.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/eventserviceproviders/:id",
+      "handler": "eventserviceprovider.delete",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/getListOfPlaces/:city",
+      "handler": "eventserviceprovider.getListOfPlaces",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

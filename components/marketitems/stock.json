@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_marketitems_stocks",
+  "info": {
+    "name": "stock",
+    "icon": "ambulance"
+  },
+  "options": {},
+  "attributes": {
+    "entry": {
+      "type": "integer"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "warehouse": {
+      "type": "string"
+    },
+    "costPerUnit": {
+      "type": "decimal"
+    }
+  }
+}

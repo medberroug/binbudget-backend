@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "marketitems",
+  "info": {
+    "name": "marketitems",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "subCategory": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "discount": {
+      "type": "decimal"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "images": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "stock": {
+      "type": "component",
+      "repeatable": true,
+      "component": "marketitems.stock"
+    },
+    "stockBalance": {
+      "type": "integer"
+    },
+    "minQuantity": {
+      "type": "integer"
+    },
+    "maxQuantity": {
+      "type": "integer"
+    },
+    "unit": {
+      "type": "string"
+    },
+    "spec": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.specification"
+    },
+    "marketcategory": {
+      "via": "marketitems",
+      "model": "marketcategory"
+    }
+  }
+}

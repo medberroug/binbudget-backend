@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_marketcategory_sub_categories",
+  "info": {
+    "name": "subCategories",
+    "icon": "at"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}
