@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "11/22/2021 2:52:54 PM"
+    "x-generation-date": "11/26/2021 7:06:09 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4967,6 +4967,12 @@
                       },
                       "comment": {
                         "type": "string"
+                      },
+                      "itemId": {
+                        "type": "string"
+                      },
+                      "subTotal": {
+                        "type": "number"
                       }
                     }
                   }
@@ -4976,12 +4982,6 @@
                 },
                 "discount": {
                   "type": "integer"
-                },
-                "tax": {
-                  "type": "number"
-                },
-                "total": {
-                  "type": "number"
                 },
                 "status": {
                   "type": "array",
@@ -4999,12 +4999,65 @@
                       },
                       "comment": {
                         "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date-time"
                       }
                     }
                   }
                 },
                 "type": {
                   "type": "string"
+                },
+                "eventserviceprovider": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "knownName": {
+                      "type": "string"
+                    },
+                    "address": {
+                      "type": "component"
+                    },
+                    "ratingTotal": {
+                      "type": "number"
+                    },
+                    "rating": {
+                      "type": "component"
+                    },
+                    "topImage": {
+                      "type": "string"
+                    },
+                    "logo": {
+                      "type": "string"
+                    },
+                    "smallDescription": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "items": {
+                      "type": "component"
+                    },
+                    "showIn": {
+                      "type": "component"
+                    },
+                    "published_at": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -5025,6 +5078,10 @@
                 },
                 "comment": {
                   "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
                 }
               }
             }
@@ -5106,6 +5163,12 @@
                       },
                       "comment": {
                         "type": "string"
+                      },
+                      "itemId": {
+                        "type": "string"
+                      },
+                      "subTotal": {
+                        "type": "number"
                       }
                     }
                   }
@@ -5115,12 +5178,6 @@
                 },
                 "discount": {
                   "type": "integer"
-                },
-                "tax": {
-                  "type": "number"
-                },
-                "total": {
-                  "type": "number"
                 },
                 "status": {
                   "type": "array",
@@ -5138,12 +5195,65 @@
                       },
                       "comment": {
                         "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date-time"
                       }
                     }
                   }
                 },
                 "type": {
                   "type": "string"
+                },
+                "eventserviceprovider": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "knownName": {
+                      "type": "string"
+                    },
+                    "address": {
+                      "type": "component"
+                    },
+                    "ratingTotal": {
+                      "type": "number"
+                    },
+                    "rating": {
+                      "type": "component"
+                    },
+                    "topImage": {
+                      "type": "string"
+                    },
+                    "logo": {
+                      "type": "string"
+                    },
+                    "smallDescription": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "items": {
+                      "type": "component"
+                    },
+                    "showIn": {
+                      "type": "component"
+                    },
+                    "published_at": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -5164,6 +5274,10 @@
                 },
                 "comment": {
                   "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
                 }
               }
             }
@@ -5625,6 +5739,10 @@
                 "status": {
                   "type": "boolean",
                   "default": true
+                },
+                "unit": {
+                  "type": "string",
+                  "default": "unité"
                 }
               }
             }
@@ -5951,6 +6069,10 @@
                 "status": {
                   "type": "boolean",
                   "default": true
+                },
+                "unit": {
+                  "type": "string",
+                  "default": "unité"
                 }
               }
             }
@@ -6951,6 +7073,10 @@
                 "status": {
                   "type": "boolean",
                   "default": true
+                },
+                "unit": {
+                  "type": "string",
+                  "default": "unité"
                 }
               }
             }
@@ -7341,6 +7467,10 @@
                 "status": {
                   "type": "boolean",
                   "default": true
+                },
+                "unit": {
+                  "type": "string",
+                  "default": "unité"
                 }
               }
             }

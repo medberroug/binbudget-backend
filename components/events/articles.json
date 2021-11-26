@@ -2,7 +2,8 @@
   "collectionName": "components_events_articles",
   "info": {
     "name": "articles",
-    "icon": "igloo"
+    "icon": "igloo",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -20,6 +21,12 @@
     },
     "comment": {
       "type": "richtext"
+    },
+    "itemId": {
+      "type": "string"
+    },
+    "subTotal": {
+      "type": "decimal"
     }
   }
 }

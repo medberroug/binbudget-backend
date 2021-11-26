@@ -584,6 +584,12 @@
                       },
                       "comment": {
                         "type": "string"
+                      },
+                      "itemId": {
+                        "type": "string"
+                      },
+                      "subTotal": {
+                        "type": "number"
                       }
                     }
                   }
@@ -593,12 +599,6 @@
                 },
                 "discount": {
                   "type": "integer"
-                },
-                "tax": {
-                  "type": "number"
-                },
-                "total": {
-                  "type": "number"
                 },
                 "status": {
                   "type": "array",
@@ -616,12 +616,65 @@
                       },
                       "comment": {
                         "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date-time"
                       }
                     }
                   }
                 },
                 "type": {
                   "type": "string"
+                },
+                "eventserviceprovider": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "knownName": {
+                      "type": "string"
+                    },
+                    "address": {
+                      "type": "component"
+                    },
+                    "ratingTotal": {
+                      "type": "number"
+                    },
+                    "rating": {
+                      "type": "component"
+                    },
+                    "topImage": {
+                      "type": "string"
+                    },
+                    "logo": {
+                      "type": "string"
+                    },
+                    "smallDescription": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "items": {
+                      "type": "component"
+                    },
+                    "showIn": {
+                      "type": "component"
+                    },
+                    "published_at": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -642,6 +695,10 @@
                 },
                 "comment": {
                   "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
                 }
               }
             }
@@ -723,6 +780,12 @@
                       },
                       "comment": {
                         "type": "string"
+                      },
+                      "itemId": {
+                        "type": "string"
+                      },
+                      "subTotal": {
+                        "type": "number"
                       }
                     }
                   }
@@ -732,12 +795,6 @@
                 },
                 "discount": {
                   "type": "integer"
-                },
-                "tax": {
-                  "type": "number"
-                },
-                "total": {
-                  "type": "number"
                 },
                 "status": {
                   "type": "array",
@@ -755,12 +812,65 @@
                       },
                       "comment": {
                         "type": "string"
+                      },
+                      "date": {
+                        "type": "string",
+                        "format": "date-time"
                       }
                     }
                   }
                 },
                 "type": {
                   "type": "string"
+                },
+                "eventserviceprovider": {
+                  "required": [
+                    "id"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "knownName": {
+                      "type": "string"
+                    },
+                    "address": {
+                      "type": "component"
+                    },
+                    "ratingTotal": {
+                      "type": "number"
+                    },
+                    "rating": {
+                      "type": "component"
+                    },
+                    "topImage": {
+                      "type": "string"
+                    },
+                    "logo": {
+                      "type": "string"
+                    },
+                    "smallDescription": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "items": {
+                      "type": "component"
+                    },
+                    "showIn": {
+                      "type": "component"
+                    },
+                    "published_at": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
                 }
               }
             }
@@ -781,6 +891,10 @@
                 },
                 "comment": {
                   "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
                 }
               }
             }

@@ -58,6 +58,10 @@
     "status": {
       "type": "boolean",
       "default": true
+    },
+    "unit": {
+      "type": "string",
+      "default": "unité"
     }
   }
 }

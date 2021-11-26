@@ -2,7 +2,8 @@
   "collectionName": "components_events_statuses",
   "info": {
     "name": "status",
-    "icon": "tasks"
+    "icon": "tasks",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,6 +12,9 @@
     },
     "comment": {
       "type": "richtext"
+    },
+    "date": {
+      "type": "datetime"
     }
   }
 }
