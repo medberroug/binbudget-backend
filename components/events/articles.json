@@ -27,6 +27,9 @@
     },
     "subTotal": {
       "type": "decimal"
+    },
+    "unit": {
+      "type": "string"
     }
   }
 }

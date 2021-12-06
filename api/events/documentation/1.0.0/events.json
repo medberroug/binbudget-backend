@@ -539,13 +539,13 @@
           "numberOfAttendees": {
             "type": "integer"
           },
-          "checkPlace": {
+          "placeCheck": {
             "type": "boolean"
           },
-          "checkHosting": {
+          "hostingCheck": {
             "type": "boolean"
           },
-          "checkRestauration": {
+          "restaurationCheck": {
             "type": "boolean"
           },
           "eventOrderDetails": {
@@ -590,6 +590,9 @@
                       },
                       "subTotal": {
                         "type": "number"
+                      },
+                      "unit": {
+                        "type": "string"
                       }
                     }
                   }
@@ -675,6 +678,9 @@
                       "type": "string"
                     }
                   }
+                },
+                "eventServiceProviderName": {
+                  "type": "string"
                 }
               }
             }
@@ -703,7 +709,7 @@
               }
             }
           },
-          "checkTMS": {
+          "tmsCheck": {
             "type": "boolean",
             "default": false
           },
@@ -735,13 +741,13 @@
           "numberOfAttendees": {
             "type": "integer"
           },
-          "checkPlace": {
+          "placeCheck": {
             "type": "boolean"
           },
-          "checkHosting": {
+          "hostingCheck": {
             "type": "boolean"
           },
-          "checkRestauration": {
+          "restaurationCheck": {
             "type": "boolean"
           },
           "eventOrderDetails": {
@@ -786,6 +792,9 @@
                       },
                       "subTotal": {
                         "type": "number"
+                      },
+                      "unit": {
+                        "type": "string"
                       }
                     }
                   }
@@ -871,6 +880,9 @@
                       "type": "string"
                     }
                   }
+                },
+                "eventServiceProviderName": {
+                  "type": "string"
                 }
               }
             }
@@ -899,7 +911,7 @@
               }
             }
           },
-          "checkTMS": {
+          "tmsCheck": {
             "type": "boolean",
             "default": false
           },

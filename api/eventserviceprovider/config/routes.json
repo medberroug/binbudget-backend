@@ -55,6 +55,30 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getListOfHosting/:city",
+      "handler": "eventserviceprovider.getListOfHosting",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/getListOfRestauration/:city",
+      "handler": "eventserviceprovider.getListOfRestauration",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/getListOfService/:city",
+      "handler": "eventserviceprovider.getListOfService",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

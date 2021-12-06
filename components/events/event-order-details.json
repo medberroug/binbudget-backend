@@ -28,6 +28,9 @@
     },
     "eventserviceprovider": {
       "model": "eventserviceprovider"
+    },
+    "eventServiceProviderName": {
+      "type": "string"
     }
   }
 }

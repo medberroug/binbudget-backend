@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/generalsettingsdefaults",
+      "handler": "generalsettingsdefaults.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/generalsettingsdefaults",
+      "handler": "generalsettingsdefaults.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/generalsettingsdefaults",
+      "handler": "generalsettingsdefaults.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

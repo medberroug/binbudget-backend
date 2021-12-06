@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "generalsettingsdefaults",
+  "info": {
+    "name": "generalsettingsdefaults",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "tva": {
+      "type": "decimal"
+    }
+  }
+}

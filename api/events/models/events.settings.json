@@ -26,13 +26,13 @@
     "numberOfAttendees": {
       "type": "integer"
     },
-    "checkPlace": {
+    "placeCheck": {
       "type": "boolean"
     },
-    "checkHosting": {
+    "hostingCheck": {
       "type": "boolean"
     },
-    "checkRestauration": {
+    "restaurationCheck": {
       "type": "boolean"
     },
     "eventOrderDetails": {
@@ -45,7 +45,7 @@
       "repeatable": true,
       "component": "events.status"
     },
-    "checkTMS": {
+    "tmsCheck": {
       "type": "boolean",
       "default": false
     },
