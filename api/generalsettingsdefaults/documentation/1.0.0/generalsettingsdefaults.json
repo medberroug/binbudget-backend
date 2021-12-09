@@ -321,6 +321,10 @@
           "tva": {
             "type": "number"
           },
+          "tvaRestauration": {
+            "type": "number",
+            "default": 20
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -331,6 +335,10 @@
         "properties": {
           "tva": {
             "type": "number"
+          },
+          "tvaRestauration": {
+            "type": "number",
+            "default": 20
           },
           "published_at": {
             "type": "string",

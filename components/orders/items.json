@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_orders_items",
+  "info": {
+    "name": "items",
+    "icon": "arrow-circle-down"
+  },
+  "options": {},
+  "attributes": {
+    "comment": {
+      "type": "text"
+    },
+    "discount": {
+      "type": "decimal"
+    },
+    "firstImage": {
+      "type": "text"
+    },
+    "itemID": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "quantity": {
+      "type": "integer"
+    }
+  }
+}

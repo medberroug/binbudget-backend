@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_orders_with_deliveries",
+  "info": {
+    "name": "withDelivery",
+    "icon": "allergies",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "street": {
+      "type": "text"
+    },
+    "country": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "fullName": {
+      "type": "string"
+    }
+  }
+}

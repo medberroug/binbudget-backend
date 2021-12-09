@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/events": {
+    "/orders": {
       "get": {
         "deprecated": false,
-        "description": "Find all the events's records",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Events"
+                    "$ref": "#/components/schemas/Order"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Order"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new events record",
+        "description": "Create a new record",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Events"
+                  "$ref": "#/components/schemas/Order"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Order"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewEvents"
+                "$ref": "#/components/schemas/NewOrder"
               }
             }
           }
         }
       }
     },
-    "/events/count": {
+    "/orders/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of events documents",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Order"
         ],
         "parameters": []
       }
     },
-    "/events/{id}": {
+    "/orders/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one events record",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Events"
+                  "$ref": "#/components/schemas/Order"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Order"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single events record",
+        "description": "Update a record",
         "responses": {
           "200": {
-            "description": "Retrieve events document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Events"
+                  "$ref": "#/components/schemas/Order"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Order"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewEvents"
+                "$ref": "#/components/schemas/NewOrder"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single events record",
+        "description": "Delete a record",
         "responses": {
           "200": {
-            "description": "deletes a single events based on the ID supplied",
+            "description": "deletes a single record based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,91 +495,8 @@
         },
         "summary": "",
         "tags": [
-          "Events"
+          "Order"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/editEventStatus/{id}": {
-      "put": {
-        "deprecated": false,
-        "description": "Update a record",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Events"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "foo": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
         "parameters": [
           {
             "name": "id",
@@ -597,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Events": {
+      "Order": {
         "required": [
           "id"
         ],
@@ -605,33 +522,13 @@
           "id": {
             "type": "string"
           },
-          "city": {
+          "type": {
             "type": "string"
           },
-          "startDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "endDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "description": {
+          "subType": {
             "type": "string"
           },
-          "numberOfAttendees": {
-            "type": "integer"
-          },
-          "placeCheck": {
-            "type": "boolean"
-          },
-          "hostingCheck": {
-            "type": "boolean"
-          },
-          "restaurationCheck": {
-            "type": "boolean"
-          },
-          "eventOrderDetails": {
+          "items": {
             "type": "array",
             "items": {
               "type": "object",
@@ -642,129 +539,82 @@
                 "id": {
                   "type": "string"
                 },
-                "articles": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "price": {
-                        "type": "number"
-                      },
-                      "discount": {
-                        "type": "integer"
-                      },
-                      "quantity": {
-                        "type": "integer"
-                      },
-                      "comment": {
-                        "type": "string"
-                      },
-                      "itemId": {
-                        "type": "string"
-                      },
-                      "subTotal": {
-                        "type": "number"
-                      },
-                      "unit": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "subTotal": {
-                  "type": "number"
+                "comment": {
+                  "type": "string"
                 },
                 "discount": {
+                  "type": "number"
+                },
+                "firstImage": {
+                  "type": "string"
+                },
+                "itemID": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "quantity": {
                   "type": "integer"
-                },
-                "status": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "comment": {
-                        "type": "string"
-                      },
-                      "date": {
-                        "type": "string",
-                        "format": "date-time"
-                      }
-                    }
-                  }
-                },
-                "type": {
-                  "type": "string"
-                },
-                "eventserviceprovider": {
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "knownName": {
-                      "type": "string"
-                    },
-                    "address": {
-                      "type": "component"
-                    },
-                    "ratingTotal": {
-                      "type": "number"
-                    },
-                    "rating": {
-                      "type": "component"
-                    },
-                    "topImage": {
-                      "type": "string"
-                    },
-                    "logo": {
-                      "type": "string"
-                    },
-                    "smallDescription": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "boolean"
-                    },
-                    "items": {
-                      "type": "component"
-                    },
-                    "showIn": {
-                      "type": "component"
-                    },
-                    "published_at": {
-                      "type": "string"
-                    },
-                    "created_by": {
-                      "type": "string"
-                    },
-                    "updated_by": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "eventServiceProviderName": {
-                  "type": "string"
                 }
+              }
+            }
+          },
+          "subTotal": {
+            "type": "number"
+          },
+          "tax": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "withDelivery": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "street": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              },
+              "fullName": {
+                "type": "string"
+              }
+            }
+          },
+          "linkedToSPItem": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "spID": {
+                "type": "string"
               }
             }
           },
@@ -792,12 +642,8 @@
               }
             }
           },
-          "tmsCheck": {
-            "type": "boolean",
-            "default": false
-          },
-          "name": {
-            "type": "string"
+          "deliveryPrice": {
+            "type": "number"
           },
           "published_at": {
             "type": "string",
@@ -805,35 +651,15 @@
           }
         }
       },
-      "NewEvents": {
+      "NewOrder": {
         "properties": {
-          "city": {
+          "type": {
             "type": "string"
           },
-          "startDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "endDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "description": {
+          "subType": {
             "type": "string"
           },
-          "numberOfAttendees": {
-            "type": "integer"
-          },
-          "placeCheck": {
-            "type": "boolean"
-          },
-          "hostingCheck": {
-            "type": "boolean"
-          },
-          "restaurationCheck": {
-            "type": "boolean"
-          },
-          "eventOrderDetails": {
+          "items": {
             "type": "array",
             "items": {
               "type": "object",
@@ -844,129 +670,82 @@
                 "id": {
                   "type": "string"
                 },
-                "articles": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "price": {
-                        "type": "number"
-                      },
-                      "discount": {
-                        "type": "integer"
-                      },
-                      "quantity": {
-                        "type": "integer"
-                      },
-                      "comment": {
-                        "type": "string"
-                      },
-                      "itemId": {
-                        "type": "string"
-                      },
-                      "subTotal": {
-                        "type": "number"
-                      },
-                      "unit": {
-                        "type": "string"
-                      }
-                    }
-                  }
-                },
-                "subTotal": {
-                  "type": "number"
+                "comment": {
+                  "type": "string"
                 },
                 "discount": {
+                  "type": "number"
+                },
+                "firstImage": {
+                  "type": "string"
+                },
+                "itemID": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "quantity": {
                   "type": "integer"
-                },
-                "status": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "required": [
-                      "id"
-                    ],
-                    "properties": {
-                      "id": {
-                        "type": "string"
-                      },
-                      "name": {
-                        "type": "string"
-                      },
-                      "comment": {
-                        "type": "string"
-                      },
-                      "date": {
-                        "type": "string",
-                        "format": "date-time"
-                      }
-                    }
-                  }
-                },
-                "type": {
-                  "type": "string"
-                },
-                "eventserviceprovider": {
-                  "required": [
-                    "id"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "knownName": {
-                      "type": "string"
-                    },
-                    "address": {
-                      "type": "component"
-                    },
-                    "ratingTotal": {
-                      "type": "number"
-                    },
-                    "rating": {
-                      "type": "component"
-                    },
-                    "topImage": {
-                      "type": "string"
-                    },
-                    "logo": {
-                      "type": "string"
-                    },
-                    "smallDescription": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "boolean"
-                    },
-                    "items": {
-                      "type": "component"
-                    },
-                    "showIn": {
-                      "type": "component"
-                    },
-                    "published_at": {
-                      "type": "string"
-                    },
-                    "created_by": {
-                      "type": "string"
-                    },
-                    "updated_by": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "eventServiceProviderName": {
-                  "type": "string"
                 }
+              }
+            }
+          },
+          "subTotal": {
+            "type": "number"
+          },
+          "tax": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "withDelivery": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "street": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              },
+              "fullName": {
+                "type": "string"
+              }
+            }
+          },
+          "linkedToSPItem": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "spID": {
+                "type": "string"
               }
             }
           },
@@ -994,12 +773,8 @@
               }
             }
           },
-          "tmsCheck": {
-            "type": "boolean",
-            "default": false
-          },
-          "name": {
-            "type": "string"
+          "deliveryPrice": {
+            "type": "number"
           },
           "published_at": {
             "type": "string",
@@ -1017,7 +792,7 @@
   },
   "tags": [
     {
-      "name": "Events"
+      "name": "Order"
     }
   ]
 }

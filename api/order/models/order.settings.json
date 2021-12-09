@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "name": "order",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "type": {
+      "type": "string"
+    },
+    "subType": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "orders.items"
+    },
+    "subTotal": {
+      "type": "decimal"
+    },
+    "tax": {
+      "type": "decimal"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "withDelivery": {
+      "type": "component",
+      "repeatable": false,
+      "component": "orders.with-delivery"
+    },
+    "linkedToSPItem": {
+      "type": "component",
+      "repeatable": false,
+      "component": "orders.linked-to-sp-item"
+    },
+    "status": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.status"
+    },
+    "deliveryPrice": {
+      "type": "decimal"
+    }
+  }
+}

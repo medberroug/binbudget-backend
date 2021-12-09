@@ -13,6 +13,10 @@
   "attributes": {
     "tva": {
       "type": "decimal"
+    },
+    "tvaRestauration": {
+      "type": "decimal",
+      "default": 20
     }
   }
 }
