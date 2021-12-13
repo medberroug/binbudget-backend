@@ -645,6 +645,24 @@
           "deliveryPrice": {
             "type": "number"
           },
+          "paimentMode": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          },
+          "when": {
+            "type": "string",
+            "format": "date-time"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -775,6 +793,24 @@
           },
           "deliveryPrice": {
             "type": "number"
+          },
+          "paimentMode": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          },
+          "when": {
+            "type": "string",
+            "format": "date-time"
           },
           "published_at": {
             "type": "string",

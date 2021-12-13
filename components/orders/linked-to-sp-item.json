@@ -2,7 +2,8 @@
   "collectionName": "components_orders_linked_to_sp_items",
   "info": {
     "name": "linkedToSPItem",
-    "icon": "backward"
+    "icon": "backward",
+    "description": ""
   },
   "options": {},
   "attributes": {

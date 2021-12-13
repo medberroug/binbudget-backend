@@ -48,6 +48,14 @@
     },
     "deliveryPrice": {
       "type": "decimal"
+    },
+    "paimentMode": {
+      "type": "component",
+      "repeatable": false,
+      "component": "orders.paiment-mode"
+    },
+    "when": {
+      "type": "datetime"
     }
   }
 }

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_orders_paiment_modes",
+  "info": {
+    "name": "paimentMode",
+    "icon": "anchor"
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "string"
+    }
+  }
+}
