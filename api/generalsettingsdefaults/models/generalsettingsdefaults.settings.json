@@ -17,6 +17,10 @@
     "tvaRestauration": {
       "type": "decimal",
       "default": 20
+    },
+    "tvaMarket": {
+      "type": "decimal",
+      "default": 8.5
     }
   }
 }

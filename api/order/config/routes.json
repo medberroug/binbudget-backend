@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "PUT",
+      "path": "/cancelMyOrder/:id",
+      "handler": "order.cancelMyOrder",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

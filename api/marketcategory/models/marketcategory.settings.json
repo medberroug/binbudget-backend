@@ -31,10 +31,6 @@
     "description": {
       "type": "text"
     },
-    "marketitems": {
-      "collection": "marketitems",
-      "via": "marketcategory"
-    },
     "status": {
       "type": "boolean",
       "default": true

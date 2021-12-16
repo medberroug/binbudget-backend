@@ -612,70 +612,6 @@
           "description": {
             "type": "string"
           },
-          "marketitems": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "subCategory": {
-                  "type": "string"
-                },
-                "price": {
-                  "type": "number"
-                },
-                "discount": {
-                  "type": "number"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "images": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "stock": {
-                  "type": "component"
-                },
-                "stockBalance": {
-                  "type": "integer"
-                },
-                "minQuantity": {
-                  "type": "integer"
-                },
-                "maxQuantity": {
-                  "type": "integer"
-                },
-                "unit": {
-                  "type": "string"
-                },
-                "spec": {
-                  "type": "component"
-                },
-                "marketcategory": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "status": {
             "type": "boolean",
             "default": true
@@ -710,12 +646,6 @@
           },
           "description": {
             "type": "string"
-          },
-          "marketitems": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "status": {
             "type": "boolean",

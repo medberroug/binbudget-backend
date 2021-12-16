@@ -666,45 +666,9 @@
               }
             }
           },
-          "marketcategory": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "subCategories": {
-                "type": "component"
-              },
-              "image": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              },
-              "marketitems": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "status": {
-                "type": "boolean"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
+          "status": {
+            "type": "boolean",
+            "default": true
           },
           "published_at": {
             "type": "string",
@@ -788,8 +752,9 @@
               }
             }
           },
-          "marketcategory": {
-            "type": "string"
+          "status": {
+            "type": "boolean",
+            "default": true
           },
           "published_at": {
             "type": "string",

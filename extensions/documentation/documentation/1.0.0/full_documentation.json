@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "12/13/2021 4:30:26 PM"
+    "x-generation-date": "12/16/2021 4:59:15 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -3248,6 +3248,89 @@
         "tags": [
           "Order"
         ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/cancelMyOrder/{id}": {
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Order"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
         "parameters": [
           {
             "name": "id",
@@ -7239,6 +7322,10 @@
             "type": "number",
             "default": 20
           },
+          "tvaMarket": {
+            "type": "number",
+            "default": 8.5
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -7253,6 +7340,10 @@
           "tvaRestauration": {
             "type": "number",
             "default": 20
+          },
+          "tvaMarket": {
+            "type": "number",
+            "default": 8.5
           },
           "published_at": {
             "type": "string",
@@ -7364,70 +7455,6 @@
           "description": {
             "type": "string"
           },
-          "marketitems": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "subCategory": {
-                  "type": "string"
-                },
-                "price": {
-                  "type": "number"
-                },
-                "discount": {
-                  "type": "number"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "images": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "stock": {
-                  "type": "component"
-                },
-                "stockBalance": {
-                  "type": "integer"
-                },
-                "minQuantity": {
-                  "type": "integer"
-                },
-                "maxQuantity": {
-                  "type": "integer"
-                },
-                "unit": {
-                  "type": "string"
-                },
-                "spec": {
-                  "type": "component"
-                },
-                "marketcategory": {
-                  "type": "string"
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
-          },
           "status": {
             "type": "boolean",
             "default": true
@@ -7462,12 +7489,6 @@
           },
           "description": {
             "type": "string"
-          },
-          "marketitems": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "status": {
             "type": "boolean",
@@ -7637,45 +7658,9 @@
               }
             }
           },
-          "marketcategory": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "subCategories": {
-                "type": "component"
-              },
-              "image": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              },
-              "marketitems": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "status": {
-                "type": "boolean"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
+          "status": {
+            "type": "boolean",
+            "default": true
           },
           "published_at": {
             "type": "string",
@@ -7759,8 +7744,9 @@
               }
             }
           },
-          "marketcategory": {
-            "type": "string"
+          "status": {
+            "type": "boolean",
+            "default": true
           },
           "published_at": {
             "type": "string",

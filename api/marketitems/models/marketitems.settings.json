@@ -57,9 +57,9 @@
       "repeatable": true,
       "component": "events.specification"
     },
-    "marketcategory": {
-      "via": "marketitems",
-      "model": "marketcategory"
+    "status": {
+      "type": "boolean",
+      "default": true
     }
   }
 }
