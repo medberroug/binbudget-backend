@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_ndf_providers_ndf_providers",
+  "info": {
+    "name": "ndfProviders",
+    "icon": "align-right"
+  },
+  "options": {},
+  "attributes": {
+    "knownName": {
+      "type": "string"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "events.address"
+    },
+    "status": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

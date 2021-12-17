@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ndfs",
+  "info": {
+    "name": "ndf",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "amount": {
+      "type": "decimal"
+    },
+    "category": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "serviceProviderNDF": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "scan": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "status": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.status"
+    }
+  }
+}

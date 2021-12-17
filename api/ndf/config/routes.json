@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/ndfs",
+      "handler": "ndf.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ndfs/count",
+      "handler": "ndf.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/ndfs/:id",
+      "handler": "ndf.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/ndfs",
+      "handler": "ndf.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/ndfs/:id",
+      "handler": "ndf.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/ndfs/:id",
+      "handler": "ndf.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

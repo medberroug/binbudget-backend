@@ -1,0 +1,25 @@
+{
+  "kind": "singleType",
+  "collectionName": "ndfserviceproviders",
+  "info": {
+    "name": "ndfserviceproviders",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "ndfProviders": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ndf-providers.ndf-providers"
+    },
+    "categories": {
+      "type": "component",
+      "repeatable": true,
+      "component": "ndf-providers.categories"
+    }
+  }
+}

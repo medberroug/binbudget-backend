@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/ndfserviceproviders",
+      "handler": "ndfserviceproviders.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/ndfserviceproviders",
+      "handler": "ndfserviceproviders.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/ndfserviceproviders",
+      "handler": "ndfserviceproviders.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

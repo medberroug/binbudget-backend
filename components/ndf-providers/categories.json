@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_ndf_providers_categories",
+  "info": {
+    "name": "categories",
+    "icon": "arrow-down"
+  },
+  "options": {},
+  "attributes": {
+    "minAmount": {
+      "type": "decimal"
+    },
+    "maxAmount": {
+      "type": "decimal"
+    },
+    "name": {
+      "type": "string"
+    }
+  }
+}
