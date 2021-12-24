@@ -751,6 +751,9 @@
                     "showIn": {
                       "type": "component"
                     },
+                    "percentageTaking": {
+                      "type": "number"
+                    },
                     "published_at": {
                       "type": "string"
                     },
@@ -952,6 +955,9 @@
                     },
                     "showIn": {
                       "type": "component"
+                    },
+                    "percentageTaking": {
+                      "type": "number"
                     },
                     "published_at": {
                       "type": "string"

@@ -61,6 +61,10 @@
       "type": "component",
       "repeatable": true,
       "component": "restauration.shown-in"
+    },
+    "percentageTaking": {
+      "type": "decimal",
+      "default": 15
     }
   }
 }

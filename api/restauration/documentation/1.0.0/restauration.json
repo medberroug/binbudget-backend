@@ -1040,6 +1040,10 @@
               }
             }
           },
+          "percentageTaking": {
+            "type": "number",
+            "default": 15
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -1433,6 +1437,10 @@
                 }
               }
             }
+          },
+          "percentageTaking": {
+            "type": "number",
+            "default": 15
           },
           "published_at": {
             "type": "string",
