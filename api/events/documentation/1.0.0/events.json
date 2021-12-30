@@ -754,6 +754,12 @@
                     "percentageTaking": {
                       "type": "number"
                     },
+                    "whatServicesHeCanOffer": {
+                      "type": "component"
+                    },
+                    "category": {
+                      "type": "component"
+                    },
                     "published_at": {
                       "type": "string"
                     },
@@ -958,6 +964,12 @@
                     },
                     "percentageTaking": {
                       "type": "number"
+                    },
+                    "whatServicesHeCanOffer": {
+                      "type": "component"
+                    },
+                    "category": {
+                      "type": "component"
                     },
                     "published_at": {
                       "type": "string"

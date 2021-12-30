@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "12/24/2021 4:23:15 PM"
+    "x-generation-date": "12/26/2021 3:34:43 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -7060,6 +7060,12 @@
                     "percentageTaking": {
                       "type": "number"
                     },
+                    "whatServicesHeCanOffer": {
+                      "type": "component"
+                    },
+                    "category": {
+                      "type": "component"
+                    },
                     "published_at": {
                       "type": "string"
                     },
@@ -7264,6 +7270,12 @@
                     },
                     "percentageTaking": {
                       "type": "number"
+                    },
+                    "whatServicesHeCanOffer": {
+                      "type": "component"
+                    },
+                    "category": {
+                      "type": "component"
                     },
                     "published_at": {
                       "type": "string"
@@ -7793,6 +7805,40 @@
             "type": "number",
             "default": 15
           },
+          "whatServicesHeCanOffer": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "serviceName": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "category": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -8126,6 +8172,40 @@
           "percentageTaking": {
             "type": "number",
             "default": 15
+          },
+          "whatServicesHeCanOffer": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "serviceName": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "category": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
           },
           "published_at": {
             "type": "string",
@@ -9784,6 +9864,40 @@
             "type": "number",
             "default": 15
           },
+          "whatServicesHeCanOffer": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "serviceName": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "category": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -10181,6 +10295,40 @@
           "percentageTaking": {
             "type": "number",
             "default": 15
+          },
+          "whatServicesHeCanOffer": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "serviceName": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "category": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
           },
           "published_at": {
             "type": "string",

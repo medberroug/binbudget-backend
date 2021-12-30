@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_restauration_what_services_he_can_offers",
+  "info": {
+    "name": "whatServicesHeCanOffer",
+    "icon": "arrow-circle-up"
+  },
+  "options": {},
+  "attributes": {
+    "serviceName": {
+      "type": "string"
+    }
+  }
+}

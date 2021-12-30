@@ -65,6 +65,16 @@
     "percentageTaking": {
       "type": "decimal",
       "default": 15
+    },
+    "whatServicesHeCanOffer": {
+      "type": "component",
+      "repeatable": true,
+      "component": "restauration.what-services-he-can-offer"
+    },
+    "category": {
+      "type": "component",
+      "repeatable": true,
+      "component": "restauration.category"
     }
   }
 }
