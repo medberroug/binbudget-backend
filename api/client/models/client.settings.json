@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "clients",
+  "info": {
+    "name": "client",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "contactPerson": {
+      "type": "component",
+      "repeatable": true,
+      "component": "client.contact-person"
+    },
+    "companyDetails": {
+      "type": "component",
+      "repeatable": false,
+      "component": "client.company-details"
+    },
+    "services": {
+      "type": "component",
+      "repeatable": true,
+      "component": "client.services"
+    },
+    "invoicingLimits": {
+      "type": "component",
+      "repeatable": false,
+      "component": "client.invoicing-limits"
+    },
+    "parentAccount": {
+      "type": "string"
+    },
+    "childAccounts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "client.child-accounts"
+    },
+    "users": {
+      "plugin": "users-permissions",
+      "collection": "user",
+      "via": "client"
+    }
+  }
+}

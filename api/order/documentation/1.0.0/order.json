@@ -746,6 +746,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "byClient": {
+            "type": "string"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -894,6 +897,9 @@
           "when": {
             "type": "string",
             "format": "date-time"
+          },
+          "byClient": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",

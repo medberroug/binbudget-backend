@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_client_child_accounts",
+  "info": {
+    "name": "childAccounts",
+    "icon": "battery-half"
+  },
+  "options": {},
+  "attributes": {
+    "accountId": {
+      "type": "string"
+    }
+  }
+}

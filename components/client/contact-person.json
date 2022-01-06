@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_client_contact_people",
+  "info": {
+    "name": "contactPerson",
+    "icon": "arrows-alt-h"
+  },
+  "options": {},
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    }
+  }
+}

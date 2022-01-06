@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_client_services",
+  "info": {
+    "name": "services",
+    "icon": "arrow-up"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

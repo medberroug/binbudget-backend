@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_client_company_details",
+  "info": {
+    "name": "companyDetails",
+    "icon": "assistive-listening-systems"
+  },
+  "options": {},
+  "attributes": {
+    "legalName": {
+      "type": "string"
+    },
+    "knowenName": {
+      "type": "string"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": true,
+      "component": "restauration.address"
+    },
+    "ICE": {
+      "type": "string"
+    },
+    "IF": {
+      "type": "string"
+    },
+    "RC": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "activity": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_client_invoicing_limits",
+  "info": {
+    "name": "invoicingLimits",
+    "icon": "arrows-alt-v"
+  },
+  "options": {},
+  "attributes": {
+    "creditLimit": {
+      "type": "decimal"
+    }
+  }
+}

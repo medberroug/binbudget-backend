@@ -808,6 +808,9 @@
           "name": {
             "type": "string"
           },
+          "byClient": {
+            "type": "string"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -1017,6 +1020,9 @@
             "default": false
           },
           "name": {
+            "type": "string"
+          },
+          "byClient": {
             "type": "string"
           },
           "published_at": {
