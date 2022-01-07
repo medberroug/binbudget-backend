@@ -1,0 +1,86 @@
+{
+  "kind": "collectionType",
+  "collectionName": "invoices",
+  "info": {
+    "name": "invoice",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "type": {
+      "type": "string"
+    },
+    "withType": {
+      "type": "string"
+    },
+    "withTypeId": {
+      "type": "string"
+    },
+    "fromAddress": {
+      "type": "component",
+      "repeatable": false,
+      "component": "invoice.from-address"
+    },
+    "toAddress": {
+      "type": "component",
+      "repeatable": false,
+      "component": "invoice.to-address"
+    },
+    "invoiceNumber": {
+      "type": "string"
+    },
+    "status": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.status"
+    },
+    "DueDate": {
+      "type": "date"
+    },
+    "ref": {
+      "type": "text"
+    },
+    "refType": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "invoice.items"
+    },
+    "payments": {
+      "type": "component",
+      "repeatable": true,
+      "component": "invoice.payments"
+    },
+    "subTotal": {
+      "type": "decimal"
+    },
+    "tax": {
+      "type": "decimal"
+    },
+    "total": {
+      "type": "decimal"
+    },
+    "comment": {
+      "type": "richtext"
+    },
+    "stampedVersionPath": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "client": {
+      "type": "string"
+    }
+  }
+}

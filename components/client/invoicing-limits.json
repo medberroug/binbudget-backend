@@ -2,12 +2,17 @@
   "collectionName": "components_client_invoicing_limits",
   "info": {
     "name": "invoicingLimits",
-    "icon": "arrows-alt-v"
+    "icon": "arrows-alt-v",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "creditLimit": {
       "type": "decimal"
+    },
+    "dueDatesAfter": {
+      "type": "integer",
+      "default": 30
     }
   }
 }

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_invoice_items",
+  "info": {
+    "name": "items",
+    "icon": "angle-left"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "quantity": {
+      "type": "decimal"
+    },
+    "total": {
+      "type": "decimal"
+    }
+  }
+}

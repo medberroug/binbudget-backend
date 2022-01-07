@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_invoice_to_addresses",
+  "info": {
+    "name": "toAddress",
+    "icon": "arrow-left"
+  },
+  "options": {},
+  "attributes": {
+    "street": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "ICE": {
+      "type": "string"
+    },
+    "legalName": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_invoice_payments",
+  "info": {
+    "name": "payments",
+    "icon": "arrow-alt-circle-right"
+  },
+  "options": {},
+  "attributes": {
+    "amount": {
+      "type": "decimal"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "method": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_invoice_from_addresses",
+  "info": {
+    "name": "fromAddress",
+    "icon": "arrow-alt-circle-down"
+  },
+  "options": {},
+  "attributes": {
+    "street": {
+      "type": "text"
+    },
+    "city": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "legalName": {
+      "type": "string"
+    }
+  }
+}

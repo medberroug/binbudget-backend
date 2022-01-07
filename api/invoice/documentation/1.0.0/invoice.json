@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/clients": {
+    "/invoices": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Client"
+                    "$ref": "#/components/schemas/Invoice"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Client"
+          "Invoice"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Client"
+                  "$ref": "#/components/schemas/Invoice"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Client"
+          "Invoice"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewClient"
+                "$ref": "#/components/schemas/NewInvoice"
               }
             }
           }
         }
       }
     },
-    "/clients/count": {
+    "/invoices/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Client"
+          "Invoice"
         ],
         "parameters": []
       }
     },
-    "/clients/{id}": {
+    "/invoices/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Client"
+                  "$ref": "#/components/schemas/Invoice"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Client"
+          "Invoice"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Client"
+                  "$ref": "#/components/schemas/Invoice"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Client"
+          "Invoice"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewClient"
+                "$ref": "#/components/schemas/NewInvoice"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Client"
+          "Invoice"
         ],
         "parameters": [
           {
@@ -514,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Client": {
+      "Invoice": {
         "required": [
           "id"
         ],
@@ -522,33 +522,16 @@
           "id": {
             "type": "string"
           },
-          "contactPerson": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "firstName": {
-                  "type": "string"
-                },
-                "lastName": {
-                  "type": "string"
-                },
-                "phoneNumber": {
-                  "type": "string"
-                },
-                "position": {
-                  "type": "string"
-                }
-              }
-            }
+          "type": {
+            "type": "string"
           },
-          "companyDetails": {
+          "withType": {
+            "type": "string"
+          },
+          "withTypeId": {
+            "type": "string"
+          },
+          "fromAddress": {
             "type": "object",
             "required": [
               "id"
@@ -557,60 +540,50 @@
               "id": {
                 "type": "string"
               },
+              "street": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
               "legalName": {
-                "type": "string"
-              },
-              "knowenName": {
-                "type": "string"
-              },
-              "address": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "required": [
-                    "id",
-                    "street",
-                    "city",
-                    "state",
-                    "country"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "street": {
-                      "type": "string"
-                    },
-                    "city": {
-                      "type": "string"
-                    },
-                    "state": {
-                      "type": "string"
-                    },
-                    "country": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "ICE": {
-                "type": "string"
-              },
-              "IF": {
-                "type": "string"
-              },
-              "RC": {
-                "type": "string"
-              },
-              "phoneNumber": {
-                "type": "string"
-              },
-              "activity": {
                 "type": "string"
               }
             }
           },
-          "services": {
+          "toAddress": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "street": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "ICE": {
+                "type": "string"
+              },
+              "legalName": {
+                "type": "string"
+              }
+            }
+          },
+          "invoiceNumber": {
+            "type": "string"
+          },
+          "status": {
             "type": "array",
             "items": {
               "type": "object",
@@ -623,32 +596,28 @@
                 },
                 "name": {
                   "type": "string"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
                 }
               }
             }
           },
-          "invoicingLimits": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "creditLimit": {
-                "type": "number"
-              },
-              "dueDatesAfter": {
-                "type": "integer",
-                "default": 30
-              }
-            }
+          "DueDate": {
+            "type": "string",
+            "format": "date"
           },
-          "parentAccount": {
+          "ref": {
             "type": "string"
           },
-          "childAccounts": {
+          "refType": {
+            "type": "string"
+          },
+          "items": {
             "type": "array",
             "items": {
               "type": "object",
@@ -659,62 +628,193 @@
                 "id": {
                   "type": "string"
                 },
-                "accountId": {
+                "name": {
                   "type": "string"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "quantity": {
+                  "type": "number"
+                },
+                "total": {
+                  "type": "number"
                 }
               }
             }
           },
-          "users": {
+          "payments": {
             "type": "array",
             "items": {
+              "type": "object",
               "required": [
-                "id",
-                "username",
-                "email"
+                "id"
               ],
               "properties": {
                 "id": {
                   "type": "string"
                 },
-                "username": {
-                  "type": "string"
+                "amount": {
+                  "type": "number"
                 },
-                "email": {
-                  "type": "string"
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
                 },
-                "provider": {
-                  "type": "string"
+                "image": {
+                  "required": [
+                    "id",
+                    "name",
+                    "hash",
+                    "mime",
+                    "size",
+                    "url",
+                    "provider"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "alternativeText": {
+                      "type": "string"
+                    },
+                    "caption": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "integer"
+                    },
+                    "height": {
+                      "type": "integer"
+                    },
+                    "formats": {
+                      "type": "object"
+                    },
+                    "hash": {
+                      "type": "string"
+                    },
+                    "ext": {
+                      "type": "string"
+                    },
+                    "mime": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "number"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "previewUrl": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "provider_metadata": {
+                      "type": "object"
+                    },
+                    "related": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
                 },
-                "password": {
-                  "type": "string"
-                },
-                "resetPasswordToken": {
-                  "type": "string"
-                },
-                "confirmationToken": {
-                  "type": "string"
-                },
-                "confirmed": {
-                  "type": "boolean"
-                },
-                "blocked": {
-                  "type": "boolean"
-                },
-                "role": {
-                  "type": "string"
-                },
-                "client": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
+                "method": {
                   "type": "string"
                 }
               }
             }
+          },
+          "subTotal": {
+            "type": "number"
+          },
+          "tax": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "stampedVersionPath": {
+            "required": [
+              "id",
+              "name",
+              "hash",
+              "mime",
+              "size",
+              "url",
+              "provider"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "alternativeText": {
+                "type": "string"
+              },
+              "caption": {
+                "type": "string"
+              },
+              "width": {
+                "type": "integer"
+              },
+              "height": {
+                "type": "integer"
+              },
+              "formats": {
+                "type": "object"
+              },
+              "hash": {
+                "type": "string"
+              },
+              "ext": {
+                "type": "string"
+              },
+              "mime": {
+                "type": "string"
+              },
+              "size": {
+                "type": "number"
+              },
+              "url": {
+                "type": "string"
+              },
+              "previewUrl": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "provider_metadata": {
+                "type": "object"
+              },
+              "related": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "client": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -722,35 +822,18 @@
           }
         }
       },
-      "NewClient": {
+      "NewInvoice": {
         "properties": {
-          "contactPerson": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "firstName": {
-                  "type": "string"
-                },
-                "lastName": {
-                  "type": "string"
-                },
-                "phoneNumber": {
-                  "type": "string"
-                },
-                "position": {
-                  "type": "string"
-                }
-              }
-            }
+          "type": {
+            "type": "string"
           },
-          "companyDetails": {
+          "withType": {
+            "type": "string"
+          },
+          "withTypeId": {
+            "type": "string"
+          },
+          "fromAddress": {
             "type": "object",
             "required": [
               "id"
@@ -759,60 +842,50 @@
               "id": {
                 "type": "string"
               },
+              "street": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
               "legalName": {
-                "type": "string"
-              },
-              "knowenName": {
-                "type": "string"
-              },
-              "address": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "required": [
-                    "id",
-                    "street",
-                    "city",
-                    "state",
-                    "country"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "street": {
-                      "type": "string"
-                    },
-                    "city": {
-                      "type": "string"
-                    },
-                    "state": {
-                      "type": "string"
-                    },
-                    "country": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "ICE": {
-                "type": "string"
-              },
-              "IF": {
-                "type": "string"
-              },
-              "RC": {
-                "type": "string"
-              },
-              "phoneNumber": {
-                "type": "string"
-              },
-              "activity": {
                 "type": "string"
               }
             }
           },
-          "services": {
+          "toAddress": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "street": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "ICE": {
+                "type": "string"
+              },
+              "legalName": {
+                "type": "string"
+              }
+            }
+          },
+          "invoiceNumber": {
+            "type": "string"
+          },
+          "status": {
             "type": "array",
             "items": {
               "type": "object",
@@ -825,32 +898,28 @@
                 },
                 "name": {
                   "type": "string"
+                },
+                "comment": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
                 }
               }
             }
           },
-          "invoicingLimits": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "creditLimit": {
-                "type": "number"
-              },
-              "dueDatesAfter": {
-                "type": "integer",
-                "default": 30
-              }
-            }
+          "DueDate": {
+            "type": "string",
+            "format": "date"
           },
-          "parentAccount": {
+          "ref": {
             "type": "string"
           },
-          "childAccounts": {
+          "refType": {
+            "type": "string"
+          },
+          "items": {
             "type": "array",
             "items": {
               "type": "object",
@@ -861,17 +930,126 @@
                 "id": {
                   "type": "string"
                 },
-                "accountId": {
+                "name": {
+                  "type": "string"
+                },
+                "price": {
+                  "type": "number"
+                },
+                "quantity": {
+                  "type": "number"
+                },
+                "total": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "payments": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "number"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "image": {
+                  "required": [
+                    "id",
+                    "name",
+                    "hash",
+                    "mime",
+                    "size",
+                    "url",
+                    "provider"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "alternativeText": {
+                      "type": "string"
+                    },
+                    "caption": {
+                      "type": "string"
+                    },
+                    "width": {
+                      "type": "integer"
+                    },
+                    "height": {
+                      "type": "integer"
+                    },
+                    "formats": {
+                      "type": "object"
+                    },
+                    "hash": {
+                      "type": "string"
+                    },
+                    "ext": {
+                      "type": "string"
+                    },
+                    "mime": {
+                      "type": "string"
+                    },
+                    "size": {
+                      "type": "number"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "previewUrl": {
+                      "type": "string"
+                    },
+                    "provider": {
+                      "type": "string"
+                    },
+                    "provider_metadata": {
+                      "type": "object"
+                    },
+                    "related": {
+                      "type": "string"
+                    },
+                    "created_by": {
+                      "type": "string"
+                    },
+                    "updated_by": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "method": {
                   "type": "string"
                 }
               }
             }
           },
-          "users": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "subTotal": {
+            "type": "number"
+          },
+          "tax": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
+          },
+          "comment": {
+            "type": "string"
+          },
+          "client": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -889,7 +1067,7 @@
   },
   "tags": [
     {
-      "name": "Client"
+      "name": "Invoice"
     }
   ]
 }
