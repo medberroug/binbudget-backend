@@ -75,6 +75,22 @@
       "type": "component",
       "repeatable": true,
       "component": "restauration.category"
+    },
+    "dueDatesAfter": {
+      "type": "integer",
+      "default": 40
+    },
+    "ICE": {
+      "type": "string"
+    },
+    "IF": {
+      "type": "string"
+    },
+    "RC": {
+      "type": "string"
+    },
+    "legalName": {
+      "type": "string"
     }
   }
 }

@@ -760,6 +760,21 @@
                     "category": {
                       "type": "component"
                     },
+                    "dueDatesAfter": {
+                      "type": "integer"
+                    },
+                    "ICE": {
+                      "type": "string"
+                    },
+                    "IF": {
+                      "type": "string"
+                    },
+                    "RC": {
+                      "type": "string"
+                    },
+                    "legalName": {
+                      "type": "string"
+                    },
                     "published_at": {
                       "type": "string"
                     },
@@ -973,6 +988,21 @@
                     },
                     "category": {
                       "type": "component"
+                    },
+                    "dueDatesAfter": {
+                      "type": "integer"
+                    },
+                    "ICE": {
+                      "type": "string"
+                    },
+                    "IF": {
+                      "type": "string"
+                    },
+                    "RC": {
+                      "type": "string"
+                    },
+                    "legalName": {
+                      "type": "string"
                     },
                     "published_at": {
                       "type": "string"

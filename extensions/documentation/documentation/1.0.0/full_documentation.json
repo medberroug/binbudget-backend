@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "01/07/2022 6:00:00 PM"
+    "x-generation-date": "01/08/2022 3:33:29 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -8459,6 +8459,21 @@
                     "category": {
                       "type": "component"
                     },
+                    "dueDatesAfter": {
+                      "type": "integer"
+                    },
+                    "ICE": {
+                      "type": "string"
+                    },
+                    "IF": {
+                      "type": "string"
+                    },
+                    "RC": {
+                      "type": "string"
+                    },
+                    "legalName": {
+                      "type": "string"
+                    },
                     "published_at": {
                       "type": "string"
                     },
@@ -8672,6 +8687,21 @@
                     },
                     "category": {
                       "type": "component"
+                    },
+                    "dueDatesAfter": {
+                      "type": "integer"
+                    },
+                    "ICE": {
+                      "type": "string"
+                    },
+                    "IF": {
+                      "type": "string"
+                    },
+                    "RC": {
+                      "type": "string"
+                    },
+                    "legalName": {
+                      "type": "string"
                     },
                     "published_at": {
                       "type": "string"
@@ -9238,6 +9268,22 @@
               }
             }
           },
+          "dueDatesAfter": {
+            "type": "integer",
+            "default": 40
+          },
+          "ICE": {
+            "type": "string"
+          },
+          "IF": {
+            "type": "string"
+          },
+          "RC": {
+            "type": "string"
+          },
+          "legalName": {
+            "type": "string"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -9605,6 +9651,22 @@
                 }
               }
             }
+          },
+          "dueDatesAfter": {
+            "type": "integer",
+            "default": 40
+          },
+          "ICE": {
+            "type": "string"
+          },
+          "IF": {
+            "type": "string"
+          },
+          "RC": {
+            "type": "string"
+          },
+          "legalName": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -11852,6 +11914,22 @@
               }
             }
           },
+          "dueDatesAfter": {
+            "type": "integer",
+            "default": 40
+          },
+          "ICE": {
+            "type": "string"
+          },
+          "IF": {
+            "type": "string"
+          },
+          "RC": {
+            "type": "string"
+          },
+          "legalName": {
+            "type": "string"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -12283,6 +12361,22 @@
                 }
               }
             }
+          },
+          "dueDatesAfter": {
+            "type": "integer",
+            "default": 40
+          },
+          "ICE": {
+            "type": "string"
+          },
+          "IF": {
+            "type": "string"
+          },
+          "RC": {
+            "type": "string"
+          },
+          "legalName": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",

@@ -1288,6 +1288,22 @@
               }
             }
           },
+          "dueDatesAfter": {
+            "type": "integer",
+            "default": 40
+          },
+          "ICE": {
+            "type": "string"
+          },
+          "IF": {
+            "type": "string"
+          },
+          "RC": {
+            "type": "string"
+          },
+          "legalName": {
+            "type": "string"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -1655,6 +1671,22 @@
                 }
               }
             }
+          },
+          "dueDatesAfter": {
+            "type": "integer",
+            "default": 40
+          },
+          "ICE": {
+            "type": "string"
+          },
+          "IF": {
+            "type": "string"
+          },
+          "RC": {
+            "type": "string"
+          },
+          "legalName": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
