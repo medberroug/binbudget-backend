@@ -11,6 +11,7 @@ var format = require('date-fns/format')
 module.exports = {
 
     async cancelMyOrder(ctx) {
+
         const { id } = ctx.params;
 
         let entity;
@@ -23,7 +24,6 @@ module.exports = {
         }
 
         if (myData.status[myData.status.length - 1].name == "validated") {
-            console.log('IEYYYYYYYYYYE');
             let myOrder = await strapi.services.order.findOne({ id: id });
             let myClient = await strapi.services.client.findOne({ id: myOrder.byClient });
             let myInvoices = await strapi.services.invoice.find({ client: myClient.id });
@@ -53,9 +53,9 @@ module.exports = {
                 })
                 myItemsForInvoiceAchat.push({
                     name: myOrder.items[i].name,
-                    price: myOrder.items[i].price / (1 + percentageTaking / 100),
+                    price: myOrder.items[i].price * (1 - percentageTaking / 100),
                     quantity: myOrder.items[i].quantity,
-                    total: myOrder.items[i].quantity * myOrder.items[i].price / (1 + percentageTaking / 100),
+                    total: myOrder.items[i].quantity * myOrder.items[i].price * (1 - percentageTaking / 100),
                 })
             }
             if (myOrder.withDelivery) {
@@ -66,15 +66,17 @@ module.exports = {
                     total: myOrder.deliveryPrice,
                 })
             }
+            let anAwaitedInvoiceNumber = await assignNumber()
+            console.log(anAwaitedInvoiceNumber);
             let myInvoiceVente = {
                 type: "Vente",
                 withType: myOrder.type,
                 withTypeId: myOrder.linkedToSPItem.spID,
                 client: myClient.id,
                 fromAddress: {
-                    street: "BBADDRESS",
-                    city: "BBADDRESS",
-                    country: "BBADDRESS",
+                    street: "297 Hay Riad",
+                    city: "Rabat",
+                    country: "Maroc",
                     legalName: "Business repas s.a.r.l.",
                 },
                 toAddress: {
@@ -84,7 +86,7 @@ module.exports = {
                     legalName: myClient.companyDetails.legalName,
                     ICE: myClient.companyDetails.ICE,
                 },
-                invoiceNumber: null,
+                invoiceNumber: anAwaitedInvoiceNumber,
                 status: [{
                     name: "created",
                     comment: "la facture a été créée",
@@ -112,9 +114,9 @@ module.exports = {
                 withTypeId: myOrder.linkedToSPItem.spID,
                 client: null,
                 toAddress: {
-                    street: "BBADDRESS",
-                    city: "BBADDRESS",
-                    country: "BBADDRESS",
+                    street: "297 Hay Riad",
+                    city: "Rabat",
+                    country: "Maroc",
                     legalName: "Business repas s.a.r.l.",
                     ICE: "ICE BB"
                 },
@@ -132,12 +134,14 @@ module.exports = {
                 refType: myOrder.type,
                 items: myItemsForInvoiceAchat,
                 payments: [],
-                subTotal: myOrder.subTotal / (1 + percentageTaking / 100),
-                tax: myOrder.tax / (1 + percentageTaking / 100),
-                total: myOrder.total / (1 + percentageTaking / 100),
+                subTotal: myOrder.subTotal * (1 - percentageTaking / 100),
+                tax: myOrder.tax * (1 - percentageTaking / 100),
+                total: myOrder.total * (1 - percentageTaking / 100),
                 comment: null,
                 stampedVersionPath: null,
             }
+
+
 
             let myClientCredits = 0
             for (let i = 0; i < myInvoices.length; i++) {
@@ -160,35 +164,6 @@ module.exports = {
                     date: new Date(),
                 })
                 myInvoiceVente.DueDate = new Date()
-                let myInvoicesForNumber = await strapi.services.invoice.find();
-                let theInvoiceDayNumber = 1
-                let invoiceNumber = ""
-
-                while (theInvoiceDayNumber - 1 < myInvoicesForNumber.length) {
-                    if (isToday(myInvoicesForNumber[myInvoicesForNumber.length - theInvoiceDayNumber].createdAt) && theInvoiceDayNumber < myInvoicesForNumber.length) {
-                        theInvoiceDayNumber = theInvoiceDayNumber + 1
-
-                    }
-                    else {
-
-                        theInvoiceDayNumber = theInvoiceDayNumber + ""
-                        invoiceNumber = "CL" + format(new Date(), 'yyMMdd')
-                        if (theInvoiceDayNumber.length == 4) {
-                            invoiceNumber = invoiceNumber + theInvoiceDayNumber
-                        }
-                        if (theInvoiceDayNumber.length == 3) {
-                            invoiceNumber = invoiceNumber + "0" + theInvoiceDayNumber
-                        }
-                        if (theInvoiceDayNumber.length == 2) {
-                            invoiceNumber = invoiceNumber + "00" + theInvoiceDayNumber
-                        }
-                        if (theInvoiceDayNumber.length == 1) {
-                            invoiceNumber = invoiceNumber + "000" + theInvoiceDayNumber
-                        }
-                        break
-                    }
-                }
-                myInvoiceVente.invoiceNumber = invoiceNumber
                 myInvoiceVente.status.push({
                     name: "forcePaiment",
                     comment: "la facture doit être payée avant la prestation du service car le client n'a plus de marge de crédit",
@@ -224,35 +199,6 @@ module.exports = {
                         date: new Date(),
                     })
                     myInvoiceVente.DueDate = new Date()
-                    let myInvoicesForNumber = await strapi.services.invoice.find();
-                    let theInvoiceDayNumber = 1
-                    let invoiceNumber = ""
-
-                    while (theInvoiceDayNumber - 1 < myInvoicesForNumber.length) {
-                        if (isToday(myInvoicesForNumber[myInvoicesForNumber.length - theInvoiceDayNumber].createdAt) && theInvoiceDayNumber < myInvoicesForNumber.length) {
-                            theInvoiceDayNumber = theInvoiceDayNumber + 1
-                        }
-                        else {
-
-
-                            theInvoiceDayNumber = theInvoiceDayNumber + ""
-                            invoiceNumber = "CL" + format(new Date(), 'yyMMdd')
-                            if (theInvoiceDayNumber.length == 4) {
-                                invoiceNumber = invoiceNumber + theInvoiceDayNumber
-                            }
-                            if (theInvoiceDayNumber.length == 3) {
-                                invoiceNumber = invoiceNumber + "0" + theInvoiceDayNumber
-                            }
-                            if (theInvoiceDayNumber.length == 2) {
-                                invoiceNumber = invoiceNumber + "00" + theInvoiceDayNumber
-                            }
-                            if (theInvoiceDayNumber.length == 1) {
-                                invoiceNumber = invoiceNumber + "000" + theInvoiceDayNumber
-                            }
-                            break
-                        }
-                    }
-                    myInvoiceVente.invoiceNumber = invoiceNumber
                     myInvoiceVente.status.push({
                         name: "pseudoPaid",
                         comment: "la facture est partiellement payée",
@@ -273,3 +219,51 @@ module.exports = {
         return sanitizeEntity(entity, { model: strapi.models.order });
     },
 };
+
+
+
+
+async function assignNumber() {
+    let myInvoicesForNumber = await strapi.services.invoice.find();
+    let theInvoiceDayNumber = 1
+    let invoiceNumber = ""
+    let isTodayInvoices = []
+
+
+    myInvoicesForNumber = myInvoicesForNumber.reverse()
+    for (let i = 0; i < myInvoicesForNumber.length; i++) {
+        if (isToday(myInvoicesForNumber[i].createdAt)) {
+            if (myInvoicesForNumber[i].type == "Vente") {
+                isTodayInvoices.push(myInvoicesForNumber[i])
+
+            }
+        } else {
+            break
+        }
+    }
+    if (isTodayInvoices.length == 0) {
+        invoiceNumber = "CL" + format(new Date(), 'yyMMdd') + "0001"
+    } else {
+
+        theInvoiceDayNumber = isTodayInvoices.length + 1
+        theInvoiceDayNumber = theInvoiceDayNumber.toString()
+        invoiceNumber = "CL" + format(new Date(), 'yyMMdd')
+        if (theInvoiceDayNumber.length == 4) {
+            invoiceNumber = invoiceNumber + theInvoiceDayNumber
+        }
+        if (theInvoiceDayNumber.length == 3) {
+            invoiceNumber = invoiceNumber + "0" + theInvoiceDayNumber
+        }
+        if (theInvoiceDayNumber.length == 2) {
+            invoiceNumber = invoiceNumber + "00" + theInvoiceDayNumber
+        }
+        if (theInvoiceDayNumber.length == 1) {
+            invoiceNumber = invoiceNumber + "000" + theInvoiceDayNumber
+        }
+    }
+
+
+
+    return invoiceNumber
+}
+

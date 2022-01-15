@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/generalsettingsdefaults": {
+    "/paymentpendings": {
       "get": {
         "deprecated": false,
-        "description": "Find all the generalsettingsdefaults's records",
+        "description": "",
         "responses": {
           "200": {
-            "description": "Retrieve generalsettingsdefaults document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Generalsettingsdefaults"
+                    "$ref": "#/components/schemas/Paymentpending"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Generalsettingsdefaults"
+          "Paymentpending"
         ],
         "parameters": [
           {
@@ -192,16 +192,16 @@
           }
         ]
       },
-      "put": {
+      "post": {
         "deprecated": false,
-        "description": "Update a single generalsettingsdefaults record",
+        "description": "Create a new record",
         "responses": {
           "200": {
-            "description": "Retrieve generalsettingsdefaults document(s)",
+            "description": "response",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Generalsettingsdefaults"
+                  "$ref": "#/components/schemas/Paymentpending"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Generalsettingsdefaults"
+          "Paymentpending"
         ],
         "requestBody": {
           "description": "",
@@ -247,19 +247,212 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewGeneralsettingsdefaults"
+                "$ref": "#/components/schemas/NewPaymentpending"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/paymentpendings/count": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
               }
             }
           }
         },
+        "summary": "",
+        "tags": [
+          "Paymentpending"
+        ],
         "parameters": []
+      }
+    },
+    "/paymentpendings/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Paymentpending"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Paymentpending"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Paymentpending"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Paymentpending"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewPaymentpending"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single generalsettingsdefaults record",
+        "description": "Delete a record",
         "responses": {
           "200": {
-            "description": "deletes a single generalsettingsdefaults based on the ID supplied",
+            "description": "deletes a single record based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -302,15 +495,26 @@
         },
         "summary": "",
         "tags": [
-          "Generalsettingsdefaults"
+          "Paymentpending"
         ],
-        "parameters": []
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
       }
     }
   },
   "components": {
     "schemas": {
-      "Generalsettingsdefaults": {
+      "Paymentpending": {
         "required": [
           "id"
         ],
@@ -318,18 +522,90 @@
           "id": {
             "type": "string"
           },
-          "tva": {
+          "amount": {
             "type": "number"
           },
-          "tvaRestauration": {
-            "type": "number",
-            "default": 20
+          "date": {
+            "type": "string",
+            "format": "date-time"
           },
-          "tvaMarket": {
-            "type": "number",
-            "default": 8.5
+          "image": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "name",
+                "hash",
+                "mime",
+                "size",
+                "url",
+                "provider"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "alternativeText": {
+                  "type": "string"
+                },
+                "caption": {
+                  "type": "string"
+                },
+                "width": {
+                  "type": "integer"
+                },
+                "height": {
+                  "type": "integer"
+                },
+                "formats": {
+                  "type": "object"
+                },
+                "hash": {
+                  "type": "string"
+                },
+                "ext": {
+                  "type": "string"
+                },
+                "mime": {
+                  "type": "string"
+                },
+                "size": {
+                  "type": "number"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "previewUrl": {
+                  "type": "string"
+                },
+                "provider": {
+                  "type": "string"
+                },
+                "provider_metadata": {
+                  "type": "object"
+                },
+                "related": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
           },
-          "paimentMethodsInstructions": {
+          "method": {
+            "type": "string"
+          },
+          "invoiceId": {
+            "type": "string"
+          },
+          "status": {
             "type": "array",
             "items": {
               "type": "object",
@@ -340,11 +616,15 @@
                 "id": {
                   "type": "string"
                 },
-                "method": {
+                "name": {
                   "type": "string"
                 },
-                "instructions": {
+                "comment": {
                   "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
                 }
               }
             }
@@ -355,20 +635,22 @@
           }
         }
       },
-      "NewGeneralsettingsdefaults": {
+      "NewPaymentpending": {
         "properties": {
-          "tva": {
+          "amount": {
             "type": "number"
           },
-          "tvaRestauration": {
-            "type": "number",
-            "default": 20
+          "date": {
+            "type": "string",
+            "format": "date-time"
           },
-          "tvaMarket": {
-            "type": "number",
-            "default": 8.5
+          "method": {
+            "type": "string"
           },
-          "paimentMethodsInstructions": {
+          "invoiceId": {
+            "type": "string"
+          },
+          "status": {
             "type": "array",
             "items": {
               "type": "object",
@@ -379,11 +661,15 @@
                 "id": {
                   "type": "string"
                 },
-                "method": {
+                "name": {
                   "type": "string"
                 },
-                "instructions": {
+                "comment": {
                   "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
                 }
               }
             }
@@ -404,7 +690,7 @@
   },
   "tags": [
     {
-      "name": "Generalsettingsdefaults"
+      "name": "Paymentpending"
     }
   ]
 }

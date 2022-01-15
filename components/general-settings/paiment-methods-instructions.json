@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_general_settings_paiment_methods_instructions",
+  "info": {
+    "name": "paimentMethodsInstructions",
+    "icon": "baby"
+  },
+  "options": {},
+  "attributes": {
+    "method": {
+      "type": "string"
+    },
+    "instructions": {
+      "type": "richtext"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "paymentpendings",
+  "info": {
+    "name": "paymentpending"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "amount": {
+      "type": "decimal"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "method": {
+      "type": "string"
+    },
+    "invoiceId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "component",
+      "repeatable": true,
+      "component": "events.status"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/paymentpendings",
+      "handler": "paymentpending.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/paymentpendings/count",
+      "handler": "paymentpending.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/paymentpendings/:id",
+      "handler": "paymentpending.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/paymentpendings",
+      "handler": "paymentpending.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/paymentpendings/:id",
+      "handler": "paymentpending.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/paymentpendings/:id",
+      "handler": "paymentpending.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

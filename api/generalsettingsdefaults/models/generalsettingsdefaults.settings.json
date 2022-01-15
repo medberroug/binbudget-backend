@@ -21,6 +21,11 @@
     "tvaMarket": {
       "type": "decimal",
       "default": 8.5
+    },
+    "paimentMethodsInstructions": {
+      "type": "component",
+      "repeatable": true,
+      "component": "general-settings.paiment-methods-instructions"
     }
   }
 }
