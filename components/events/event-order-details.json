@@ -26,10 +26,10 @@
     "type": {
       "type": "string"
     },
-    "eventserviceprovider": {
-      "model": "eventserviceprovider"
-    },
     "eventServiceProviderName": {
+      "type": "string"
+    },
+    "eventServiceProvider": {
       "type": "string"
     }
   }

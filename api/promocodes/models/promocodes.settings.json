@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "promocodes",
+  "info": {
+    "name": "promocodes",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "number": {
+      "type": "string"
+    },
+    "code": {
+      "type": "string"
+    },
+    "balance": {
+      "type": "decimal"
+    }
+  }
+}

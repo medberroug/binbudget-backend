@@ -22,7 +22,11 @@ module.exports = {
         } else {
             myData = ctx.request.body
         }
-
+        console.log("CTX XXXXXXXXXXXXXXXXXXXXXX");
+        console.log(ctx);
+        console.log(myData);
+        console.log(ctx);
+        console.log("CTX XXXXXXXXXXXXXXXXXXXXXX");
         if (myData.status[myData.status.length - 1].name == "validated") {
             let myOrder = await strapi.services.order.findOne({ id: id });
             let myClient = await strapi.services.client.findOne({ id: myOrder.byClient });

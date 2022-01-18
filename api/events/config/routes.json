@@ -55,6 +55,32 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getEventOrder/:id",
+      "handler": "events.getEventOrder",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/getEventOrderOne/:id/:event/:order",
+      "handler": "events.getEventOrderOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/updateEventOrderDetail/:id/:event/:order",
+      "handler": "events.updateEventOrderDetail",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
+
+

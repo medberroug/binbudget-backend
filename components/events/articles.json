@@ -30,6 +30,9 @@
     },
     "unit": {
       "type": "string"
+    },
+    "firstImage": {
+      "type": "text"
     }
   }
 }
