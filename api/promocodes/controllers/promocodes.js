@@ -24,7 +24,7 @@ module.exports = {
                 if (myPromoCodes[i].code == code) {
                     if (myPromoCodes[i].balance >= parseFloat(amount)) {
                         myPromoCodes[i].balance = myPromoCodes[i].balance - amount
-                        // await strapi.services.promocodes.update({ id: myPromoCodes[i].id }, myPromoCodes[i])
+                        await strapi.services.promocodes.update({ id: myPromoCodes[i].id }, myPromoCodes[i])
                         let myInvoice = await strapi.services.invoice.findOne({ id: invoice })
                         let tobePaid = 0
                         for (let j = 0; j < myInvoice.payments.length; j++) {
@@ -34,35 +34,39 @@ module.exports = {
                         console.log(myInvoice.total);
                         console.log(amount);
                         if (myInvoice.total == amount) {
-                            console.log('YES myInvoice.total == amount' + myInvoice.total + "/" + amount);
-                            console.log(myInvoice.status);
-                            console.log(
-                                {
-                                    name: "paid",
-                                    comment: "La facture a été entièrement payée avec un Code promo",
-                                    date: new Date(),
-                                }
-                            );
+                           
                             myInvoice.status.push({
                                 name: "paid",
                                 comment: "La facture a été entièrement payée avec un Code promo",
                                 date: new Date(),
                             })
                             console.log(myInvoice.status);
-                            // myInvoice.payments.push({
-                            //     amount: amount,
-                            //     date: new Date(),
-                            //     method: "promoCode",
-                            // })
+                            myInvoice.payments.push({
+                                amount: amount,
+                                date: new Date(),
+                                method: "promoCode",
+                            })
+                        } else {
+                            myInvoice.status.push({
+                                name: "pseudoPaid",
+                                comment: "La facture est partiellement payée",
+                                date: new Date(),
+                            })
+                            console.log(myInvoice.status);
+                            myInvoice.payments.push({
+                                amount: amount,
+                                date: new Date(),
+                                method: "promoCode",
+                            })
                         }
                         // console.log(myInvoice.status);
                         // await strapi.services.invoice.update({ id: invoice }, {
                         //     // payments: myInvoice.payments,
                         //     status: myInvoice.status
                         // })
-                        return myInvoice
+                   
 
-                        return [true, ""]
+                        return [true, myInvoice]
                     } else {
                         return [false, "Le code ou le numéro ne sont pas corrects"]
                     }
