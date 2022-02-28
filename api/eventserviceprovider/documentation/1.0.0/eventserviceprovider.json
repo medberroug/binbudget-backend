@@ -1304,6 +1304,9 @@
           "legalName": {
             "type": "string"
           },
+          "accountManager": {
+            "type": "string"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -1686,6 +1689,9 @@
             "type": "string"
           },
           "legalName": {
+            "type": "string"
+          },
+          "accountManager": {
             "type": "string"
           },
           "published_at": {

@@ -38,11 +38,6 @@
       "type": "component",
       "repeatable": true,
       "component": "client.child-accounts"
-    },
-    "users": {
-      "plugin": "users-permissions",
-      "collection": "user",
-      "via": "client"
     }
   }
 }

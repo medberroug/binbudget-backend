@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/clients": {
+    "/employees": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Client"
+                    "$ref": "#/components/schemas/Employee"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Client"
+          "Employee"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Client"
+                  "$ref": "#/components/schemas/Employee"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Client"
+          "Employee"
         ],
         "requestBody": {
           "description": "",
@@ -247,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewClient"
+                "$ref": "#/components/schemas/NewEmployee"
               }
             }
           }
         }
       }
     },
-    "/clients/count": {
+    "/employees/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -306,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Client"
+          "Employee"
         ],
         "parameters": []
       }
     },
-    "/clients/{id}": {
+    "/employees/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -321,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Client"
+                  "$ref": "#/components/schemas/Employee"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Client"
+          "Employee"
         ],
         "parameters": [
           {
@@ -383,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Client"
+                  "$ref": "#/components/schemas/Employee"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Client"
+          "Employee"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewClient"
+                "$ref": "#/components/schemas/NewEmployee"
               }
             }
           }
@@ -495,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Client"
+          "Employee"
         ],
         "parameters": [
           {
@@ -514,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Client": {
+      "Employee": {
         "required": [
           "id"
         ],
@@ -522,148 +522,17 @@
           "id": {
             "type": "string"
           },
-          "contactPerson": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "firstName": {
-                  "type": "string"
-                },
-                "lastName": {
-                  "type": "string"
-                },
-                "phoneNumber": {
-                  "type": "string"
-                },
-                "position": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "companyDetails": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "legalName": {
-                "type": "string"
-              },
-              "knowenName": {
-                "type": "string"
-              },
-              "address": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "required": [
-                    "id",
-                    "street",
-                    "city",
-                    "state",
-                    "country"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "street": {
-                      "type": "string"
-                    },
-                    "city": {
-                      "type": "string"
-                    },
-                    "state": {
-                      "type": "string"
-                    },
-                    "country": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "ICE": {
-                "type": "string"
-              },
-              "IF": {
-                "type": "string"
-              },
-              "RC": {
-                "type": "string"
-              },
-              "phoneNumber": {
-                "type": "string"
-              },
-              "activity": {
-                "type": "string"
-              }
-            }
-          },
-          "services": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "invoicingLimits": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "creditLimit": {
-                "type": "number"
-              },
-              "dueDatesAfter": {
-                "type": "integer",
-                "default": 30
-              }
-            }
-          },
-          "parentAccount": {
+          "firstName": {
             "type": "string"
           },
-          "childAccounts": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "accountId": {
-                  "type": "string"
-                }
-              }
-            }
+          "lastName": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -671,150 +540,19 @@
           }
         }
       },
-      "NewClient": {
+      "NewEmployee": {
         "properties": {
-          "contactPerson": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "firstName": {
-                  "type": "string"
-                },
-                "lastName": {
-                  "type": "string"
-                },
-                "phoneNumber": {
-                  "type": "string"
-                },
-                "position": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "companyDetails": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "legalName": {
-                "type": "string"
-              },
-              "knowenName": {
-                "type": "string"
-              },
-              "address": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "required": [
-                    "id",
-                    "street",
-                    "city",
-                    "state",
-                    "country"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "street": {
-                      "type": "string"
-                    },
-                    "city": {
-                      "type": "string"
-                    },
-                    "state": {
-                      "type": "string"
-                    },
-                    "country": {
-                      "type": "string"
-                    }
-                  }
-                }
-              },
-              "ICE": {
-                "type": "string"
-              },
-              "IF": {
-                "type": "string"
-              },
-              "RC": {
-                "type": "string"
-              },
-              "phoneNumber": {
-                "type": "string"
-              },
-              "activity": {
-                "type": "string"
-              }
-            }
-          },
-          "services": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "invoicingLimits": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "creditLimit": {
-                "type": "number"
-              },
-              "dueDatesAfter": {
-                "type": "integer",
-                "default": 30
-              }
-            }
-          },
-          "parentAccount": {
+          "firstName": {
             "type": "string"
           },
-          "childAccounts": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "accountId": {
-                  "type": "string"
-                }
-              }
-            }
+          "lastName": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -832,7 +570,7 @@
   },
   "tags": [
     {
-      "name": "Client"
+      "name": "Employee"
     }
   ]
 }

@@ -59,9 +59,8 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "client": {
-      "via": "users",
-      "model": "client"
+    "userAccountId": {
+      "type": "string"
     }
   }
 }

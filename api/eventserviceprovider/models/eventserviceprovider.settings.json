@@ -91,6 +91,9 @@
     },
     "legalName": {
       "type": "string"
+    },
+    "accountManager": {
+      "type": "string"
     }
   }
 }
