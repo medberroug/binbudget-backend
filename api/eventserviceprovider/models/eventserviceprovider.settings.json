@@ -94,6 +94,11 @@
     },
     "accountManager": {
       "type": "string"
+    },
+    "monthlyServiceCost": {
+      "type": "component",
+      "repeatable": false,
+      "component": "events.monthly-service-cost"
     }
   }
 }

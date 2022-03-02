@@ -1307,6 +1307,29 @@
           "accountManager": {
             "type": "string"
           },
+          "monthlyServiceCost": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "eventSalle": {
+                "type": "number"
+              },
+              "eventHosting": {
+                "type": "number"
+              },
+              "eventRestauration": {
+                "type": "number"
+              },
+              "eventService": {
+                "type": "number"
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -1693,6 +1716,29 @@
           },
           "accountManager": {
             "type": "string"
+          },
+          "monthlyServiceCost": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "eventSalle": {
+                "type": "number"
+              },
+              "eventHosting": {
+                "type": "number"
+              },
+              "eventRestauration": {
+                "type": "number"
+              },
+              "eventService": {
+                "type": "number"
+              }
+            }
           },
           "published_at": {
             "type": "string",

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "02/28/2022 9:20:49 PM"
+    "x-generation-date": "03/02/2022 10:06:11 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -11030,6 +11030,29 @@
           "accountManager": {
             "type": "string"
           },
+          "monthlyServiceCost": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "eventSalle": {
+                "type": "number"
+              },
+              "eventHosting": {
+                "type": "number"
+              },
+              "eventRestauration": {
+                "type": "number"
+              },
+              "eventService": {
+                "type": "number"
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -11416,6 +11439,29 @@
           },
           "accountManager": {
             "type": "string"
+          },
+          "monthlyServiceCost": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "eventSalle": {
+                "type": "number"
+              },
+              "eventHosting": {
+                "type": "number"
+              },
+              "eventRestauration": {
+                "type": "number"
+              },
+              "eventService": {
+                "type": "number"
+              }
+            }
           },
           "published_at": {
             "type": "string",
