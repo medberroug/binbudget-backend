@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_statistics_total_revenues",
+  "info": {
+    "name": "totalRevenue",
+    "icon": "angle-double-up"
+  },
+  "options": {},
+  "attributes": {
+    "projectedRevenue": {
+      "type": "decimal"
+    },
+    "tobePaid": {
+      "type": "decimal"
+    }
+  }
+}

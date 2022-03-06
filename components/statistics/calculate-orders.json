@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_statistics_calculate_orders",
+  "info": {
+    "name": "calculateOrders",
+    "icon": "bible",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "allOrders": {
+      "type": "integer"
+    },
+    "activeOrders": {
+      "type": "integer"
+    }
+  }
+}

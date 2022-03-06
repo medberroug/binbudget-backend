@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_statistics_top_selling_products",
+  "info": {
+    "name": "topSellingProducts",
+    "icon": "bicycle"
+  },
+  "options": {},
+  "attributes": {
+    "itemId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "decimal"
+    }
+  }
+}

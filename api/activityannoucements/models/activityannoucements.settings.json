@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "activityannoucements",
+  "info": {
+    "name": "activityannoucements",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "text": {
+      "type": "text"
+    },
+    "link": {
+      "type": "text"
+    },
+    "forSpEvent": {
+      "type": "boolean",
+      "default": false
+    },
+    "forSpResto": {
+      "type": "boolean",
+      "default": false
+    },
+    "forClients": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

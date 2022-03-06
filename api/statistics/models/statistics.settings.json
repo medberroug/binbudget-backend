@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "statistics_s",
+  "info": {
+    "name": "statistics ",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "clientByRevenue": {
+      "type": "component",
+      "repeatable": true,
+      "component": "statistics.client-by-revenue"
+    },
+    "topSellingProducts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "statistics.top-selling-products"
+    },
+    "totalRevenue": {
+      "type": "component",
+      "repeatable": false,
+      "component": "statistics.total-revenue"
+    },
+    "calculateOrders": {
+      "type": "component",
+      "repeatable": false,
+      "component": "statistics.calculate-orders"
+    },
+    "serviceProvider": {
+      "type": "string"
+    }
+  }
+}

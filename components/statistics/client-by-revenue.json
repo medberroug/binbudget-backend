@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_statistics_client_by_revenues",
+  "info": {
+    "name": "clientByRevenue",
+    "icon": "align-center"
+  },
+  "options": {},
+  "attributes": {
+    "client": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "revenue": {
+      "type": "decimal"
+    }
+  }
+}
