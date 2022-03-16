@@ -17,7 +17,7 @@ module.exports = {
    */
   '0 * * * *': async () => {
     let entitiesEvents;
-  
+    console.log("CRON: cron jobs of dashboarding worked");
     entitiesEvents = await strapi.services.events.find();
     let events = entitiesEvents.map(entity => sanitizeEntity(entity, { model: strapi.models.events }));
     let serviceProviders = await strapi.services.eventserviceprovider.find()
@@ -48,9 +48,13 @@ module.exports = {
       }
       myBigResults.push(result)
     }
+    let counter=0
     for (let p=0; p<myBigResults.length;p++){
       strapi.services.statistics.create(myBigResults[p])
+      counter=counter+1
+      console.log("CRON: cron jobs of dashboarding created : "+myBigResults[p]);
     }
+    console.log("CRON: cron jobs of dashboarding ended creating :"+counter+" insertion");
     // strapi.services.invoice.create(myInvoiceAchat)
     // console.log(myBigResults);
   }
