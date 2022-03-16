@@ -232,7 +232,7 @@ function topSellingProduct(data) {
         }
     }
     articlesList.sort(function (a, b) {
-        return a.revenue.localeCompare(b.quantity);
+        return a.quantity.localeCompare(b.quantity);
     });
     return articlesList
 }
