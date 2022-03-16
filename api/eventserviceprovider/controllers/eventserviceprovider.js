@@ -232,7 +232,7 @@ function topSellingProduct(data) {
         }
     }
     articlesList.sort(function (a, b) {
-        return a.quantity.localeCompare(b.quantity);
+        return a.quantity.toString().localeCompare(b.quantity);
     });
     return articlesList
 }
@@ -261,7 +261,7 @@ async function clientByRevenue(data) {
         }
     }
     clientsList.sort(function (a, b) {
-        return a.revenue.localeCompare(b.revenue);
+        return a.revenue.toString().localeCompare(b.revenue);
     });
 
     return clientsList
