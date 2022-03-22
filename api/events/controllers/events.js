@@ -204,11 +204,20 @@ module.exports = {
             for (let i = 0; i < entity.eventOrderDetails.length; i++) {
                 if (entity.eventOrderDetails[i].id == order) {
                     if (ctx.request.body.action == "validate") {
-                        entity.eventOrderDetails[i].status.push({
-                            name: "validated",
-                            comment: "Commande validée par le fournisseur. ",
-                            date: new Date().toISOString(),
-                        })
+                        
+                        if(ctx.request.body.who){
+                            entity.eventOrderDetails[i].status.push({
+                                name: "validated",
+                                comment: "Commande validée par le client. ",
+                                date: new Date().toISOString(),
+                            })
+                        }else {
+                            entity.eventOrderDetails[i].status.push({
+                                name: "validated",
+                                comment: "Commande validée par le fournisseur. ",
+                                date: new Date().toISOString(),
+                            })
+                        }
 
                         let allOrdersValidated = true
                         for (let k = 0; k < entity.eventOrderDetails.length; k++) {
