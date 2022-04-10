@@ -149,7 +149,7 @@ module.exports = {
 
             let myClientCredits = 0
             for (let i = 0; i < myInvoices.length; i++) {
-                if (myInvoices[i].type == "Vente" && myInvoices[i].status[myInvoices[i].status.length - 1].name != "closed" && myInvoices[i].status[myInvoices[i].status.length - 1].name != "cancelled" && myInvoices[i].status[myInvoices[i].status.length - 1].name != "payed") {
+                if (myInvoices[i].type == "Vente" && myInvoices[i].status[myInvoices[i].status.length - 1].name != "closed" && myInvoices[i].status[myInvoices[i].status.length - 1].name != "cancelled" && myInvoices[i].status[myInvoices[i].status.length - 1].name != "paid") {
                     if (myInvoices[i].status[myInvoices[i].status.length - 1].name == "pseudoPaid") {
                         let howMuchPaid = 0
                         for (let j = 0; j < myInvoices[i].payments.length; j++) {
@@ -186,7 +186,7 @@ module.exports = {
                         date: new Date(),
                     })
                     myInvoiceAchat.status.push({
-                        name: "payed",
+                        name: "paid",
                         comment: "la facture a été payée au fournisseur par le client directement en paiement à la livraison.",
                         date: new Date(),
                     })

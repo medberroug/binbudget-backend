@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_restauration_monthly_service_costs",
+  "info": {
+    "name": "monthlyServiceCost",
+    "icon": "angle-double-left"
+  },
+  "options": {},
+  "attributes": {
+    "livraisonDeRepas": {
+      "type": "decimal"
+    },
+    "repasEmporte": {
+      "type": "decimal"
+    },
+    "menuConventionne": {
+      "type": "decimal"
+    },
+    "reservationDeRestaurant": {
+      "type": "decimal"
+    },
+    "restaurationCollectif": {
+      "type": "decimal"
+    }
+  }
+}

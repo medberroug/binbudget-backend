@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getDashboardDataResto/:id",
+      "handler": "restauration.getDashboardDataResto",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

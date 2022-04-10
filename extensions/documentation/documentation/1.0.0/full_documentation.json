@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "03/14/2022 7:09:17 PM"
+    "x-generation-date": "04/09/2022 3:40:43 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -8165,6 +8165,74 @@
         ]
       }
     },
+    "/getDashboardDataResto/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Restauration"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/statistics": {
       "get": {
         "deprecated": false,
@@ -15207,6 +15275,32 @@
           "accountManager": {
             "type": "string"
           },
+          "monthlyServiceCost": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "livraisonDeRepas": {
+                "type": "number"
+              },
+              "repasEmporte": {
+                "type": "number"
+              },
+              "menuConventionne": {
+                "type": "number"
+              },
+              "reservationDeRestaurant": {
+                "type": "number"
+              },
+              "restaurationCollectif": {
+                "type": "number"
+              }
+            }
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -15657,6 +15751,32 @@
           },
           "accountManager": {
             "type": "string"
+          },
+          "monthlyServiceCost": {
+            "type": "object",
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "livraisonDeRepas": {
+                "type": "number"
+              },
+              "repasEmporte": {
+                "type": "number"
+              },
+              "menuConventionne": {
+                "type": "number"
+              },
+              "reservationDeRestaurant": {
+                "type": "number"
+              },
+              "restaurationCollectif": {
+                "type": "number"
+              }
+            }
           },
           "published_at": {
             "type": "string",

@@ -48,13 +48,13 @@ module.exports = {
       }
       myBigResults.push(result)
     }
-    let counter=0
-    for (let p=0; p<myBigResults.length;p++){
+    let counter = 0
+    for (let p = 0; p < myBigResults.length; p++) {
       strapi.services.statistics.create(myBigResults[p])
-      counter=counter+1
-      console.log("CRON: cron jobs of dashboarding created : "+myBigResults[p]);
+      counter = counter + 1
+      console.log("CRON: cron jobs of dashboarding created : " + myBigResults[p]);
     }
-    console.log("CRON: cron jobs of dashboarding ended creating :"+counter+" insertion");
+    console.log("CRON: cron jobs of dashboarding ended creating :" + counter + " insertion");
     // strapi.services.invoice.create(myInvoiceAchat)
     // console.log(myBigResults);
   }
@@ -90,7 +90,7 @@ function topSellingProduct(data) {
     }
   }
   articlesList.sort(function (a, b) {
-    return a.revenue.localeCompare(b.quantity);
+    return a.quantity.localeCompare(b.quantity);
   });
   return articlesList
 }

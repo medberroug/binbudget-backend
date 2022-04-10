@@ -8,6 +8,7 @@ const { sanitizeEntity } = require('strapi-utils');
 module.exports = {
     async verifyPromoCode(ctx) {
         let entities;
+        let myOrderId=0
         const { number, code, amount, invoice } = ctx.params;
         if (ctx.query._q) {
             entities = await strapi.services.promocodes.search(ctx.query);
@@ -28,13 +29,14 @@ module.exports = {
                         let myInvoice = await strapi.services.invoice.findOne({ id: invoice })
                         let tobePaid = 0
                         for (let j = 0; j < myInvoice.payments.length; j++) {
-                            tobePaid = tobePaid + myInvoice.payment[j].amount
+                            tobePaid = tobePaid + myInvoice.payments[j].amount
                         }
                         tobePaid = myInvoice.total - tobePaid
                         console.log(myInvoice.total);
                         console.log(amount);
-                        if (myInvoice.total == amount) {
-                           
+
+                        if (tobePaid <= amount) {
+
                             myInvoice.status.push({
                                 name: "paid",
                                 comment: "La facture a été entièrement payée avec un Code promo",
@@ -46,6 +48,19 @@ module.exports = {
                                 date: new Date(),
                                 method: "promoCode",
                             })
+                            if (myInvoice.status[myInvoice.status.length - 2].name == "forcePaiment") {
+                                myOrderId = myInvoice.ref.split("N°")[1].split(" ")[0]
+                                if (myInvoice.ref.split("N°")[1].split(" ")[1] == "(restauration)") {
+                                    let myOrder = await strapi.services.order.findOne({ id: myOrderId })
+                                    myOrder.status.push({
+                                        name: "pending",
+                                        comment: "La commande est désormais en cours après paiement.",
+                                        date: new Date(),
+                                    })
+                                    myOrderId = myOrder
+                                }
+
+                            }
                         } else {
                             myInvoice.status.push({
                                 name: "pseudoPaid",
@@ -64,9 +79,9 @@ module.exports = {
                         //     // payments: myInvoice.payments,
                         //     status: myInvoice.status
                         // })
-                   
 
-                        return [true, myInvoice]
+
+                        return [true, myInvoice,myOrderId]
                     } else {
                         return [false, "Le code ou le numéro ne sont pas corrects"]
                     }

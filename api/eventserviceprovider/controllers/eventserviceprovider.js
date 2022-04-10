@@ -18,7 +18,7 @@ module.exports = {
             entitiesEvents = await strapi.services.events.find();
         }
         let events = entitiesEvents.map(entity => sanitizeEntity(entity, { model: strapi.models.events }));
-     
+
         let eventOrderDetails = []
         for (let i = 0; i < events.length; i++) {
             for (let j = 0; j < events[i].eventOrderDetails.length; j++) {
@@ -57,7 +57,8 @@ module.exports = {
 
             if ((eventserviceproviders[i].address.city == city) && (eventserviceproviders[i].status)) {
                 for (let d = 0; d < eventserviceproviders[i].showIn.length; d++) {
-                    if (eventserviceproviders[i].showIn[d].serviceName == "event-hosting") {
+                    
+                    if (eventserviceproviders[i].showIn[d].serviceName == "event-hosting" ) {
                         let newItem = {
                             id: eventserviceproviders[i].id,
                             logo: strapi.config.get('server.baseUrl', 'defaultValueIfUndefined') + eventserviceproviders[i].logo.url,
@@ -92,6 +93,7 @@ module.exports = {
 
             if ((eventserviceproviders[i].address.city == city) && (eventserviceproviders[i].status)) {
                 for (let d = 0; d < eventserviceproviders[i].showIn.length; d++) {
+                  
                     if (eventserviceproviders[i].showIn[d].serviceName == "event-restauration") {
                         let newItem = {
                             id: eventserviceproviders[i].id,
@@ -129,7 +131,13 @@ module.exports = {
                 for (let d = 0; d < eventserviceproviders[i].showIn.length; d++) {
                     if (eventserviceproviders[i].showIn[d].serviceName == "event-service") {
                         for (let j = 0; j < eventserviceproviders[i].items.length; j++) {
-                            if (eventserviceproviders[i].items[j].status) {
+                            let isIteminShowIn = false
+                            for (let po = 0; po < eventserviceproviders[i].items[j].shownIn.length; po++) {
+                                if (eventserviceproviders[i].items[j].shownIn[po].serviceName == "event-service") {
+                                    isIteminShowIn = true
+                                }
+                            }
+                            if (eventserviceproviders[i].items[j].status && isIteminShowIn) {
                                 let myspecText = ""
                                 for (let k = 0; k < eventserviceproviders[i].items[j].specification.length; k++) {
                                     myspecText = myspecText + eventserviceproviders[i].items[j].specification[k].specText + ", "
@@ -171,9 +179,16 @@ module.exports = {
 
             if ((eventserviceproviders[i].address.city == city) && (eventserviceproviders[i].status)) {
                 for (let d = 0; d < eventserviceproviders[i].showIn.length; d++) {
+
                     if (eventserviceproviders[i].showIn[d].serviceName == "event-salle") {
                         for (let j = 0; j < eventserviceproviders[i].items.length; j++) {
-                            if (eventserviceproviders[i].items[j].status) {
+                            let isIteminShowIn = false
+                            for (let po = 0; po < eventserviceproviders[i].items[j].shownIn.length; po++) {
+                                if (eventserviceproviders[i].items[j].shownIn[po].serviceName == "event-salle") {
+                                    isIteminShowIn = true
+                                }
+                            }
+                            if (eventserviceproviders[i].items[j].status && isIteminShowIn) {
                                 let myspecText = ""
                                 for (let k = 0; k < eventserviceproviders[i].items[j].specification.length; k++) {
                                     myspecText = myspecText + eventserviceproviders[i].items[j].specification[k].specText + ", "
@@ -189,6 +204,8 @@ module.exports = {
                                     spId: eventserviceproviders[i].id,
                                     specName: eventserviceproviders[i].knownName
                                 }
+
+                                // console.log(newItem);
                                 myItems.push(newItem)
 
                             }
@@ -198,7 +215,7 @@ module.exports = {
 
             }
         }
-        console.log(city);
+
         return myItems
     },
 };
@@ -364,7 +381,7 @@ function calculateOrders(detail) {
         let isNot = false
 
         for (let j = 0; j < detail[i].details.status.length; j++) {
-            
+
             if (detail[i].details.status[j].name == "cancelled" || detail[i].details.status[j].name == "closed") {
                 isNot = true
             }
