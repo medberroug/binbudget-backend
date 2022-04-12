@@ -1,5 +1,7 @@
 'use strict';
 const { sanitizeEntity } = require('strapi-utils');
+var isFuture = require('date-fns/isFuture')
+var parseISO = require('date-fns/parseISO')
 /**
  * Cron config that gives you an opportunity
  * to run scheduled jobs.
@@ -15,6 +17,70 @@ module.exports = {
    * Simple example.
    * Every monday at 1am.
    */
+
+  '0 6 * * *': async () => {
+    let entitiesEvents;
+    let counter = 0
+    console.log("CRON: cron jobs of DueDates Invoices started working for " + new Date());
+    let entitiesInvoices
+    entitiesInvoices = await strapi.services.invoice.find();
+    let myInvoices = entitiesInvoices.map(entity => sanitizeEntity(entity, { model: strapi.models.invoice }));
+    for (let i = 0; i < myInvoices.length; i++) {
+      if (myInvoices[i].type == "Vente") {
+        if (!isFuture(parseISO(myInvoices[i].DueDate))) {
+          let latestStatus = myInvoices[i].status[myInvoices[i].status.length - 1].name
+          let id = myInvoices[i].id
+          if (latestStatus == 'validated' || latestStatus == 'pseudoPaid') {
+            myInvoices[i].status.push({
+              name: "overDueDate",
+              comment: "La date d'échéance de la facture est dépassée, veuillez payer cette facture dès que possible.",
+              date: new Date(),
+            })
+
+            let newStatus = []
+            for (let j = 0; j < myInvoices[i].status.length; j++) {
+              newStatus.push({
+                name: myInvoices[i].status[j].name,
+                comment: myInvoices[i].status[j].comment,
+                date: myInvoices[i].status[j].date,
+              })
+            }
+            let entity = await strapi.services.invoice.update({ id }, {
+              status: newStatus
+            });
+            counter = counter + 1
+          } else if (latestStatus == 'created') {
+            myInvoices[i].status.push({
+              name: "validated",
+              comment: "La facture a été validée automatiquement par le système : Date d'échéance dépassée.",
+              date: new Date(),
+            })
+            myInvoices[i].status.push({
+              name: "overDueDate",
+              comment: "La date d'échéance de la facture est dépassée, veuillez payer cette facture dès que possible.",
+              date: new Date(),
+            })
+            let newStatus = []
+            for (let j = 0; j < myInvoices[i].status.length; j++) {
+              newStatus.push({
+                name: myInvoices[i].status[j].name,
+                comment: myInvoices[i].status[j].comment,
+                date: myInvoices[i].status[j].date,
+              })
+            }
+            let entity = await strapi.services.invoice.update({ id }, {
+              status: newStatus
+            });
+            counter = counter + 1
+          }
+        }
+      }
+    }
+
+    console.log("CRON: cron jobs of DueDates Invoices ended with :" + counter + " updates");
+    // strapi.services.invoice.create(myInvoiceAchat)
+    // console.log(myBigResults);
+  },
   '0 * * * *': async () => {
     let entitiesEvents;
     console.log("CRON: cron jobs of dashboarding worked");
@@ -89,9 +155,12 @@ function topSellingProduct(data) {
 
     }
   }
+
   articlesList.sort(function (a, b) {
-    return a.quantity.localeCompare(b.quantity);
+    return parseFloat(a.quantity) - parseFloat(b.quantity);
   });
+
+
   return articlesList
 }
 async function clientByRevenue(data) {
@@ -118,9 +187,13 @@ async function clientByRevenue(data) {
       }
     }
   }
+
   clientsList.sort(function (a, b) {
-    return a.revenue.localeCompare(b.revenue);
+    return parseFloat(a.revenue) - parseFloat(b.revenue);
   });
+
+
+
 
   return clientsList
 
