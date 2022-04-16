@@ -2,6 +2,7 @@
 const { sanitizeEntity } = require('strapi-utils');
 var isFuture = require('date-fns/isFuture')
 var parseISO = require('date-fns/parseISO')
+const {emailTemplateDueDate } = require("../functions/emailTemplates/invoicing")
 /**
  * Cron config that gives you an opportunity
  * to run scheduled jobs.
@@ -18,7 +19,7 @@ module.exports = {
    * Every monday at 1am.
    */
 
-  '0 6 * * *': async () => {
+  '* * * * *': async () => {
     let entitiesEvents;
     let counter = 0
     console.log("CRON: cron jobs of DueDates Invoices started working for " + new Date());
@@ -49,6 +50,10 @@ module.exports = {
               status: newStatus
             });
             counter = counter + 1
+          
+            let message = emailTemplateDueDate(myInvoices[i])
+            let resultEmail = await sendemail("contact@binbudget.com", "medberroug@gmail.com", `Facture en retard N° ${myInvoices[i].invoiceNumber}`,message)
+            console.log(resultEmail);
           } else if (latestStatus == 'created') {
             myInvoices[i].status.push({
               name: "validated",
@@ -68,9 +73,13 @@ module.exports = {
                 date: myInvoices[i].status[j].date,
               })
             }
+
             let entity = await strapi.services.invoice.update({ id }, {
               status: newStatus
             });
+            let message = emailTemplateDueDate(myInvoices[i])
+            let resultEmail = await sendemail("contact@binbudget.com", "medberroug@gmail.com", `Facture en retard N° ${myInvoices[i].invoiceNumber}`,message)
+            console.log(resultEmail);
             counter = counter + 1
           }
         }
@@ -310,3 +319,33 @@ function calculateOrders(detail) {
     activeOrders: activeOrders
   }
 }
+
+const nodemailer = require('nodemailer');
+const userEmail = process.env.MYEMAIL
+const userPass = process.env.MYPASS
+
+// Create reusable transporter object using SMTP transport.
+
+async function sendemail(from, to, subject, html) {
+  console.log('Email started');
+  const transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: 'contact@binbudget.com',
+      pass: "Pixlabe2021",
+    },
+  });
+
+  // Setup e-m  ail data.
+  const options = {
+    from,
+    to,
+    subject,
+    html,
+  };
+  // Return a promise of the function that sends the email.
+  let result = await transporter.sendMail(options);
+  return result
+
+}
+
