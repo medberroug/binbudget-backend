@@ -2,7 +2,8 @@
   "collectionName": "components_client_contact_people",
   "info": {
     "name": "contactPerson",
-    "icon": "arrows-alt-h"
+    "icon": "arrows-alt-h",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -17,6 +18,13 @@
     },
     "position": {
       "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "informMeOfInvoices": {
+      "type": "boolean",
+      "default": true
     }
   }
 }

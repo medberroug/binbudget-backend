@@ -2,7 +2,7 @@
 const { sanitizeEntity } = require('strapi-utils');
 var isFuture = require('date-fns/isFuture')
 var parseISO = require('date-fns/parseISO')
-const {emailTemplateDueDate } = require("../functions/emailTemplates/invoicing")
+const { emailTemplateDueDate } = require("../functions/emailTemplates/invoicing")
 /**
  * Cron config that gives you an opportunity
  * to run scheduled jobs.
@@ -19,7 +19,7 @@ module.exports = {
    * Every monday at 1am.
    */
 
-  '* * * * *': async () => {
+  '0 9 * * *': async () => {
     let entitiesEvents;
     let counter = 0
     console.log("CRON: cron jobs of DueDates Invoices started working for " + new Date());
@@ -37,7 +37,18 @@ module.exports = {
               comment: "La date d'échéance de la facture est dépassée, veuillez payer cette facture dès que possible.",
               date: new Date(),
             })
-
+            let userEmails = await strapi.services.client.findOne({ id: myInvoices[i].client });
+         
+            let toSendEmails = ""
+            for (let p = 0; p < userEmails.contactPerson.length; p++) {
+              if (userEmails.contactPerson[p].informMeOfInvoices) {
+                toSendEmails = toSendEmails + ', ' + userEmails.contactPerson[p].email
+              }
+              toSendEmails = toSendEmails + ', ' + userEmails.contactPerson[p].email
+            }
+            let message = emailTemplateDueDate(myInvoices[i])
+            let resultEmail = await sendemail("contact@binbudget.com", toSendEmails, `Facture en retard N° ${myInvoices[i].invoiceNumber}`, message)
+            console.log(resultEmail);
             let newStatus = []
             for (let j = 0; j < myInvoices[i].status.length; j++) {
               newStatus.push({
@@ -50,10 +61,6 @@ module.exports = {
               status: newStatus
             });
             counter = counter + 1
-          
-            let message = emailTemplateDueDate(myInvoices[i])
-            let resultEmail = await sendemail("contact@binbudget.com", "medberroug@gmail.com", `Facture en retard N° ${myInvoices[i].invoiceNumber}`,message)
-            console.log(resultEmail);
           } else if (latestStatus == 'created') {
             myInvoices[i].status.push({
               name: "validated",
@@ -73,13 +80,9 @@ module.exports = {
                 date: myInvoices[i].status[j].date,
               })
             }
-
             let entity = await strapi.services.invoice.update({ id }, {
               status: newStatus
             });
-            let message = emailTemplateDueDate(myInvoices[i])
-            let resultEmail = await sendemail("contact@binbudget.com", "medberroug@gmail.com", `Facture en retard N° ${myInvoices[i].invoiceNumber}`,message)
-            console.log(resultEmail);
             counter = counter + 1
           }
         }
@@ -90,7 +93,7 @@ module.exports = {
     // strapi.services.invoice.create(myInvoiceAchat)
     // console.log(myBigResults);
   },
-  '0 * * * *': async () => {
+  '0 0,3,6,9,11,14,17,20,23 * * *': async () => {
     let entitiesEvents;
     console.log("CRON: cron jobs of dashboarding worked");
     entitiesEvents = await strapi.services.events.find();

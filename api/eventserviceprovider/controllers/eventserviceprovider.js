@@ -43,6 +43,40 @@ module.exports = {
         }
         return result
     },
+    async getDashboardDataResto(ctx) {
+        let entities;
+        let entitiesRestauration;
+        const { id } = ctx.params;
+        if (ctx.query._q) {
+            entitiesRestauration = await strapi.services.restauration.search();
+        } else {
+            entitiesRestauration = await strapi.services.restauration.find();
+        }
+        let restauration = entitiesRestauration.map(entity => sanitizeEntity(entity, { model: strapi.models.restauration }));
+        let eventOrderDetails = []
+        for (let i = 0; i < restauration.length; i++) {
+            for (let j = 0; j < restauration[i].eventOrderDetails.length; j++) {
+                if (restauration[i].eventOrderDetails[j].eventServiceProvider == id) {
+                    eventOrderDetails.push({
+                        client: restauration[i].byClient,
+                        details: restauration[i].eventOrderDetails[j]
+                    })
+                }
+            }
+        }
+        let entitiesInvoices
+        let myInvoices
+        entitiesInvoices = await strapi.services.invoice.find({ withTypeId: id });
+        myInvoices = entitiesInvoices.map(entity => sanitizeEntity(entity, { model: strapi.models.invoice }));
+        let result = {
+            // eventOrderDetails: eventOrderDetails,
+            clientByRevenue: await clientByRevenue(eventOrderDetails),
+            topSellingProducts: topSellingProduct(eventOrderDetails),
+            totalRevenue: totalRevenue(myInvoices),
+            calculateOrders: calculateOrders(eventOrderDetails)
+        }
+        return result
+    },
     async getListOfHosting(ctx) {
         let entities;
         const { city } = ctx.params;
@@ -57,19 +91,33 @@ module.exports = {
 
             if ((eventserviceproviders[i].address.city == city) && (eventserviceproviders[i].status)) {
                 for (let d = 0; d < eventserviceproviders[i].showIn.length; d++) {
-                    
-                    if (eventserviceproviders[i].showIn[d].serviceName == "event-hosting" ) {
-                        let newItem = {
-                            id: eventserviceproviders[i].id,
-                            logo: strapi.config.get('server.baseUrl', 'defaultValueIfUndefined') + eventserviceproviders[i].logo.url,
-                            firstImage: strapi.config.get('server.baseUrl', 'defaultValueIfUndefined') + eventserviceproviders[i].topImage.url,
-                            name: eventserviceproviders[i].knownName,
-                            city: eventserviceproviders[i].address.city,
-                            rating: eventserviceproviders[i].ratingTotal,
-                            spec: eventserviceproviders[i].smallDescription,
-                            spId: eventserviceproviders[i].id
+
+                    if (eventserviceproviders[i].showIn[d].serviceName == "event-hosting") {
+                        let judger = false
+
+                        for (let k = 0; k < eventserviceproviders[i].items.length; k++) {
+
+                            if (eventserviceproviders[i].items[k].status) {
+                                for(let m=0;m<eventserviceproviders[i].items[k].shownIn.length;m++){
+                                    if(eventserviceproviders[i].items[k].shownIn[m].serviceName=="event-hosting"){
+                                        judger = true
+                                    }
+                                }
+                            }
                         }
-                        myItems.push(newItem)
+                        if (judger) {
+                            let newItem = {
+                                id: eventserviceproviders[i].id,
+                                logo: strapi.config.get('server.baseUrl', 'defaultValueIfUndefined') + eventserviceproviders[i].logo.url,
+                                firstImage: strapi.config.get('server.baseUrl', 'defaultValueIfUndefined') + eventserviceproviders[i].topImage.url,
+                                name: eventserviceproviders[i].knownName,
+                                city: eventserviceproviders[i].address.city,
+                                rating: eventserviceproviders[i].ratingTotal,
+                                spec: eventserviceproviders[i].smallDescription,
+                                spId: eventserviceproviders[i].id
+                            }
+                            myItems.push(newItem)
+                        }
                     }
                 }
 
@@ -93,19 +141,34 @@ module.exports = {
 
             if ((eventserviceproviders[i].address.city == city) && (eventserviceproviders[i].status)) {
                 for (let d = 0; d < eventserviceproviders[i].showIn.length; d++) {
-                  
+
                     if (eventserviceproviders[i].showIn[d].serviceName == "event-restauration") {
-                        let newItem = {
-                            id: eventserviceproviders[i].id,
-                            logo: strapi.config.get('server.baseUrl', 'defaultValueIfUndefined') + eventserviceproviders[i].logo.url,
-                            firstImage: strapi.config.get('server.baseUrl', 'defaultValueIfUndefined') + eventserviceproviders[i].topImage.url,
-                            name: eventserviceproviders[i].knownName,
-                            city: eventserviceproviders[i].address.city,
-                            rating: eventserviceproviders[i].ratingTotal,
-                            spec: eventserviceproviders[i].smallDescription,
-                            spId: eventserviceproviders[i].id
+                        let judger = false
+
+                        for (let k = 0; k < eventserviceproviders[i].items.length; k++) {
+
+                            if (eventserviceproviders[i].items[k].status) {
+                                
+                                for(let m=0;m<eventserviceproviders[i].items[k].shownIn.length;m++){
+                                    if(eventserviceproviders[i].items[k].shownIn[m].serviceName=="event-restauration"){
+                                        judger = true
+                                    }
+                                }
+                            }
                         }
-                        myItems.push(newItem)
+                        if (judger) {
+                            let newItem = {
+                                id: eventserviceproviders[i].id,
+                                logo: strapi.config.get('server.baseUrl', 'defaultValueIfUndefined') + eventserviceproviders[i].logo.url,
+                                firstImage: strapi.config.get('server.baseUrl', 'defaultValueIfUndefined') + eventserviceproviders[i].topImage.url,
+                                name: eventserviceproviders[i].knownName,
+                                city: eventserviceproviders[i].address.city,
+                                rating: eventserviceproviders[i].ratingTotal,
+                                spec: eventserviceproviders[i].smallDescription,
+                                spId: eventserviceproviders[i].id
+                            }
+                            myItems.push(newItem)
+                        }
                     }
                 }
 

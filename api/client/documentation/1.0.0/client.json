@@ -544,6 +544,13 @@
                 },
                 "position": {
                   "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "informMeOfInvoices": {
+                  "type": "boolean",
+                  "default": true
                 }
               }
             }
@@ -762,6 +769,13 @@
                 },
                 "position": {
                   "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "informMeOfInvoices": {
+                  "type": "boolean",
+                  "default": true
                 }
               }
             }
