@@ -3,6 +3,36 @@ const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 var add = require('date-fns/add')
 var isToday = require('date-fns/isToday')
 var format = require('date-fns/format')
+const nodemailer = require('nodemailer');
+const userEmail = process.env.MYEMAIL
+const userPass = process.env.MYPASS
+const { emailTemplateQuoteSent } = require("../../../config/functions/emailTemplates/invoicing")
+// Create reusable transporter object using SMTP transport.
+
+async function sendemail(from, to, subject, html) {
+    console.log('Email started');
+    const transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'contact@binbudget.com',
+            pass: "Pixlabe2021",
+        },
+    });
+
+    // Setup e-m  ail data.
+    const options = {
+        from,
+        to,
+        subject,
+        html,
+    };
+    // Return a promise of the function that sends the email.
+    let result = await transporter.sendMail(options);
+    return result
+
+}
+
+
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
  * to customize this controller
@@ -204,14 +234,14 @@ module.exports = {
             for (let i = 0; i < entity.eventOrderDetails.length; i++) {
                 if (entity.eventOrderDetails[i].id == order) {
                     if (ctx.request.body.action == "validate") {
-                        
-                        if(ctx.request.body.who){
+
+                        if (ctx.request.body.who) {
                             entity.eventOrderDetails[i].status.push({
                                 name: "validated",
                                 comment: "Commande validée par le client. ",
                                 date: new Date().toISOString(),
                             })
-                        }else {
+                        } else {
                             entity.eventOrderDetails[i].status.push({
                                 name: "validated",
                                 comment: "Commande validée par le fournisseur. ",
@@ -401,20 +431,32 @@ module.exports = {
 
                         }
                     } else if (ctx.request.body.action == "quote") {
+                        let userEmails = await strapi.services.client.findOne({ id: entity.byClient });
+                        let toSendEmails = ""
+                        for (let p = 0; p < userEmails.contactPerson.length; p++) {
+                            if (userEmails.contactPerson[p].informMeOfInvoices) {
+                                toSendEmails = toSendEmails + ', ' + userEmails.contactPerson[p].email
+                            }
+                            toSendEmails = toSendEmails + ', ' + userEmails.contactPerson[p].email
+                        }
+
+
                         entity.eventOrderDetails[i].status.push({
                             name: "quoteSent",
                             comment: "Le fournisseur a transmis son devis, il attend la décision du client. ",
                             date: new Date().toISOString(),
                         })
-                        for(let p=0 ; p<entity.eventOrderDetails[i].articles.length;p++){
-                            entity.eventOrderDetails[i].articles[p].price=ctx.request.body.items[p].price
-                            entity.eventOrderDetails[i].articles[p].subTotal=ctx.request.body.items[p].price*ctx.request.body.items[p].quantity
-                            entity.eventOrderDetails[i].subTotal=entity.eventOrderDetails[i].subTotal+ctx.request.body.items[p].price*ctx.request.body.items[p].quantity
+                        for (let p = 0; p < entity.eventOrderDetails[i].articles.length; p++) {
+                            entity.eventOrderDetails[i].articles[p].price = ctx.request.body.items[p].price
+                            entity.eventOrderDetails[i].articles[p].subTotal = ctx.request.body.items[p].price * ctx.request.body.items[p].quantity
+                            entity.eventOrderDetails[i].subTotal = entity.eventOrderDetails[i].subTotal + ctx.request.body.items[p].price * ctx.request.body.items[p].quantity
                         }
 
 
                         let stillPendingQuote = false
-
+                        let message = emailTemplateQuoteSent(entity, entity.eventOrderDetails[i])
+                            let resultEmail = await sendemail("contact@binbudget.com", toSendEmails, `Un fournisseur a transmis son devis pour l'événement  ${entity.name}`, message)
+                            console.log(resultEmail);
                         for (let k = 0; k < entity.eventOrderDetails.length; k++) {
                             if (entity.eventOrderDetails[k].status[entity.eventOrderDetails[k].status.length - 1].name == "pendingQuote") {
                                 stillPendingQuote = true
@@ -431,6 +473,8 @@ module.exports = {
 
 
 
+                        } else {
+                            
                         }
                     }
                 }

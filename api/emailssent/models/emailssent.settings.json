@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "emailssents",
+  "info": {
+    "name": "emailssent"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "emailsTo": {
+      "type": "component",
+      "repeatable": true,
+      "component": "system.emails-to"
+    },
+    "content": {
+      "type": "richtext"
+    },
+    "subject": {
+      "type": "text"
+    },
+    "workflow": {
+      "type": "string"
+    }
+  }
+}

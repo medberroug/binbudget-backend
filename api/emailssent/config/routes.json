@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/emailssents",
+      "handler": "emailssent.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/emailssents/count",
+      "handler": "emailssent.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/emailssents/:id",
+      "handler": "emailssent.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/emailssents",
+      "handler": "emailssent.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/emailssents/:id",
+      "handler": "emailssent.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/emailssents/:id",
+      "handler": "emailssent.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_system_emails_tos",
+  "info": {
+    "name": "emailsTo",
+    "icon": "arrow-circle-right"
+  },
+  "options": {},
+  "attributes": {
+    "email": {
+      "type": "email"
+    },
+    "status": {
+      "type": "boolean"
+    }
+  }
+}
