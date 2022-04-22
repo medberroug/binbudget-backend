@@ -308,7 +308,7 @@ module.exports = {
                                         comment: "la facture a été créée",
                                         date: new Date().toISOString(),
                                     }],
-                                    
+
                                     DueDate: add(lastDayOfMonth(new Date()), {
                                         days: eventServiceProvider.dueDatesAfter,
                                     }),
@@ -362,8 +362,9 @@ module.exports = {
                                     date: new Date().toISOString(),
                                 }],
                                 DueDate: add(lastDayOfMonth(new Date()), {
-                                    days: eventServiceProvider.dueDatesAfter,
+                                    days: myClient.invoicingLimits.dueDatesAfter,
                                 }),
+
                                 ref: "Evènement N°" + entity.id + " (Evénements)",
                                 refType: "event",
                                 items: myItemsForInvoice,
@@ -457,8 +458,8 @@ module.exports = {
 
                         let stillPendingQuote = false
                         let message = emailTemplateQuoteSent(entity, entity.eventOrderDetails[i])
-                            let resultEmail = await sendemail("contact@binbudget.com", toSendEmails, `Un fournisseur a transmis son devis pour l'événement  ${entity.name}`, message)
-                            console.log(resultEmail);
+                        let resultEmail = await sendemail("contact@binbudget.com", toSendEmails, `Un fournisseur a transmis son devis pour l'événement  ${entity.name}`, message)
+                        console.log(resultEmail);
                         for (let k = 0; k < entity.eventOrderDetails.length; k++) {
                             if (entity.eventOrderDetails[k].status[entity.eventOrderDetails[k].status.length - 1].name == "pendingQuote") {
                                 stillPendingQuote = true
@@ -476,7 +477,7 @@ module.exports = {
 
 
                         } else {
-                            
+
                         }
                     }
                 }
