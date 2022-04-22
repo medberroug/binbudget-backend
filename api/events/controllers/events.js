@@ -3,6 +3,7 @@ const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 var add = require('date-fns/add')
 var isToday = require('date-fns/isToday')
 var format = require('date-fns/format')
+var lastDayOfMonth = require('date-fns/lastDayOfMonth')
 const nodemailer = require('nodemailer');
 const userEmail = process.env.MYEMAIL
 const userPass = process.env.MYPASS
@@ -307,7 +308,8 @@ module.exports = {
                                         comment: "la facture a été créée",
                                         date: new Date().toISOString(),
                                     }],
-                                    DueDate: add(new Date(), {
+                                    
+                                    DueDate: add(lastDayOfMonth(new Date()), {
                                         days: eventServiceProvider.dueDatesAfter,
                                     }),
                                     ref: "Evènement N°" + entity.id + " (Evénements)",
@@ -359,8 +361,8 @@ module.exports = {
                                     comment: "la facture a été créée",
                                     date: new Date().toISOString(),
                                 }],
-                                DueDate: add(new Date(), {
-                                    days: myClient.invoicingLimits.dueDatesAfter,
+                                DueDate: add(lastDayOfMonth(new Date()), {
+                                    days: eventServiceProvider.dueDatesAfter,
                                 }),
                                 ref: "Evènement N°" + entity.id + " (Evénements)",
                                 refType: "event",
