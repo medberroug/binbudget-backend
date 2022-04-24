@@ -3,6 +3,7 @@ const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 var add = require('date-fns/add')
 var isToday = require('date-fns/isToday')
 var format = require('date-fns/format')
+var lastDayOfMonth = require('date-fns/lastDayOfMonth')
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
  * to customize this controller
@@ -96,9 +97,10 @@ module.exports = {
                     comment: "la facture a été créée",
                     date: new Date(),
                 }],
-                DueDate: add(new Date(), {
+                DueDate: add( lastDayOfMonth(new Date()) , {
                     days: myClient.invoicingLimits.dueDatesAfter,
                 }),
+                paimentDate:lastDayOfMonth(new Date()),
                 ref: "Commande N°" + myOrder.id + " (" + myOrder.type + ")",
                 refType: myOrder.type,
                 items: myItemsForInvoice,
@@ -131,9 +133,10 @@ module.exports = {
                     comment: "la facture a été créée",
                     date: new Date(),
                 }],
-                DueDate: add(new Date(), {
+                DueDate: add(lastDayOfMonth(new Date()), {
                     days: supplierDueDate,
                 }),
+                paimentDate:lastDayOfMonth(new Date()),
                 ref: "Commande N°" + myOrder.id + " (" + myOrder.type + ")",
                 refType: myOrder.type,
                 items: myItemsForInvoiceAchat,
@@ -168,6 +171,7 @@ module.exports = {
                     date: new Date(),
                 })
                 myInvoiceVente.DueDate = new Date()
+                myInvoiceVente.paimentDate= new Date()
                 myInvoiceVente.status.push({
                     name: "forcePaiment",
                     comment: "la facture doit être payée avant la prestation du service car le client n'a plus de marge de crédit",
@@ -203,6 +207,7 @@ module.exports = {
                         date: new Date(),
                     })
                     myInvoiceVente.DueDate = new Date()
+                    myInvoiceVente.paimentDate= new Date()
                     myInvoiceVente.status.push({
                         name: "pseudoPaid",
                         comment: "la facture est partiellement payée",

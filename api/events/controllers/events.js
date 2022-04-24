@@ -312,6 +312,7 @@ module.exports = {
                                     DueDate: add(lastDayOfMonth(new Date()), {
                                         days: eventServiceProvider.dueDatesAfter,
                                     }),
+                                    paimentDate:lastDayOfMonth(new Date()),
                                     ref: "Evènement N°" + entity.id + " (Evénements)",
                                     refType: "event",
                                     items: myItemsForInvoiceAchat,
@@ -364,7 +365,7 @@ module.exports = {
                                 DueDate: add(lastDayOfMonth(new Date()), {
                                     days: myClient.invoicingLimits.dueDatesAfter,
                                 }),
-
+                                paimentDate:lastDayOfMonth(new Date()),
                                 ref: "Evènement N°" + entity.id + " (Evénements)",
                                 refType: "event",
                                 items: myItemsForInvoice,

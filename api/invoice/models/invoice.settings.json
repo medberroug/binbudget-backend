@@ -81,6 +81,9 @@
     },
     "client": {
       "type": "string"
+    },
+    "paimentDate": {
+      "type": "datetime"
     }
   }
 }
