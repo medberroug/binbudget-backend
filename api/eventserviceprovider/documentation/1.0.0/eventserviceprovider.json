@@ -1385,18 +1385,25 @@
                 "type": "string"
               },
               "eventSalle": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "eventHosting": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "eventRestauration": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "eventService": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               }
             }
+          },
+          "email": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -1795,18 +1802,25 @@
                 "type": "string"
               },
               "eventSalle": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "eventHosting": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "eventRestauration": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "eventService": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               }
             }
+          },
+          "email": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",

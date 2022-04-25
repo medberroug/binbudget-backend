@@ -99,6 +99,9 @@
       "type": "component",
       "repeatable": false,
       "component": "events.monthly-service-cost"
+    },
+    "email": {
+      "type": "email"
     }
   }
 }

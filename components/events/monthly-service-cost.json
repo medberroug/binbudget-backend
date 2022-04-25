@@ -2,21 +2,26 @@
   "collectionName": "components_events_monthly_service_costs",
   "info": {
     "name": "monthlyServiceCost",
-    "icon": "beer"
+    "icon": "beer",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "eventSalle": {
-      "type": "decimal"
+      "type": "decimal",
+      "default": 0
     },
     "eventHosting": {
-      "type": "decimal"
+      "type": "decimal",
+      "default": 0
     },
     "eventRestauration": {
-      "type": "decimal"
+      "type": "decimal",
+      "default": 0
     },
     "eventService": {
-      "type": "decimal"
+      "type": "decimal",
+      "default": 0
     }
   }
 }

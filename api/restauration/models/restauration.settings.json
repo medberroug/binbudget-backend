@@ -112,6 +112,9 @@
       "type": "component",
       "repeatable": false,
       "component": "restauration.monthly-service-cost"
+    },
+    "email": {
+      "type": "email"
     }
   }
 }

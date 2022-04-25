@@ -1175,21 +1175,29 @@
                 "type": "string"
               },
               "livraisonDeRepas": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "repasEmporte": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "menuConventionne": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "reservationDeRestaurant": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "restaurationCollectif": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               }
             }
+          },
+          "email": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -1652,21 +1660,29 @@
                 "type": "string"
               },
               "livraisonDeRepas": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "repasEmporte": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "menuConventionne": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "reservationDeRestaurant": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "restaurationCollectif": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               }
             }
+          },
+          "email": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",

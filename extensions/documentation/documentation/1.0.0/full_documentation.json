@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/24/2022 3:50:30 PM"
+    "x-generation-date": "04/25/2022 12:08:55 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -13007,18 +13007,25 @@
                 "type": "string"
               },
               "eventSalle": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "eventHosting": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "eventRestauration": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "eventService": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               }
             }
+          },
+          "email": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -13417,18 +13424,25 @@
                 "type": "string"
               },
               "eventSalle": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "eventHosting": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "eventRestauration": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "eventService": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               }
             }
+          },
+          "email": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -15971,21 +15985,29 @@
                 "type": "string"
               },
               "livraisonDeRepas": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "repasEmporte": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "menuConventionne": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "reservationDeRestaurant": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "restaurationCollectif": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               }
             }
+          },
+          "email": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -16448,21 +16470,29 @@
                 "type": "string"
               },
               "livraisonDeRepas": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "repasEmporte": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "menuConventionne": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "reservationDeRestaurant": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               },
               "restaurationCollectif": {
-                "type": "number"
+                "type": "number",
+                "default": 0
               }
             }
+          },
+          "email": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
