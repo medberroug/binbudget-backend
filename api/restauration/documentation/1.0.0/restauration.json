@@ -1193,6 +1193,14 @@
               "restaurationCollectif": {
                 "type": "number",
                 "default": 0
+              },
+              "nextPaiment": {
+                "type": "string",
+                "format": "date"
+              },
+              "paymentFrequency": {
+                "type": "integer",
+                "default": 1
               }
             }
           },
@@ -1678,6 +1686,14 @@
               "restaurationCollectif": {
                 "type": "number",
                 "default": 0
+              },
+              "nextPaiment": {
+                "type": "string",
+                "format": "date"
+              },
+              "paymentFrequency": {
+                "type": "integer",
+                "default": 1
               }
             }
           },

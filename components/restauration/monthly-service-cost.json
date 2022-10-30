@@ -26,6 +26,13 @@
     "restaurationCollectif": {
       "type": "decimal",
       "default": 0
+    },
+    "nextPaiment": {
+      "type": "date"
+    },
+    "paymentFrequency": {
+      "type": "integer",
+      "default": 1
     }
   }
 }

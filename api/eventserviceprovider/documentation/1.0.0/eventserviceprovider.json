@@ -1399,6 +1399,14 @@
               "eventService": {
                 "type": "number",
                 "default": 0
+              },
+              "paymentFrequency": {
+                "type": "integer",
+                "default": 1
+              },
+              "nextPaiment": {
+                "type": "string",
+                "format": "date"
               }
             }
           },
@@ -1816,6 +1824,14 @@
               "eventService": {
                 "type": "number",
                 "default": 0
+              },
+              "paymentFrequency": {
+                "type": "integer",
+                "default": 1
+              },
+              "nextPaiment": {
+                "type": "string",
+                "format": "date"
               }
             }
           },

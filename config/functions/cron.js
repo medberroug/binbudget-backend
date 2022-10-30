@@ -18,7 +18,93 @@ module.exports = {
    * Simple example.
    * Every monday at 1am.
    */
+  '0 9 * * *': async () => {
+    let entitiesEvents;
+    let counter = 0
+    console.log("CRON: cron jobs of Suppliers Invoices started working for " + new Date());
+    let eventEntities
+    eventEntities = await strapi.services.eventServiceProvider.find();
+    // let myInvoices = entitiesInvoices.map(entity => sanitizeEntity(entity, { model: strapi.models.eventServiceProvider }));
+    for (let i = 0; i < eventEntities.length; i++) {
+      let eventSalle = false
+      let eventHosting = false
+      let eventRestauration = false
+      let eventService = false
+      for (let k = 0; k < eventEntities[i].whatServicesHeCanOffer.length; k++) {
+        if (eventEntities[i].whatServicesHeCanOffer[k].serviceName == "event-salle") {
+          eventSalle = true
+        }
+        if (eventEntities[i].whatServicesHeCanOffer[k].serviceName == "event-hosting") {
+          eventHosting = true
+        }
+        if (eventEntities[i].whatServicesHeCanOffer[k].serviceName == "event-restauration") {
+          eventRestauration = true
+        }
+        if (eventEntities[i].whatServicesHeCanOffer[k].serviceName == "event-service") {
+          eventService = true
+        }
+      }
+      if (eventEntities[i].monthlyServiceCost.nextPaiment) {
+        if (isFuture(eventEntities[i].monthlyServiceCost.nextPaiment)) {
+          let anAwaitedInvoiceNumber = assignNumber("event")
+          let myItemsForInvoice=[]
+          if(eventSalle){
+            myItemsForInvoice.push({
+              name: "Abonnement rubrique Salles d'événements",
+              price: eventEntities[i].monthlyServiceCost.eventSalle,
+              quantity: 1,
+              total: entity.eventOrderDetails[k].articles[m].quantity * entity.eventOrderDetails[k].articles[m].price * (1 - eventServiceProvider.percentageTaking / 100),
+          })
+          }
+          let myInvoiceVente = {
+            type: "Vente",
+            withType: "event",
+            withTypeId: entity.id,
+            client: eventEntities[i].id,
+            fromAddress: {
+              street: "297 Hay Riad",
+              city: "Rabat",
+              country: "Maroc",
+              legalName: "Business repas s.a.r.l.",
+            },
+            toAddress: {
+              street: eventEntities[i].address[0].street,
+              city: eventEntities[i].address[0].city,
+              country: eventEntities[i].address[0].country,
+              legalName: eventEntities[i].legalName,
+              ICE: eventEntities[i].ICE,
+            },
+            invoiceNumber: anAwaitedInvoiceNumber,
+            status: [{
+              name: "created",
+              comment: "la facture a été créée",
+              date: new Date().toISOString(),
+            }],
+            DueDate: add(lastDayOfMonth(new Date()), {
+              days: myClient.invoicingLimits.dueDatesAfter,
+            }),
+            paimentDate: lastDayOfMonth(new Date()),
+            ref: "Evènement N°" + entity.id + " (Evénements)",
+            refType: "event",
+            items: myItemsForInvoice,
+            payments: [],
+            subTotal: myInvoiceVentesubTotal,
+            tax: myInvoiceVentesubTotal * (tva / 100),
+            total: myInvoiceVentesubTotal * (1 + tva / 100),
+            comment: null,
+            stampedVersionPath: null,
+          }
+        }
+      }
 
+
+
+    }
+
+    console.log("CRON: cron jobs of Suppliers Invoices ended with :" + counter + " updates");
+    // strapi.services.invoice.create(myInvoiceAchat)
+    // console.log(myBigResults);
+  },
   '0 9 * * *': async () => {
     let entitiesEvents;
     let counter = 0
@@ -38,7 +124,7 @@ module.exports = {
               date: new Date(),
             })
             let userEmails = await strapi.services.client.findOne({ id: myInvoices[i].client });
-         
+
             let toSendEmails = ""
             for (let p = 0; p < userEmails.contactPerson.length; p++) {
               if (userEmails.contactPerson[p].informMeOfInvoices) {
@@ -352,3 +438,53 @@ async function sendemail(from, to, subject, html) {
 
 }
 
+async function assignNumber(type) {
+  let myInvoicesForNumber = await strapi.services.invoice.find();
+  let theInvoiceDayNumber = 1
+  let invoiceNumber = ""
+  let isTodayInvoices = []
+
+
+  myInvoicesForNumber = myInvoicesForNumber.reverse()
+  for (let i = 0; i < myInvoicesForNumber.length; i++) {
+    if (isToday(myInvoicesForNumber[i].createdAt)) {
+      if (myInvoicesForNumber[i].type == "Vente") {
+        isTodayInvoices.push(myInvoicesForNumber[i])
+
+      }
+    } else {
+      break
+    }
+  }
+  let firstLetters
+  if (type == "event") {
+    firstLetters = "FE"
+  } else if (type == "restauration") {
+    firstLetters = "FR"
+  }
+
+  if (isTodayInvoices.length == 0) {
+    invoiceNumber = firstLetters + format(new Date(), 'yyMMdd') + "0001"
+  } else {
+
+    theInvoiceDayNumber = isTodayInvoices.length + 1
+    theInvoiceDayNumber = theInvoiceDayNumber.toString()
+    invoiceNumber = firstLetters + format(new Date(), 'yyMMdd')
+    if (theInvoiceDayNumber.length == 4) {
+      invoiceNumber = invoiceNumber + theInvoiceDayNumber
+    }
+    if (theInvoiceDayNumber.length == 3) {
+      invoiceNumber = invoiceNumber + "0" + theInvoiceDayNumber
+    }
+    if (theInvoiceDayNumber.length == 2) {
+      invoiceNumber = invoiceNumber + "00" + theInvoiceDayNumber
+    }
+    if (theInvoiceDayNumber.length == 1) {
+      invoiceNumber = invoiceNumber + "000" + theInvoiceDayNumber
+    }
+  }
+
+
+
+  return invoiceNumber
+}

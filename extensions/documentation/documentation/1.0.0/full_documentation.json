@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "04/25/2022 12:08:55 AM"
+    "x-generation-date": "05/10/2022 8:57:26 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -13021,6 +13021,14 @@
               "eventService": {
                 "type": "number",
                 "default": 0
+              },
+              "paymentFrequency": {
+                "type": "integer",
+                "default": 1
+              },
+              "nextPaiment": {
+                "type": "string",
+                "format": "date"
               }
             }
           },
@@ -13438,6 +13446,14 @@
               "eventService": {
                 "type": "number",
                 "default": 0
+              },
+              "paymentFrequency": {
+                "type": "integer",
+                "default": 1
+              },
+              "nextPaiment": {
+                "type": "string",
+                "format": "date"
               }
             }
           },
@@ -13495,6 +13511,10 @@
               }
             }
           },
+          "supplierBuyingDueDate": {
+            "type": "integer",
+            "default": 15
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -13533,6 +13553,10 @@
                 }
               }
             }
+          },
+          "supplierBuyingDueDate": {
+            "type": "integer",
+            "default": 15
           },
           "published_at": {
             "type": "string",
@@ -16003,6 +16027,14 @@
               "restaurationCollectif": {
                 "type": "number",
                 "default": 0
+              },
+              "nextPaiment": {
+                "type": "string",
+                "format": "date"
+              },
+              "paymentFrequency": {
+                "type": "integer",
+                "default": 1
               }
             }
           },
@@ -16488,6 +16520,14 @@
               "restaurationCollectif": {
                 "type": "number",
                 "default": 0
+              },
+              "nextPaiment": {
+                "type": "string",
+                "format": "date"
+              },
+              "paymentFrequency": {
+                "type": "integer",
+                "default": 1
               }
             }
           },

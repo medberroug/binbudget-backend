@@ -349,6 +349,10 @@
               }
             }
           },
+          "supplierBuyingDueDate": {
+            "type": "integer",
+            "default": 15
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -387,6 +391,10 @@
                 }
               }
             }
+          },
+          "supplierBuyingDueDate": {
+            "type": "integer",
+            "default": 15
           },
           "published_at": {
             "type": "string",
