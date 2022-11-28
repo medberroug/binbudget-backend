@@ -88,7 +88,7 @@ module.exports = {
                                                       <table class="image_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
                                                           <tr>
                                                               <td style="padding-bottom:15px;padding-left:10px;padding-right:40px;padding-top:15px;width:100%;">
-                                                                  <div style="line-height:10px"><img src="https://api.binbudget.com/uploads/logo1_c5bc651459.png?15203228.69999981" style="display: block; height: auto; border: 0; width: 220px; max-width: 100%;" width="220"></div>
+                                                                  <div style="line-height:10px"><img src="https://api.binbudget.com/uploads/logo_BB_eb0caacabc.png?84628251" style="display: block; height: auto; border: 0; width: 220px; max-width: 100%;" width="220"></div>
                                                               </td>
                                                           </tr>
                                                       </table>
@@ -225,7 +225,7 @@ module.exports = {
                                                         <table class="image_block" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
                                                             <tr>
                                                                 <td style="padding-bottom:15px;padding-left:10px;padding-right:40px;padding-top:15px;width:100%;">
-                                                                    <div style="line-height:10px"><img src="https://api.binbudget.com/uploads/logo1_c5bc651459.png?15203228.69999981" style="display: block; height: auto; border: 0; width: 270px; max-width: 100%;" width="270"></div>
+                                                                    <div style="line-height:10px"><img src="https://api.binbudget.com/uploads/logo_BB_eb0caacabc.png?84628251" style="display: block; height: auto; border: 0; width: 270px; max-width: 100%;" width="270"></div>
                                                                 </td>
                                                             </tr>
                                                         </table>
