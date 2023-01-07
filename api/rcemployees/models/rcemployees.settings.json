@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rcemployees",
+  "info": {
+    "name": "rcemployees"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "company": {
+      "model": "client"
+    },
+    "dotation": {
+      "type": "component",
+      "repeatable": false,
+      "component": "rcemployee.dotation"
+    },
+    "status": {
+      "type": "boolean"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "rcemployee.address"
+    },
+    "companyComments": {
+      "type": "component",
+      "repeatable": true,
+      "component": "rcemployee.company-comments"
+    },
+    "walletBalance": {
+      "type": "decimal"
+    },
+    "walletPaiements": {
+      "type": "component",
+      "repeatable": true,
+      "component": "rcemployee.wallet-paiements"
+    }
+  }
+}

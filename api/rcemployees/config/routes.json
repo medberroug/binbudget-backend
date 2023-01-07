@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/rcemployees",
+      "handler": "rcemployees.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/rcemployees/count",
+      "handler": "rcemployees.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/rcemployees/:id",
+      "handler": "rcemployees.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/rcemployees",
+      "handler": "rcemployees.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/rcemployees/:id",
+      "handler": "rcemployees.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/rcemployees/:id",
+      "handler": "rcemployees.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

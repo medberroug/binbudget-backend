@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_rcorders_items",
+  "info": {
+    "name": "items",
+    "icon": "ankh",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "itemId": {
+      "type": "string"
+    },
+    "sp": {
+      "model": "restauration"
+    },
+    "quantity": {
+      "type": "decimal"
+    },
+    "subTotal": {
+      "type": "decimal"
+    },
+    "up": {
+      "type": "decimal"
+    },
+    "itemName": {
+      "type": "string"
+    },
+    "photoURL": {
+      "type": "string"
+    }
+  }
+}

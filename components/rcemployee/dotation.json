@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_rcemployee_dotations",
+  "info": {
+    "name": "dotation",
+    "icon": "award"
+  },
+  "options": {},
+  "attributes": {
+    "cotisation": {
+      "type": "decimal"
+    },
+    "dailyLimit": {
+      "type": "decimal"
+    },
+    "monthlyLimit": {
+      "type": "decimal"
+    }
+  }
+}

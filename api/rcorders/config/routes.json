@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/rcorders",
+      "handler": "rcorders.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/rcorders/count",
+      "handler": "rcorders.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/rcorders/:id",
+      "handler": "rcorders.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/rcorders",
+      "handler": "rcorders.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/rcorders/:id",
+      "handler": "rcorders.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/rcorders/:id",
+      "handler": "rcorders.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rcannoucements",
+  "info": {
+    "name": "rcannoucements"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "bigText": {
+      "type": "string"
+    },
+    "smallText": {
+      "type": "string"
+    },
+    "bigNumber": {
+      "type": "string"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "from": {
+      "type": "datetime"
+    },
+    "to": {
+      "type": "datetime"
+    },
+    "status": {
+      "type": "boolean"
+    }
+  }
+}

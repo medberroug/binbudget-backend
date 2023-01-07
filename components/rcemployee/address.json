@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_rcemployee_addresses",
+  "info": {
+    "name": "address",
+    "icon": "angle-double-right"
+  },
+  "options": {},
+  "attributes": {
+    "lat": {
+      "type": "string"
+    },
+    "long": {
+      "type": "string"
+    },
+    "added": {
+      "type": "datetime"
+    }
+  }
+}

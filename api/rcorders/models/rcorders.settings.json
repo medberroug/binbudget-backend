@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rcorders",
+  "info": {
+    "name": "rcorders",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "number": {
+      "type": "string"
+    },
+    "rcemployee": {
+      "model": "rcemployees"
+    },
+    "items": {
+      "type": "component",
+      "repeatable": true,
+      "component": "rcorders.items"
+    },
+    "status": {
+      "type": "component",
+      "repeatable": true,
+      "component": "rcorders.status"
+    },
+    "employeeToPay": {
+      "type": "decimal"
+    },
+    "paymentMethod": {
+      "type": "string"
+    },
+    "address": {
+      "type": "component",
+      "repeatable": false,
+      "component": "rcorders.address"
+    },
+    "deliveryoperator": {
+      "model": "deliveryoperators"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_rcorders_addresses",
+  "info": {
+    "name": "address",
+    "icon": "angle-right"
+  },
+  "options": {},
+  "attributes": {
+    "street": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string",
+      "default": "Maroc"
+    },
+    "lat": {
+      "type": "string"
+    },
+    "long": {
+      "type": "string"
+    }
+  }
+}

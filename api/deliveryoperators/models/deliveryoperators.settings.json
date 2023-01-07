@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "deliveryoperators",
+  "info": {
+    "name": "deliveryoperators"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "status": {
+      "type": "boolean"
+    }
+  }
+}

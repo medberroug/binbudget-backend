@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_rcemployee_wallet_paiements",
+  "info": {
+    "name": "walletPaiements",
+    "icon": "angry"
+  },
+  "options": {},
+  "attributes": {
+    "amount": {
+      "type": "decimal"
+    },
+    "added": {
+      "type": "datetime"
+    },
+    "method": {
+      "type": "string"
+    }
+  }
+}

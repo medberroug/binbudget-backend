@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rccategories",
+  "info": {
+    "name": "rccategories",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "rank": {
+      "type": "integer"
+    },
+    "status": {
+      "type": "boolean"
+    },
+    "image": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    }
+  }
+}

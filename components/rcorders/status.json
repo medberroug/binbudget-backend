@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_rcorders_statuses",
+  "info": {
+    "name": "status",
+    "icon": "band-aid"
+  },
+  "options": {},
+  "attributes": {
+    "status": {
+      "type": "string"
+    },
+    "added": {
+      "type": "datetime"
+    },
+    "comment": {
+      "type": "string"
+    }
+  }
+}
