@@ -46,7 +46,7 @@ module.exports = {
                                     name: oneProduct.items[j].name,
                                     waiting: "~30 min",
                                     rank: topProductsList[i].rank,
-                                    sp : topProductsList[i].sp, 
+                                    sp: topProductsList[i].sp,
                                     spName: oneProduct.knownName
                                 }
                                 // Add the top product to the final product list
@@ -74,7 +74,7 @@ module.exports = {
                         for (let k = 0; k < oneProduct.items[j].shownIn.length; k++) {
                             if (oneProduct.items[j].shownIn[k].serviceName == "restauration-collectif") {
                                 return true
-                        
+
                             }
                         }
                     }
@@ -140,6 +140,69 @@ module.exports = {
         }
         myFinalProductByCategories.sort((a, b) => a.rank - b.rank);
         return myFinalProductByCategories
+    },
+
+
+    async getProductsByOneCategories(ctx) {
+        const { id } = ctx.params;
+        let myFinalProductByCategories = []
+        let rcCategories = await strapi.services.rccategories.findOne({
+            id: id
+        });
+        let restauration = await strapi.services.restauration.find()
+
+        if (rcCategories.status) {
+            let oneCategory = {
+                name: rcCategories.name,
+                id: rcCategories.id,
+                rank: rcCategories.rank,
+                items: []
+            }
+            for (let j = 0; j < restauration.length; j++) {
+                console.log("1");
+                if (restauration[j].status) {
+                    console.log("2");
+                    for (let k = 0; k < restauration[j].items.length; k++) {
+                        console.log("3");
+                        if (restauration[j].items[k].status) {
+                            console.log("4");
+                            for (let m = 0; m < restauration[j].items[k].shownIn.length; m++) {
+                                console.log("5");
+                                if (restauration[j].items[k].shownIn[m].serviceName == "restauration-collectif") {
+                                    console.log("6");
+                                    for (let p = 0; p < restauration[j].items[k].categories.length; p++) {
+                                        console.log("7");
+                                        console.log(oneCategory.name);
+                                        console.log(restauration[j].items[k].categories[p].name);
+                                        console.log(restauration[j].items[k].categories[p].name == oneCategory.name);
+                                        if (restauration[j].items[k].categories[p].name == oneCategory.name) {
+                                            console.log("8");
+                                            let oneItem = {
+                                                id: restauration[j].items[k].id,
+                                                sp: restauration[j].id,
+                                                name: restauration[j].items[k].name,
+                                                image: restauration[j].items[k].firstImage.url,
+                                                discount: restauration[j].items[k].disocunt,
+                                                ratingTotal: restauration[j].ratingTotal,
+                                                ratingQuantity: restauration[j].rating.length > 0 ? restauration[j].rating.length : 1,
+                                                waiting: "~30 min",
+                                                restoName: restauration[j].knownName
+                                            }
+                                            oneCategory.items.push(oneItem)
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            myFinalProductByCategories.push(oneCategory)
+        }
+
+        myFinalProductByCategories.sort((a, b) => a.rank - b.rank);
+        return myFinalProductByCategories[0]
     },
 
     async getCategories(ctx) {

@@ -79,6 +79,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getProductsByOneCategories/:id",
+      "handler": "rctopproducts.getProductsByOneCategories",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
