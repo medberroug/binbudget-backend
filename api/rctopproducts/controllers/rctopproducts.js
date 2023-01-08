@@ -63,6 +63,26 @@ module.exports = {
         return myFinalProductList
     },
 
+    async isThereAnyTopProduct(ctx) {
+        let topProductsList = await strapi.services.rctopproducts.find();
+        for (let i = 0; i < topProductsList.length; i++) {
+            let today = new Date()
+            if (isAfter(today, topProductsList[i].from) && isBefore(today, topProductsList[i].to)) {
+                let oneProduct = await strapi.services.restauration.findOne({ id: topProductsList[i].sp });
+                for (let j = 0; j < oneProduct.items.length; j++) {
+                    if (oneProduct.items[j].id == topProductsList[i].prouductId && oneProduct.items[j].status) {
+                        for (let k = 0; k < oneProduct.items[j].shownIn.length; k++) {
+                            if (oneProduct.items[j].shownIn[k].serviceName == "restauration-collectif") {
+                                return true
+                        
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false
+    },
     async getProductsByCategories(ctx) {
         let myFinalProductByCategories = []
         let rcCategories = await strapi.services.rccategories.find();

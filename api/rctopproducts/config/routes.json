@@ -71,6 +71,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/isThereAnyTopProduct",
+      "handler": "rctopproducts.isThereAnyTopProduct",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
