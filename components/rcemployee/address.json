@@ -2,7 +2,8 @@
   "collectionName": "components_rcemployee_addresses",
   "info": {
     "name": "address",
-    "icon": "angle-double-right"
+    "icon": "angle-double-right",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -14,6 +15,15 @@
     },
     "added": {
       "type": "datetime"
+    },
+    "street": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "district": {
+      "type": "string"
     }
   }
 }

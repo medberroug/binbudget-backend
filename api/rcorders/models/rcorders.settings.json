@@ -40,6 +40,9 @@
     },
     "deliveryoperator": {
       "model": "deliveryoperators"
+    },
+    "scheduledDate": {
+      "type": "datetime"
     }
   }
 }

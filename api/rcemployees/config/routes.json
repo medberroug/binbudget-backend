@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getUserProfile/:id",
+      "handler": "rcemployees.getUserProfile",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

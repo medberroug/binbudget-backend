@@ -785,6 +785,10 @@
               }
             }
           },
+          "scheduledDate": {
+            "type": "string",
+            "format": "date-time"
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -978,6 +982,10 @@
           },
           "deliveryoperator": {
             "type": "string"
+          },
+          "scheduledDate": {
+            "type": "string",
+            "format": "date-time"
           },
           "published_at": {
             "type": "string",
