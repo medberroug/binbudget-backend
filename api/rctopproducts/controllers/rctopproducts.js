@@ -46,7 +46,7 @@ module.exports = {
                                     name: oneProduct.items[j].name,
                                     waiting: "~30 min",
                                     rank: topProductsList[i].rank,
-                                    sp: topProductsList[i].sp,
+                                    sp : topProductsList[i].sp, 
                                     spName: oneProduct.knownName
                                 }
                                 // Add the top product to the final product list
@@ -60,10 +60,7 @@ module.exports = {
         // Sort the final product list by rank
         myFinalProductList.sort((a, b) => a.rank - b.rank);
         // Return the final product list
-        if (myFinalProductList.length > 0) {
-            return { data: myFinalProductList, action: true }
-        }
-        return { data: [], action: false }
+        return myFinalProductList
     },
 
     async getProductsByCategories(ctx) {
