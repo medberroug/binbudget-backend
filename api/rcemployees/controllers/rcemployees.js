@@ -26,11 +26,11 @@ module.exports = {
         let remainingDaily = rcEmployee.dotation.dailyLimit
         let remainingMonthly = rcEmployee.dotation.monthlyLimit
         for (let i = 0; i < rcOrders.length; i++) {
-            if (isToday(rcOrders.scheduledDate)) {
-                remainingDaily = remainingDaily - rcOrders * (1 - rcEmployee.dotation.cotisation / 100)
+            if (isToday(rcOrders[i].scheduledDate)) {
+                remainingDaily = remainingDaily - rcOrders[i].employeeToPay 
             }
-            if (isThisMonth(rcOrders.scheduledDate)) {
-                remainingMonthly = remainingMonthly - rcOrders * (1 - rcEmployee.dotation.cotisation / 100)
+            if (isThisMonth(rcOrders[i].scheduledDate)) {
+                remainingMonthly = remainingMonthly - rcOrders[i].employeeToPay 
             }
         }
         console.log(rcEmployee.dotation.cotisation);
