@@ -1,0 +1,76 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/rctopproducts",
+      "handler": "rctopproducts.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/rctopproducts/count",
+      "handler": "rctopproducts.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/rctopproducts/:id",
+      "handler": "rctopproducts.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/rctopproducts",
+      "handler": "rctopproducts.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/rctopproducts/:id",
+      "handler": "rctopproducts.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/rctopproducts/:id",
+      "handler": "rctopproducts.delete",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/getTopProducts",
+      "handler": "rctopproducts.getTopProducts",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/getProductsByCategories",
+      "handler": "rctopproducts.getProductsByCategories",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/getCategories",
+      "handler": "rctopproducts.getCategories",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

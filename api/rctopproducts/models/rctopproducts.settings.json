@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rctopproducts",
+  "info": {
+    "name": "rctopproducts",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "prouductId": {
+      "type": "string"
+    },
+    "rank": {
+      "type": "integer"
+    },
+    "from": {
+      "type": "datetime"
+    },
+    "to": {
+      "type": "datetime"
+    },
+    "sp": {
+      "type": "string"
+    }
+  }
+}
