@@ -25,42 +25,47 @@ module.exports = {
         });
         let remainingDaily = rcEmployee.dotation.dailyLimit
         let remainingMonthly = rcEmployee.dotation.monthlyLimit
-        for ( let i=0; i<rcOrders.length;i++){
-            if(isToday(rcOrders.scheduledDate)){
-                remainingDaily = remainingDaily - rcOrders*(1-rcEmployee.dotation.cotisation/100)
+        for (let i = 0; i < rcOrders.length; i++) {
+            if (isToday(rcOrders.scheduledDate)) {
+                remainingDaily = remainingDaily - rcOrders * (1 - rcEmployee.dotation.cotisation / 100)
             }
-            if (isThisMonth(rcOrders.scheduledDate)){
-                remainingMonthly = remainingMonthly - rcOrders*(1-rcEmployee.dotation.cotisation/100)
+            if (isThisMonth(rcOrders.scheduledDate)) {
+                remainingMonthly = remainingMonthly - rcOrders * (1 - rcEmployee.dotation.cotisation / 100)
             }
         }
         console.log(rcEmployee.dotation.cotisation);
-        let cotisation  = rcEmployee.dotation.cotisation + "% Salarié + " + (100 - rcEmployee.dotation.cotisation) + "% Entreprise"
+        let cotisation = rcEmployee.dotation.cotisation + "% Salarié + " + (100 - rcEmployee.dotation.cotisation) + "% Entreprise"
         let today = new Date()
         let accountCreatedDate = formatDistance(today, rcEmployee.createdAt, {
             locale: eoLocale
-          })
-        
+        })
+        let dailyText = (((-remainingDaily + rcEmployee.dotation.dailyLimit) / rcEmployee.dotation.dailyLimit) * 100) + "% (" + (-remainingDaily + rcEmployee.dotation.dailyLimit) + " DH/" + rcEmployee.dotation.dailyLimit + " DH)"
+        let monthlyText = (((rcEmployee.dotation.monthlyLimit - remainingMonthly) / rcEmployee.dotation.monthlyLimit)*100) + "% ("+(rcEmployee.dotation.monthlyLimit-remainingMonthly)+" DH/"+rcEmployee.dotation.monthlyLimit+" DH)"
         let myEmployee = {
             id: id,
             firstName: rcEmployee.firstName,
             lastName: rcEmployee.lastName,
-            phone : rcEmployee.phone,
+            phone: rcEmployee.phone,
             photo: rcEmployee.photo ? rcEmployee.photo.url : "/uploads/user_Image_d2302d4928.jpeg?37490023.600000024",
             dotation: {
                 cotisation: cotisation,
-                dailyLimit: 0,
-                monthlyLimit: 0,
-                remainingDaily : remainingDaily,
-                remainingMonthly : remainingMonthly
+                dailyLimit: rcEmployee.dotation.dailyLimit,
+                monthlyLimit: rcEmployee.dotation.monthlyLimit,
+                remainingDaily: remainingDaily,
+                remainingMonthly: remainingMonthly,
+                dailyText: dailyText,
+                monthlyText: monthlyText,
+                dailyProgress : 1- remainingDaily/rcEmployee.dotation.dailyLimit,
+                monthlyProgress : 1 - remainingMonthly/rcEmployee.dotation.monthlyLimit
             },
             companyName: rcEmployee.company.companyDetails.knowenName,
             status: rcEmployee.status,
-            walletBalance : rcEmployee.walletBalance,
+            walletBalance: rcEmployee.walletBalance,
             accountCreatedDate: accountCreatedDate,
-            address : {
-                street : rcEmployee.address.street,
-                country : rcEmployee.address.country,
-                district : rcEmployee.address.district
+            address: {
+                street: rcEmployee.address.street,
+                country: rcEmployee.address.country,
+                district: rcEmployee.address.district
             }
         }
         return myEmployee
