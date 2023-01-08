@@ -566,6 +566,9 @@
               "walletPaiements": {
                 "type": "component"
               },
+              "canRequestMoreDotation": {
+                "type": "boolean"
+              },
               "published_at": {
                 "type": "string"
               },

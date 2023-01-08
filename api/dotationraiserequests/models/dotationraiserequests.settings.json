@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dotationraiserequests",
+  "info": {
+    "name": "dotationraiserequests",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "rcemployee": {
+      "model": "rcemployees"
+    },
+    "desiredDailyAmount": {
+      "type": "decimal"
+    },
+    "desiredMonthlyLimit": {
+      "type": "decimal"
+    },
+    "arguments": {
+      "type": "text"
+    },
+    "status": {
+      "type": "component",
+      "repeatable": true,
+      "component": "rcemployees.status"
+    },
+    "desiredEmployeeCotisation": {
+      "type": "decimal"
+    }
+  }
+}

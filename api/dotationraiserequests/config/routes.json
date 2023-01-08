@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/dotationraiserequests",
+      "handler": "dotationraiserequests.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dotationraiserequests/count",
+      "handler": "dotationraiserequests.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dotationraiserequests/:id",
+      "handler": "dotationraiserequests.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/dotationraiserequests",
+      "handler": "dotationraiserequests.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/dotationraiserequests/:id",
+      "handler": "dotationraiserequests.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/dotationraiserequests/:id",
+      "handler": "dotationraiserequests.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

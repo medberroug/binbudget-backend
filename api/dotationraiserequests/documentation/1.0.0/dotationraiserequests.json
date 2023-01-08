@@ -1,18 +1,18 @@
 {
   "paths": {
-    "/rcemployees": {
+    "/dotationraiserequests": {
       "get": {
         "deprecated": false,
-        "description": "Find all the rcemployees's records",
+        "description": "Find all the dotationraiserequests's records",
         "responses": {
           "200": {
-            "description": "Retrieve rcemployees document(s)",
+            "description": "Retrieve dotationraiserequests document(s)",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Rcemployees"
+                    "$ref": "#/components/schemas/Dotationraiserequests"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Rcemployees"
+          "Dotationraiserequests"
         ],
         "parameters": [
           {
@@ -194,14 +194,14 @@
       },
       "post": {
         "deprecated": false,
-        "description": "Create a new rcemployees record",
+        "description": "Create a new dotationraiserequests record",
         "responses": {
           "200": {
-            "description": "Retrieve rcemployees document(s)",
+            "description": "Retrieve dotationraiserequests document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Rcemployees"
+                  "$ref": "#/components/schemas/Dotationraiserequests"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Rcemployees"
+          "Dotationraiserequests"
         ],
         "requestBody": {
           "description": "",
@@ -247,20 +247,20 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewRcemployees"
+                "$ref": "#/components/schemas/NewDotationraiserequests"
               }
             }
           }
         }
       }
     },
-    "/rcemployees/count": {
+    "/dotationraiserequests/count": {
       "get": {
         "deprecated": false,
-        "description": "Retrieve the numver of rcemployees documents",
+        "description": "Retrieve the numver of dotationraiserequests documents",
         "responses": {
           "200": {
-            "description": "Retrieve rcemployees document(s)",
+            "description": "Retrieve dotationraiserequests document(s)",
             "content": {
               "application/json": {
                 "schema": {
@@ -306,22 +306,22 @@
         },
         "summary": "",
         "tags": [
-          "Rcemployees"
+          "Dotationraiserequests"
         ],
         "parameters": []
       }
     },
-    "/rcemployees/{id}": {
+    "/dotationraiserequests/{id}": {
       "get": {
         "deprecated": false,
-        "description": "Find one rcemployees record",
+        "description": "Find one dotationraiserequests record",
         "responses": {
           "200": {
-            "description": "Retrieve rcemployees document(s)",
+            "description": "Retrieve dotationraiserequests document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Rcemployees"
+                  "$ref": "#/components/schemas/Dotationraiserequests"
                 }
               }
             }
@@ -359,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Rcemployees"
+          "Dotationraiserequests"
         ],
         "parameters": [
           {
@@ -376,14 +376,14 @@
       },
       "put": {
         "deprecated": false,
-        "description": "Update a single rcemployees record",
+        "description": "Update a single dotationraiserequests record",
         "responses": {
           "200": {
-            "description": "Retrieve rcemployees document(s)",
+            "description": "Retrieve dotationraiserequests document(s)",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Rcemployees"
+                  "$ref": "#/components/schemas/Dotationraiserequests"
                 }
               }
             }
@@ -421,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Rcemployees"
+          "Dotationraiserequests"
         ],
         "requestBody": {
           "description": "",
@@ -429,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewRcemployees"
+                "$ref": "#/components/schemas/NewDotationraiserequests"
               }
             }
           }
@@ -449,10 +449,10 @@
       },
       "delete": {
         "deprecated": false,
-        "description": "Delete a single rcemployees record",
+        "description": "Delete a single dotationraiserequests record",
         "responses": {
           "200": {
-            "description": "deletes a single rcemployees based on the ID supplied",
+            "description": "deletes a single dotationraiserequests based on the ID supplied",
             "content": {
               "application/json": {
                 "schema": {
@@ -495,75 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Rcemployees"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/getUserProfile/{id}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Rcemployees"
+          "Dotationraiserequests"
         ],
         "parameters": [
           {
@@ -582,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Rcemployees": {
+      "Dotationraiserequests": {
         "required": [
           "id"
         ],
@@ -590,83 +522,7 @@
           "id": {
             "type": "string"
           },
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
-          },
-          "photo": {
-            "required": [
-              "id",
-              "name",
-              "hash",
-              "mime",
-              "size",
-              "url",
-              "provider"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "alternativeText": {
-                "type": "string"
-              },
-              "caption": {
-                "type": "string"
-              },
-              "width": {
-                "type": "integer"
-              },
-              "height": {
-                "type": "integer"
-              },
-              "formats": {
-                "type": "object"
-              },
-              "hash": {
-                "type": "string"
-              },
-              "ext": {
-                "type": "string"
-              },
-              "mime": {
-                "type": "string"
-              },
-              "size": {
-                "type": "number"
-              },
-              "url": {
-                "type": "string"
-              },
-              "previewUrl": {
-                "type": "string"
-              },
-              "provider": {
-                "type": "string"
-              },
-              "provider_metadata": {
-                "type": "object"
-              },
-              "related": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "company": {
+          "rcemployee": {
             "required": [
               "id"
             ],
@@ -674,26 +530,41 @@
               "id": {
                 "type": "string"
               },
-              "contactPerson": {
-                "type": "component"
-              },
-              "companyDetails": {
-                "type": "component"
-              },
-              "services": {
-                "type": "component"
-              },
-              "invoicingLimits": {
-                "type": "component"
-              },
-              "parentAccount": {
+              "firstName": {
                 "type": "string"
               },
-              "childAccounts": {
+              "lastName": {
+                "type": "string"
+              },
+              "phone": {
+                "type": "string"
+              },
+              "photo": {
+                "type": "string"
+              },
+              "company": {
+                "type": "string"
+              },
+              "dotation": {
                 "type": "component"
               },
-              "logo": {
-                "type": "string"
+              "status": {
+                "type": "boolean"
+              },
+              "address": {
+                "type": "component"
+              },
+              "companyComments": {
+                "type": "component"
+              },
+              "walletBalance": {
+                "type": "number"
+              },
+              "walletPaiements": {
+                "type": "component"
+              },
+              "canRequestMoreDotation": {
+                "type": "boolean"
               },
               "published_at": {
                 "type": "string"
@@ -706,60 +577,16 @@
               }
             }
           },
-          "dotation": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "cotisation": {
-                "type": "number"
-              },
-              "dailyLimit": {
-                "type": "number"
-              },
-              "monthlyLimit": {
-                "type": "number"
-              }
-            }
+          "desiredDailyAmount": {
+            "type": "number"
+          },
+          "desiredMonthlyLimit": {
+            "type": "number"
+          },
+          "arguments": {
+            "type": "string"
           },
           "status": {
-            "type": "boolean"
-          },
-          "address": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "lat": {
-                "type": "string"
-              },
-              "long": {
-                "type": "string"
-              },
-              "added": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "street": {
-                "type": "string"
-              },
-              "country": {
-                "type": "string"
-              },
-              "district": {
-                "type": "string"
-              }
-            }
-          },
-          "companyComments": {
             "type": "array",
             "items": {
               "type": "object",
@@ -768,96 +595,26 @@
               ],
               "properties": {
                 "id": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "name": {
                   "type": "string"
                 },
                 "comment": {
                   "type": "string"
                 },
-                "added": {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                "addedBy": {
-                  "required": [
-                    "id",
-                    "username",
-                    "email"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "username": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string"
-                    },
-                    "provider": {
-                      "type": "string"
-                    },
-                    "password": {
-                      "type": "string"
-                    },
-                    "resetPasswordToken": {
-                      "type": "string"
-                    },
-                    "confirmationToken": {
-                      "type": "string"
-                    },
-                    "confirmed": {
-                      "type": "boolean"
-                    },
-                    "blocked": {
-                      "type": "boolean"
-                    },
-                    "role": {
-                      "type": "string"
-                    },
-                    "userAccountId": {
-                      "type": "string"
-                    },
-                    "created_by": {
-                      "type": "string"
-                    },
-                    "updated_by": {
-                      "type": "string"
-                    }
-                  }
+                "byClient": {
+                  "type": "string"
                 }
               }
             }
           },
-          "walletBalance": {
+          "desiredEmployeeCotisation": {
             "type": "number"
-          },
-          "walletPaiements": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "amount": {
-                  "type": "number"
-                },
-                "added": {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                "method": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "canRequestMoreDotation": {
-            "type": "boolean",
-            "default": false
           },
           "published_at": {
             "type": "string",
@@ -865,74 +622,21 @@
           }
         }
       },
-      "NewRcemployees": {
+      "NewDotationraiserequests": {
         "properties": {
-          "firstName": {
+          "rcemployee": {
             "type": "string"
           },
-          "lastName": {
-            "type": "string"
+          "desiredDailyAmount": {
+            "type": "number"
           },
-          "phone": {
-            "type": "string"
+          "desiredMonthlyLimit": {
+            "type": "number"
           },
-          "company": {
+          "arguments": {
             "type": "string"
-          },
-          "dotation": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "cotisation": {
-                "type": "number"
-              },
-              "dailyLimit": {
-                "type": "number"
-              },
-              "monthlyLimit": {
-                "type": "number"
-              }
-            }
           },
           "status": {
-            "type": "boolean"
-          },
-          "address": {
-            "type": "object",
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "lat": {
-                "type": "string"
-              },
-              "long": {
-                "type": "string"
-              },
-              "added": {
-                "type": "string",
-                "format": "date-time"
-              },
-              "street": {
-                "type": "string"
-              },
-              "country": {
-                "type": "string"
-              },
-              "district": {
-                "type": "string"
-              }
-            }
-          },
-          "companyComments": {
             "type": "array",
             "items": {
               "type": "object",
@@ -941,96 +645,26 @@
               ],
               "properties": {
                 "id": {
+                  "type": "string"
+                },
+                "date": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "name": {
                   "type": "string"
                 },
                 "comment": {
                   "type": "string"
                 },
-                "added": {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                "addedBy": {
-                  "required": [
-                    "id",
-                    "username",
-                    "email"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "username": {
-                      "type": "string"
-                    },
-                    "email": {
-                      "type": "string"
-                    },
-                    "provider": {
-                      "type": "string"
-                    },
-                    "password": {
-                      "type": "string"
-                    },
-                    "resetPasswordToken": {
-                      "type": "string"
-                    },
-                    "confirmationToken": {
-                      "type": "string"
-                    },
-                    "confirmed": {
-                      "type": "boolean"
-                    },
-                    "blocked": {
-                      "type": "boolean"
-                    },
-                    "role": {
-                      "type": "string"
-                    },
-                    "userAccountId": {
-                      "type": "string"
-                    },
-                    "created_by": {
-                      "type": "string"
-                    },
-                    "updated_by": {
-                      "type": "string"
-                    }
-                  }
+                "byClient": {
+                  "type": "string"
                 }
               }
             }
           },
-          "walletBalance": {
+          "desiredEmployeeCotisation": {
             "type": "number"
-          },
-          "walletPaiements": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "amount": {
-                  "type": "number"
-                },
-                "added": {
-                  "type": "string",
-                  "format": "date-time"
-                },
-                "method": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "canRequestMoreDotation": {
-            "type": "boolean",
-            "default": false
           },
           "published_at": {
             "type": "string",
@@ -1048,7 +682,7 @@
   },
   "tags": [
     {
-      "name": "Rcemployees"
+      "name": "Dotationraiserequests"
     }
   ]
 }

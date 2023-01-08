@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_rcemployees_statuses",
+  "info": {
+    "name": "status",
+    "icon": "align-left"
+  },
+  "options": {},
+  "attributes": {
+    "date": {
+      "type": "datetime"
+    },
+    "name": {
+      "type": "string"
+    },
+    "comment": {
+      "type": "text"
+    },
+    "byClient": {
+      "type": "string"
+    }
+  }
+}
