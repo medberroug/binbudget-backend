@@ -593,61 +593,6 @@
           "id": {
             "type": "string"
           },
-          "rcemployee": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "firstName": {
-                "type": "string"
-              },
-              "lastName": {
-                "type": "string"
-              },
-              "phone": {
-                "type": "string"
-              },
-              "photo": {
-                "type": "string"
-              },
-              "company": {
-                "type": "string"
-              },
-              "dotation": {
-                "type": "component"
-              },
-              "status": {
-                "type": "boolean"
-              },
-              "address": {
-                "type": "component"
-              },
-              "companyComments": {
-                "type": "component"
-              },
-              "walletBalance": {
-                "type": "number"
-              },
-              "walletPaiements": {
-                "type": "component"
-              },
-              "canRequestMoreDotation": {
-                "type": "boolean"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "desiredDailyAmount": {
             "type": "number"
           },
@@ -686,6 +631,9 @@
           },
           "desiredEmployeeCotisation": {
             "type": "number"
+          },
+          "rcemployee": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",
@@ -695,9 +643,6 @@
       },
       "NewDotationraiserequests": {
         "properties": {
-          "rcemployee": {
-            "type": "string"
-          },
           "desiredDailyAmount": {
             "type": "number"
           },
@@ -736,6 +681,9 @@
           },
           "desiredEmployeeCotisation": {
             "type": "number"
+          },
+          "rcemployee": {
+            "type": "string"
           },
           "published_at": {
             "type": "string",

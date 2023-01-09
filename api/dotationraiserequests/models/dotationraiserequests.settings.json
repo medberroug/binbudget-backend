@@ -11,9 +11,6 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "rcemployee": {
-      "model": "rcemployees"
-    },
     "desiredDailyAmount": {
       "type": "decimal"
     },
@@ -30,6 +27,9 @@
     },
     "desiredEmployeeCotisation": {
       "type": "decimal"
+    },
+    "rcemployee": {
+      "type": "string"
     }
   }
 }
