@@ -27,7 +27,6 @@ module.exports = {
                 date : new Date(),
                 name: "created",
                 comment : "La demande a été envoyée par le salarié, en attendant le retour de l'employeur."
-
             }],
             rcemployee :  data.rcemployee,
         }
