@@ -23,12 +23,12 @@ module.exports = {
             desiredMonthlyLimit : data.desiredMonthlyLimit,
             arguments: data.arguments,
             desiredEmployeeCotisation: data.desiredEmployeeCotisation,
-            status : {
+            status : [{
                 date : new Date(),
                 name: "created",
                 comment : "La demande a été envoyée par le salarié, en attendant le retour de l'employeur."
 
-            },
+            }],
             rcemployee : data.rcemployee,
         }
         let result = await strapi.services.dotationraiserequests.create(newRequest);
