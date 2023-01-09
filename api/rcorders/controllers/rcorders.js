@@ -54,6 +54,7 @@ module.exports = {
         let realPrice
         let oldPrice
         if (oneProduct.disocunt) {
+            oneProduct.disocunt = parseInt(oneProduct.disocunt.percentage)
             oldPrice = oneProduct.price * (1 + tax.tvaRestaurationRc / 100)
             oldPrice = parseFloat(oldPrice.toFixed(2))
             realPrice = (oneProduct.price - oneProduct.price * (oneProduct.disocunt / 100)) * (1 + tax.tvaRestaurationRc / 100)
