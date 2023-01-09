@@ -39,6 +39,19 @@ module.exports = {
         let accountCreatedDate = formatDistance(today, rcEmployee.createdAt, {
             locale: eoLocale
         })
+        let dotationRequests = await strapi.services.dotationraiserequests.find({rcemployee : rcEmployee.id});
+        let dotationPendingNotFound = true
+        for (let i = 0;i<dotationRequests.length;i++){
+            let finishedRequest = false 
+            for (let j= 0; j<dotationRequests[i].status.length; j++){
+                if (dotationRequests[i].status[j].name =="finished"){
+                    finishedRequest = true
+                }
+            }
+            if (!finishedRequest){
+                dotationPendingNotFound = false
+            }
+        }
         let dailyText = (((-remainingDaily + rcEmployee.dotation.dailyLimit) / rcEmployee.dotation.dailyLimit) * 100) + "% (" + (-remainingDaily + rcEmployee.dotation.dailyLimit) + " DH/" + rcEmployee.dotation.dailyLimit + " DH)"
         let monthlyText = (((rcEmployee.dotation.monthlyLimit - remainingMonthly) / rcEmployee.dotation.monthlyLimit)*100) + "% ("+(rcEmployee.dotation.monthlyLimit-remainingMonthly)+" DH/"+rcEmployee.dotation.monthlyLimit+" DH)"
         let myEmployee = {
@@ -58,7 +71,9 @@ module.exports = {
                 dailyProgress : 1- remainingDaily/rcEmployee.dotation.dailyLimit,
                 monthlyProgress : 1 - remainingMonthly/rcEmployee.dotation.monthlyLimit
             },
+            canRequestMoreDotation : rcEmployee.canRequestMoreDotation,
             companyName: rcEmployee.company.companyDetails.knowenName,
+            dotationPendingNotFound : dotationPendingNotFound,
             status: rcEmployee.status,
             walletBalance: rcEmployee.walletBalance,
             accountCreatedDate: accountCreatedDate,
