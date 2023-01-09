@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "01/09/2023 1:26:09 AM"
+    "x-generation-date": "01/09/2023 7:14:50 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -11370,6 +11370,94 @@
         ]
       }
     },
+    "/getOneRcProduct/{productId}/{spId}/{rcEmployee}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "foo": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Rcorders"
+        ],
+        "parameters": [
+          {
+            "name": "productId",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "spId",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "rcEmployee",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/rctopproducts": {
       "get": {
         "deprecated": false,
@@ -17691,6 +17779,10 @@
             "type": "integer",
             "default": 15
           },
+          "tvaRestaurationRc": {
+            "type": "number",
+            "default": 10
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -17733,6 +17825,10 @@
           "supplierBuyingDueDate": {
             "type": "integer",
             "default": 15
+          },
+          "tvaRestaurationRc": {
+            "type": "number",
+            "default": 10
           },
           "published_at": {
             "type": "string",
@@ -20313,61 +20409,6 @@
           "number": {
             "type": "string"
           },
-          "rcemployee": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "firstName": {
-                "type": "string"
-              },
-              "lastName": {
-                "type": "string"
-              },
-              "phone": {
-                "type": "string"
-              },
-              "photo": {
-                "type": "string"
-              },
-              "company": {
-                "type": "string"
-              },
-              "dotation": {
-                "type": "component"
-              },
-              "status": {
-                "type": "boolean"
-              },
-              "address": {
-                "type": "component"
-              },
-              "companyComments": {
-                "type": "component"
-              },
-              "walletBalance": {
-                "type": "number"
-              },
-              "walletPaiements": {
-                "type": "component"
-              },
-              "canRequestMoreDotation": {
-                "type": "boolean"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "items": {
             "type": "array",
             "items": {
@@ -20382,97 +20423,6 @@
                 "itemId": {
                   "type": "string"
                 },
-                "sp": {
-                  "required": [
-                    "id",
-                    "knownName",
-                    "smallDescription",
-                    "status"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "knownName": {
-                      "type": "string"
-                    },
-                    "address": {
-                      "type": "component"
-                    },
-                    "speciality": {
-                      "type": "component"
-                    },
-                    "ratingTotal": {
-                      "type": "number"
-                    },
-                    "rating": {
-                      "type": "component"
-                    },
-                    "topImage": {
-                      "type": "string"
-                    },
-                    "logo": {
-                      "type": "string"
-                    },
-                    "smallDescription": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "boolean"
-                    },
-                    "items": {
-                      "type": "component"
-                    },
-                    "shownIn": {
-                      "type": "component"
-                    },
-                    "textMenu": {
-                      "type": "component"
-                    },
-                    "percentageTaking": {
-                      "type": "number"
-                    },
-                    "whatServicesHeCanOffer": {
-                      "type": "component"
-                    },
-                    "category": {
-                      "type": "component"
-                    },
-                    "dueDatesAfter": {
-                      "type": "integer"
-                    },
-                    "ICE": {
-                      "type": "string"
-                    },
-                    "IF": {
-                      "type": "string"
-                    },
-                    "RC": {
-                      "type": "string"
-                    },
-                    "legalName": {
-                      "type": "string"
-                    },
-                    "accountManager": {
-                      "type": "string"
-                    },
-                    "monthlyServiceCost": {
-                      "type": "component"
-                    },
-                    "email": {
-                      "type": "string"
-                    },
-                    "published_at": {
-                      "type": "string"
-                    },
-                    "created_by": {
-                      "type": "string"
-                    },
-                    "updated_by": {
-                      "type": "string"
-                    }
-                  }
-                },
                 "quantity": {
                   "type": "number"
                 },
@@ -20486,6 +20436,9 @@
                   "type": "string"
                 },
                 "photoURL": {
+                  "type": "string"
+                },
+                "sp": {
                   "type": "string"
                 }
               }
@@ -20545,40 +20498,27 @@
               }
             }
           },
-          "deliveryoperator": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "firstName": {
-                "type": "string"
-              },
-              "lastName": {
-                "type": "string"
-              },
-              "phone": {
-                "type": "string"
-              },
-              "status": {
-                "type": "boolean"
-              },
-              "published_at": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
           "scheduledDate": {
             "type": "string",
             "format": "date-time"
+          },
+          "rcemployee": {
+            "type": "string"
+          },
+          "deliveryoperator": {
+            "type": "string"
+          },
+          "subTotal": {
+            "type": "number"
+          },
+          "tax": {
+            "type": "number"
+          },
+          "shippingFees": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
           },
           "published_at": {
             "type": "string",
@@ -20591,9 +20531,6 @@
           "number": {
             "type": "string"
           },
-          "rcemployee": {
-            "type": "string"
-          },
           "items": {
             "type": "array",
             "items": {
@@ -20608,97 +20545,6 @@
                 "itemId": {
                   "type": "string"
                 },
-                "sp": {
-                  "required": [
-                    "id",
-                    "knownName",
-                    "smallDescription",
-                    "status"
-                  ],
-                  "properties": {
-                    "id": {
-                      "type": "string"
-                    },
-                    "knownName": {
-                      "type": "string"
-                    },
-                    "address": {
-                      "type": "component"
-                    },
-                    "speciality": {
-                      "type": "component"
-                    },
-                    "ratingTotal": {
-                      "type": "number"
-                    },
-                    "rating": {
-                      "type": "component"
-                    },
-                    "topImage": {
-                      "type": "string"
-                    },
-                    "logo": {
-                      "type": "string"
-                    },
-                    "smallDescription": {
-                      "type": "string"
-                    },
-                    "status": {
-                      "type": "boolean"
-                    },
-                    "items": {
-                      "type": "component"
-                    },
-                    "shownIn": {
-                      "type": "component"
-                    },
-                    "textMenu": {
-                      "type": "component"
-                    },
-                    "percentageTaking": {
-                      "type": "number"
-                    },
-                    "whatServicesHeCanOffer": {
-                      "type": "component"
-                    },
-                    "category": {
-                      "type": "component"
-                    },
-                    "dueDatesAfter": {
-                      "type": "integer"
-                    },
-                    "ICE": {
-                      "type": "string"
-                    },
-                    "IF": {
-                      "type": "string"
-                    },
-                    "RC": {
-                      "type": "string"
-                    },
-                    "legalName": {
-                      "type": "string"
-                    },
-                    "accountManager": {
-                      "type": "string"
-                    },
-                    "monthlyServiceCost": {
-                      "type": "component"
-                    },
-                    "email": {
-                      "type": "string"
-                    },
-                    "published_at": {
-                      "type": "string"
-                    },
-                    "created_by": {
-                      "type": "string"
-                    },
-                    "updated_by": {
-                      "type": "string"
-                    }
-                  }
-                },
                 "quantity": {
                   "type": "number"
                 },
@@ -20712,6 +20558,9 @@
                   "type": "string"
                 },
                 "photoURL": {
+                  "type": "string"
+                },
+                "sp": {
                   "type": "string"
                 }
               }
@@ -20771,12 +20620,27 @@
               }
             }
           },
-          "deliveryoperator": {
-            "type": "string"
-          },
           "scheduledDate": {
             "type": "string",
             "format": "date-time"
+          },
+          "rcemployee": {
+            "type": "string"
+          },
+          "deliveryoperator": {
+            "type": "string"
+          },
+          "subTotal": {
+            "type": "number"
+          },
+          "tax": {
+            "type": "number"
+          },
+          "shippingFees": {
+            "type": "number"
+          },
+          "total": {
+            "type": "number"
           },
           "published_at": {
             "type": "string",

@@ -30,6 +30,10 @@
     "supplierBuyingDueDate": {
       "type": "integer",
       "default": 15
+    },
+    "tvaRestaurationRc": {
+      "type": "decimal",
+      "default": 10
     }
   }
 }

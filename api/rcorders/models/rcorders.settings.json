@@ -14,9 +14,6 @@
     "number": {
       "type": "string"
     },
-    "rcemployee": {
-      "model": "rcemployees"
-    },
     "items": {
       "type": "component",
       "repeatable": true,
@@ -38,11 +35,26 @@
       "repeatable": false,
       "component": "rcorders.address"
     },
-    "deliveryoperator": {
-      "model": "deliveryoperators"
-    },
     "scheduledDate": {
       "type": "datetime"
+    },
+    "rcemployee": {
+      "type": "string"
+    },
+    "deliveryoperator": {
+      "type": "string"
+    },
+    "subTotal": {
+      "type": "decimal"
+    },
+    "tax": {
+      "type": "decimal"
+    },
+    "shippingFees": {
+      "type": "decimal"
+    },
+    "total": {
+      "type": "decimal"
     }
   }
 }

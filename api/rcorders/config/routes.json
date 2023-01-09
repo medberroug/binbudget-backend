@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getOneRcProduct/:productId/:spId/:rcEmployee",
+      "handler": "rcorders.getOneRcProduct",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }

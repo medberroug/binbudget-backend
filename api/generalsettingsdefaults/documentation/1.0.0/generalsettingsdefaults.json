@@ -353,6 +353,10 @@
             "type": "integer",
             "default": 15
           },
+          "tvaRestaurationRc": {
+            "type": "number",
+            "default": 10
+          },
           "published_at": {
             "type": "string",
             "format": "date-time"
@@ -395,6 +399,10 @@
           "supplierBuyingDueDate": {
             "type": "integer",
             "default": 15
+          },
+          "tvaRestaurationRc": {
+            "type": "number",
+            "default": 10
           },
           "published_at": {
             "type": "string",
