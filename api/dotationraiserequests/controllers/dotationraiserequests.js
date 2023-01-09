@@ -29,7 +29,7 @@ module.exports = {
                 comment : "La demande a été envoyée par le salarié, en attendant le retour de l'employeur."
 
             }],
-            rcemployee : {id : data.rcemployee},
+            rcemployee :  data.rcemployee,
         }
         let result = await strapi.services.dotationraiserequests.create(newRequest);
         return true
