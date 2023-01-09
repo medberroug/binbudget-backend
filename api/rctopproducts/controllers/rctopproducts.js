@@ -96,22 +96,12 @@ module.exports = {
                     items: []
                 }
                 for (let j = 0; j < restauration.length; j++) {
-                    console.log("1");
                     if (restauration[j].status) {
-                        console.log("2");
                         for (let k = 0; k < restauration[j].items.length; k++) {
-                            console.log("3");
                             if (restauration[j].items[k].status) {
-                                console.log("4");
                                 for (let m = 0; m < restauration[j].items[k].shownIn.length; m++) {
-                                    console.log("5");
                                     if (restauration[j].items[k].shownIn[m].serviceName == "restauration-collectif") {
-                                        console.log("6");
                                         for (let p = 0; p < restauration[j].items[k].categories.length; p++) {
-                                            console.log("7");
-                                            console.log(oneCategory.name);
-                                            console.log(restauration[j].items[k].categories[p].name);
-                                            console.log(restauration[j].items[k].categories[p].name == oneCategory.name);
                                             if (restauration[j].items[k].categories[p].name == oneCategory.name) {
                                                 console.log("8");
                                                 let oneItem = {
@@ -119,14 +109,13 @@ module.exports = {
                                                     sp: restauration[j].id,
                                                     name: restauration[j].items[k].name,
                                                     image: restauration[j].items[k].firstImage.url,
-                                                    discount: restauration[j].items[k].disocunt,
+                                                    discount: restauration[j].items[k].disocunt ? restauration[j].items[k].disocunt.percentage : null,
                                                     ratingTotal: restauration[j].ratingTotal,
                                                     ratingQuantity: restauration[j].rating.length > 0 ? restauration[j].rating.length : 1,
                                                     waiting: "~30 min",
                                                     restoName: restauration[j].knownName
                                                 }
                                                 oneCategory.items.push(oneItem)
-
                                             }
                                         }
                                     }
@@ -182,7 +171,7 @@ module.exports = {
                                                 sp: restauration[j].id,
                                                 name: restauration[j].items[k].name,
                                                 image: restauration[j].items[k].firstImage.url,
-                                                discount: restauration[j].items[k].disocunt,
+                                                discount: restauration[j].items[k].disocunt ? restauration[j].items[k].disocunt.percentage : null,
                                                 ratingTotal: restauration[j].ratingTotal,
                                                 ratingQuantity: restauration[j].rating.length > 0 ? restauration[j].rating.length : 1,
                                                 waiting: "~30 min",
