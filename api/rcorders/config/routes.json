@@ -57,8 +57,8 @@
       }
     },
     {
-      "method": "POST",
-      "path": "/controlOrderItems",
+      "method": "GET",
+      "path": "/controlOrderItems/:productId/:spId/:rcEmployee/:quantity",
       "handler": "rcorders.controlOrderItems",
       "config": {
         "policies": []
