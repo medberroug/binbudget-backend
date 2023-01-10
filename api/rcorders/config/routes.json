@@ -55,6 +55,16 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "POST",
+      "path": "/controlOrderItems",
+      "handler": "rcorders.controlOrderItems",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
+
+

@@ -23,23 +23,8 @@ module.exports = {
         });
         let tax = await strapi.services.generalsettingsdefaults.find();
         console.log(tax.tvaRestaurationRc);
-        // let profile = await strapi.services.rcemployees.findOne({ id: rcEmployee });
-        // let profileOrders = await strapi.services.rcorders.find({ rcemployee: rcEmployee });
-        // let employeeTotalToPay = 0
-        // let employeeTotalOrders = 0
-        // let employeeTotalToPayMonth = 0
-        // let employeeTotalOrdersMonth = 0
-        // for (let k = 0; k < profileOrders.length; k++) {
-        //     if (isToday(profileOrders[k].scheduledDate)) {
-        //         employeeTotalToPay = employeeTotalToPay + profileOrders[k].employeeToPay
-        //         employeeTotalOrders = employeeTotalOrders + profileOrders[k].total
-        //     }
-        //     if(isThisMonth(profileOrders[k].scheduledDate)){
-        //         employeeTotalToPayMonth = employeeTotalToPayMonth + profileOrders[k].employeeToPay
-        //         employeeTotalOrdersMonth = employeeTotalOrdersMonth + profileOrders[k].total
-        //     }
-        // }
-        
+
+
         let oneProduct
         for (let i = 0; i < sp.items.length; i++) {
             if (sp.items[i].id == productId) {
@@ -87,8 +72,127 @@ module.exports = {
         }
         return myProduct
     },
+    async controlOrderItems(ctx) {
+        const { productId, spId, rcEmployee, quantity } = ctx.params;
+        let sp = await strapi.services.restauration.findOne({
+            id: spId
+        });
+        let requestItem
+        for (let p = 0; sp.items.length; p++) {
+            if (sp.items[p].id == productId) {
+                requestItem = sp.items[p]
+            }
+        }
+        let tax = await strapi.services.generalsettingsdefaults.find();
+        console.log(tax.tvaRestaurationRc);
+        let rcEmployeeOrders = await strapi.services.restauration.find({
+            rcemployee: rcEmployee
+        });
+        let profile = await strapi.services.rcemployees.find({
+            id: rcEmployee
+        });
+        rcEmployeeOrders.reverse()
+        let activeOrder
+        for (let i = 0; rcEmployeeOrders.length; i++) {
+            let onlyDraft = true
+            for (let j = 0; rcEmployeeOrders[i].status.length; j++) {
+                if (rcEmployeeOrders[i].status[j].name != "draft") {
+                    onlyDraft = false
+                    break
+                }
+            }
+            if (onlyDraft) {
+                activeOrder = rcEmployeeOrders[i]
+                break
+            }
+        }
+        if (activeOrder) {
+
+        } else {
+            let newOrder = {
+                number: rcEmployeeOrders.length + 1,
+                items: [],
+                status: [{
+                    status: "draft",
+                    added: new Date(),
+                }],
+                employeeToPay: null,
+                paymentMethod: null,
+                rcmployee: profile.id,
+                address: {
+                    street: profile.address.street,
+                    country: profile.address.country,
+                    lat: null,
+                    long: null,
+                },
+                subTotal: null,
+                tax: null,
+                shippingFees: null,
+                total: null
+            }
+            // requestItem
+            let itemUP = requestItem.disocunt ? requestItem.price * (1 - parseInt(requestItem.disocunt) / 100) : requestItem.price
+            let myItem = {
+                itemId: requestItem.id,
+                quantity: quantity,
+                up: itemUP,
+                itemName: requestItem.name,
+                photoUrl: requestItem.firstImage ? requestItem.firstImage.url : null,
+                sp: spId,
+                subTotal: itemUP * quantity
+            }
+            newOrder.items.push(myItem)
+            let myShippingFees = 0
+            newOrder.shippingFees = myShippingFees
+            newOrder.subTotal = myItem.subTotal + myShippingFees
+            newOrder.tax = myItem.subTotal * (1 + tax.tvaRestaurationRc / 100)
+            newOrder.total = newOrder.tax + newOrder.subTotal
+            // TODO employeeToPay , paymentMethod , lat long , 
+            let profileOrders = await strapi.services.rcorders.find({ rcemployee: rcEmployee });
+            let totalOrdersDaily = 0
+            let totalOrdersMonthly = 0
+            let howMuchTheCompanyWillPayDaily = 0
+            let howMuchTheCompanyWillPayMonthly = 0
+            for (let k = 0; k < profileOrders.length; k++) {
+                if (isToday(profileOrders[k].scheduledDate)) {
+                    totalOrdersDaily = totalOrdersDaily + profileOrders[K].total
+                    howMuchTheCompanyWillPayDaily = howMuchTheCompanyWillPayDaily +
+                        profileOrders[K].total - profileOrders[k].employeeToPay
+
+                }
+                if (isThisMonth(profileOrders[k].scheduledDate)) {
+                    totalOrdersMonthly = totalOrdersMonthly + profileOrders[K].total
+                    howMuchTheCompanyWillPayMonthly = howMuchTheCompanyWillPayMonthly +
+                        profileOrders[K].total - profileOrders[k].employeeToPay
+                }
+            }
+            let balanceRemainingDaily = 0
+            let balanceRemainingMonthly = 0
+            if (profile.dotation.monthlyLimit > howMuchTheCompanyWillPayMonthly) {
+                balanceRemainingMonthly = profile.dotation.monthlyLimit - howMuchTheCompanyWillPayMonthly
+                if (profile.dotation.dailyLimit > howMuchTheCompanyWillPayDaily) {
+                    balanceRemainingDaily = profile.dotation.dailyLimit - howMuchTheCompanyWillPayDaily
+                } else {
+                    balanceRemainingDaily = 0
+                }
+            } else {
+                balanceRemainingMonthly = 0
+                balanceRemainingDaily = 0
+            }
+            if (balanceRemainingMonthly > 0) {
+                if (balanceRemainingDaily > 0) {
+                    newOrder.employeeToPay = newOrder.total - balanceRemainingDaily
+                } else {
+                    newOrder.employeeToPay = newOrder.total
+                }
+            } else {
+                newOrder.employeeToPay = newOrder.total
+            }
+            let newCreatedOrder = await strapi.services.rcorders.create(newOrder);
+            return newCreatedOrder
+        }
+
+    },
 };
-//63a0a740573980082dc8653d
-// 63a0a429573980082dc8651f
-//63bad8d44c920f7e8f5bd6b2
+
 
