@@ -63,45 +63,54 @@
       "config": {
         "policies": []
       }
-    },{
+    },
+    {
       "method": "GET",
       "path": "/extractKpi",
       "handler": "rcorders.extractKpi",
       "config": {
         "policies": []
       }
-    },{
+    },
+    {
       "method": "GET",
       "path": "/extractKpi2",
       "handler": "rcorders.extractKpi2",
       "config": {
         "policies": []
       }
-    }
-    ,{
+    },
+    {
       "method": "GET",
       "path": "/extractKpi3",
       "handler": "rcorders.extractKpi3",
       "config": {
         "policies": []
       }
-    },{
+    },
+    {
       "method": "GET",
       "path": "/itemAlreadyExistInCart/:productId/:spId/:rcEmployee",
       "handler": "rcorders.itemAlreadyExistInCart",
       "config": {
         "policies": []
       }
-    }
-    ,{
+    },
+    {
       "method": "GET",
       "path": "/activeOrder/:rcEmployee",
       "handler": "rcorders.activeOrder",
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getProposedShippingTime/:rcEmployee",
+      "handler": "rcorders.getProposedShippingTime",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
-
-

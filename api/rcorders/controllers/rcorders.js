@@ -145,6 +145,41 @@ module.exports = {
 
         return [false, "No Active Orders"]
     },
+    async getProposedShippingTime(ctx) {
+        const { rcEmployee } = ctx.params;
+        let rcEmployeeOrders = await strapi.services.rcorders.find({
+            rcemployee: rcEmployee
+        });
+        let activeOrder
+        for (let i = 0; i < rcEmployeeOrders.length; i++) {
+            let onlyDraft = true
+            for (let j = 0; j < rcEmployeeOrders[i].status.length; j++) {
+                if (rcEmployeeOrders[i].status[j].status != "draft") {
+                    onlyDraft = false
+                    break
+                }
+            }
+            if (onlyDraft) {
+                activeOrder = rcEmployeeOrders[i]
+                break
+            }
+        }
+        if (activeOrder) {
+            let startHour = new Date()
+            startHour = addMinutes(startHour, 30)
+            let endHour = new Date()
+            endHour = addMinutes(endHour, 60)
+            let formatedDate = format(startHour, "EEEE d LLL yyyy - HH:mm", {
+                locale: eoLocale
+            }) + format(endHour, " 'et' HH:mm", {
+                locale: eoLocale
+            })
+       
+            return formatedDate
+        }
+
+        return [false, "No Active Orders"]
+    },
     async controlOrderItems(ctx) {
         try {
             const { productId, spId, rcEmployee, quantity } = ctx.params;
@@ -209,9 +244,9 @@ module.exports = {
                 let totalOrdersMonthly = 0
                 let howMuchTheCompanyWillPayDaily = 0
                 let howMuchTheCompanyWillPayMonthly = 0
-                for (let m=0; profileOrders.length;m++){
-                    if(profileOrders[m].id ==newOrder.id){
-                        profileOrders.splice(m,1)
+                for (let m = 0; profileOrders.length; m++) {
+                    if (profileOrders[m].id == newOrder.id) {
+                        profileOrders.splice(m, 1)
                     }
                 }
                 for (let k = 0; k < profileOrders.length; k++) {
@@ -276,8 +311,8 @@ module.exports = {
                     items: newItems,
                     subTotal: newOrder.subTotal,
                     tax: newOrder.tax,
-                    total: newOrder.total, 
-                    employeeToPay : newOrder.employeeToPay
+                    total: newOrder.total,
+                    employeeToPay: newOrder.employeeToPay
                 });
                 return newUpdatedOrder
             } else {
