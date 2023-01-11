@@ -63,6 +63,13 @@
       "config": {
         "policies": []
       }
+    },{
+      "method": "GET",
+      "path": "/extractKpi",
+      "handler": "rcorders.extractKpi",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
