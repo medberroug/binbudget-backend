@@ -231,7 +231,7 @@ module.exports = {
                     quantity: quantity,
                     up: itemUP,
                     itemName: requestItem.name,
-                    photoUrl: requestItem.firstImage ? requestItem.firstImage.url : null,
+                    photoUrl:  requestItem.firstImage.url ,
                     sp: spId,
                     subTotal: itemUP * quantity
                 }
@@ -347,7 +347,7 @@ module.exports = {
                     quantity: quantity,
                     up: itemUP,
                     itemName: requestItem.name,
-                    photoUrl: requestItem.firstImage ? requestItem.firstImage.url : null,
+                    photoUrl:  requestItem.firstImage.url ,
                     sp: spId,
                     subTotal: itemUP * quantity
                 }
