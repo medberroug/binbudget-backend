@@ -123,7 +123,7 @@ module.exports = {
                         status: "draft",
                         added: new Date(),
                     }],
-                    scheduledDate: null,
+                    scheduledDate: scheduledDate,
                     employeeToPay: null,
                     paymentMethod: null,
                     rcemployee: profile.id,
