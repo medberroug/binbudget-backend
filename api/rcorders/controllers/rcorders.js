@@ -150,7 +150,7 @@ module.exports = {
             let myShippingFees = 0
             newOrder.shippingFees = myShippingFees
             newOrder.subTotal = myItem.subTotal + myShippingFees
-            newOrder.tax = myItem.subTotal * (1 + tax.tvaRestaurationRc / 100)
+            newOrder.tax = myItem.subTotal * (tax.tvaRestaurationRc / 100)
             newOrder.total = newOrder.tax + newOrder.subTotal
             // TODO employeeToPay , paymentMethod , lat long , 
             let profileOrders = await strapi.services.rcorders.find({ rcemployee: rcEmployee });
