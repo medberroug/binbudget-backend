@@ -194,8 +194,8 @@ module.exports = {
                 newOrder.employeeToPay = newOrder.total
             }
 
-            // let newCreatedOrder = await strapi.services.rcorders.create(newOrder);
-            return newOrder
+            let newCreatedOrder = await strapi.services.rcorders.create(newOrder);
+            return newCreatedOrder
         }
         } catch (error) {
             console.log(error);
