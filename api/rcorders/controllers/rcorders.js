@@ -145,6 +145,33 @@ module.exports = {
 
         return [false, "No Active Orders"]
     },
+    async changeOrderStatus(ctx) {
+        const { orderId, newStatus } = ctx.params;
+        let order = await strapi.services.rcorders.findOne({
+            id: orderId
+        });
+        if (newStatus == "validated") {
+            let newStatus = {
+                added: new Date(),
+                status: "validated"
+            }
+            order.push(newStatus)
+
+        }
+        let newList = []
+        for (let i = 0; order.status.length; i++) {
+            newList.push({
+                added: order.status[i].added,
+                status: order.status[i].status
+            })
+        }
+        let NewOrder = await strapi.services.rcorders.update({
+            id: orderId
+        }, {
+            status: newList
+        });
+        return [false, "No Active Orders"]
+    },
     async getProposedShippingTime(ctx) {
         const { rcEmployee } = ctx.params;
         let rcEmployeeOrders = await strapi.services.rcorders.find({
@@ -174,8 +201,8 @@ module.exports = {
             }) + format(endHour, " 'et' HH:mm", {
                 locale: eoLocale
             })
-       
-            return {date : formatedDate}
+
+            return { date: formatedDate }
         }
 
         return [false, "No Active Orders"]
@@ -231,7 +258,7 @@ module.exports = {
                     quantity: quantity,
                     up: itemUP,
                     itemName: requestItem.name,
-                    photoURL:  requestItem.firstImage.url ,
+                    photoURL: requestItem.firstImage.url,
                     sp: spId,
                     subTotal: itemUP * quantity
                 }
@@ -347,7 +374,7 @@ module.exports = {
                     quantity: quantity,
                     up: itemUP,
                     itemName: requestItem.name,
-                    photoURL:  requestItem.firstImage.url ,
+                    photoURL: requestItem.firstImage.url,
                     sp: spId,
                     subTotal: itemUP * quantity
                 }

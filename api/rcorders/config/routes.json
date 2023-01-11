@@ -112,5 +112,14 @@
         "policies": []
       }
     }
+    ,
+    {
+      "method": "GET",
+      "path": "/changeOrderStatus/:orderId/:newStatus",
+      "handler": "rcorders.changeOrderStatus",
+      "config": {
+        "policies": []
+      }
+    }
   ]
 }
