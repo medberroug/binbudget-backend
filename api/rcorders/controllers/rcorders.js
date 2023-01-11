@@ -198,11 +198,11 @@ module.exports = {
             } else {
                 newOrder.employeeToPay = newOrder.total
             }
-            if(employeeToPay<0){
-                employeeToPay = 0
+            if(newOrder.employeeToPay<0){
+                newOrder.employeeToPay = 0
             }
-            if(profile.dotation.cotisation>0 && (employeeToPay/newOrder.total)<profile.dotation.cotisation){
-                employeeToPay = newOrder.total*profile.dotation.cotisation/100
+            if(profile.dotation.cotisation>0 && (newOrder.employeeToPay/newOrder.total)<profile.dotation.cotisation){
+                newOrder.employeeToPay = newOrder.total*profile.dotation.cotisation/100
             } 
             let newCreatedOrder = await strapi.services.rcorders.create(newOrder);
             return newCreatedOrder
