@@ -115,7 +115,7 @@ module.exports = {
             
         } else {
             let newOrder = {
-                number: rcEmployeeOrders.length + 1,
+                number: (rcEmployeeOrders.length + 1).toString(),
                 items: [],
                 status: [{
                     status: "draft",
