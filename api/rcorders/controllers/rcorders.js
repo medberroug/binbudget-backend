@@ -93,7 +93,7 @@ module.exports = {
         });
         rcEmployeeOrders.reverse()
         let activeOrder
-        for (let i = 0; i<cEmployeeOrders.length; i++) {
+        for (let i = 0; i<rcEmployeeOrders.length; i++) {
             let onlyDraft = true
             for (let j = 0; j<rcEmployeeOrders[i].status.length; j++) {
                 if (rcEmployeeOrders[i].status[j].name != "draft") {
