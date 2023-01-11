@@ -102,7 +102,7 @@ module.exports = {
                 let onlyDraft = true
                 for (let j = 0; j < rcEmployeeOrders[i].status.length; j++) {
                     console.log("Checking Order : " + rcEmployeeOrders[i].number);
-                    if (rcEmployeeOrders[i].status[j].name != "draft") {
+                    if (rcEmployeeOrders[i].status[j].status != "draft") {
                         onlyDraft = false
                         console.log("Order is not Pending : "+rcEmployeeOrders[i].number);
                         break
