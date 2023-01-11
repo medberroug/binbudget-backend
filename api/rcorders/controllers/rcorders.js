@@ -74,6 +74,10 @@ module.exports = {
     },
     async controlOrderItems(ctx) {
         const { productId, spId, rcEmployee, quantity } = ctx.params;
+        console.log(productId);
+        console.log(spId);
+        console.log(rcEmployee);
+        console.log(quantity);
         let sp = await strapi.services.restauration.findOne({
             id: spId
         });
@@ -88,7 +92,7 @@ module.exports = {
         let rcEmployeeOrders = await strapi.services.rcorders.find({
             rcemployee: rcEmployee
         });
-        let profile = await strapi.services.rcemployees.find({
+        let profile = await strapi.services.rcemployees.findOne({
             id: rcEmployee
         });
         rcEmployeeOrders.reverse()
