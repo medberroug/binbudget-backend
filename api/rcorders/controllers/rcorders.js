@@ -110,7 +110,7 @@ module.exports = {
                 }
             }
             for (let i = 0; i < activeOrder.items.length; i++) {
-                if ( activeOrder.items[i].sp != spId) {
+                if (activeOrder.items[i].sp != spId) {
                     return [true, "la commande en vigueur ne peut provenir que d'un seul restaurateur"]
 
                 }
@@ -251,10 +251,23 @@ module.exports = {
                 if (profile.dotation.cotisation > 0 && (newOrder.employeeToPay / newOrder.total) * 100 < profile.dotation.cotisation) {
                     newOrder.employeeToPay = newOrder.total * profile.dotation.cotisation / 100
                 }
+
+                let newItems = []
+                for (let p = 0; p < newOrder.items.length; p++) {
+                    newItems.push({
+                        itemId: newOrder.items[i].itemId,
+                        quantity: newOrder.items[i].quantity,
+                        up: newOrder.items[i].up,
+                        itemName: newOrder.items[i].itemName,
+                        photoUrl: newOrder.items[i].photoUrl,
+                        sp: newOrder.items[i].sp,
+                        subTotal: newOrder.items[i].subTotal,
+                    })
+                }
                 let newUpdatedOrder = await strapi.services.rcorders.update({
-                    id : newOrder.id
-                },{
-                    items: newOrder.items,
+                    id: newOrder.id
+                }, {
+                    items: newItems,
                     subTotal: newOrder.subTotal,
                     tax: newOrder.tax,
                     total: newOrder.total
@@ -390,7 +403,111 @@ module.exports = {
         } catch (err) {
             console.error(err);
         }
+    },
+
+
+    async extractKpi2() {
+        // Fetch all rcOrders from the database
+        const rcOrders = await strapi.services.rcorders.find();
+
+        // Group orders by employee
+        const employeeOrders = rcOrders.reduce((acc, order) => {
+            if (!acc[order.rcemployee]) {
+                acc[order.rcemployee] = {
+                    id: order.rcemployee,
+                    orders: [],
+                    totalValue: 0,
+                    avgValue: 0,
+                    minValue: Number.MAX_SAFE_INTEGER,
+                    maxValue: Number.MIN_SAFE_INTEGER,
+                };
+            }
+
+            acc[order.rcemployee].orders.push(order);
+            acc[order.rcemployee].totalValue += order.total;
+            acc[order.rcemployee].minValue = Math.min(acc[order.rcemployee].minValue, order.total);
+            acc[order.rcemployee].maxValue = Math.max(acc[order.rcemployee].maxValue, order.total);
+
+            return acc;
+        }, {});
+
+        // Compute average value
+        Object.values(employeeOrders).forEach(employee => {
+            employee.avgValue = employee.totalValue / employee.orders.length;
+        });
+
+        return Object.values(employeeOrders);
+    },
+    async extractKpi3(ctx) {
+        let rcOrders = await strapi.services.rcorders.find();
+        let kpi = {
+            datetime: new Date(),
+            frequencyOfOrders: {
+                daily: 0,
+                weekly: 0,
+                monthly: 0,
+                allTime: 0,
+            },
+            itemsOrders: [],
+            howMuchEmployeePaidTotal: 0,
+            howMuchEmployeePaidAvg: 0,
+            howManyOrdersEmployeeCancelled: 0
+        };
+
+        // Get frequency of orders
+        for (let i = 0; i < rcOrders.length; i++) {
+            kpi.frequencyOfOrders.allTime++;
+            if (isToday(rcOrders[i].scheduledDate)) {
+                kpi.frequencyOfOrders.daily++;
+            }
+            if (isThisWeek(rcOrders[i].scheduledDate)) {
+                kpi.frequencyOfOrders.weekly++;
+            }
+            if (isThisMonth(rcOrders[i].scheduledDate)) {
+                kpi.frequencyOfOrders.monthly++;
+            }
+        }
+
+        // Get itemsOrders
+        for (let i = 0; i < rcOrders.length; i++) {
+            for (let j = 0; j < rcOrders[i].items.length; j++) {
+                let found = false;
+                for (let k = 0; k < kpi.itemsOrders.length; k++) {
+                    if (kpi.itemsOrders[k].itemId === rcOrders[i].items[j].itemId) {
+                        kpi.itemsOrders[k].quantity += rcOrders[i].items[j].quantity;
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) {
+                    kpi.itemsOrders.push({ itemId: rcOrders[i].items[j].itemId, quantity: rcOrders[i].items[j].quantity });
+                }
+            }
+        }
+
+        // Get howMuchEmployeePaidTotal and howManyOrdersEmployeeCancelled
+        for (let i = 0; i < rcOrders.length; i++) {
+            if (rcOrders[i].employeeToPay) {
+                kpi.howMuchEmployeePaidTotal += rcOrders[i].employeeToPay;
+            }
+            for (let j = 0; j < rcOrders[i].status.length; j++) {
+                if (rcOrders[i].status[j].status === "cancelledByEmployee") {
+                    kpi.howManyOrdersEmployeeCancelled++;
+                    break;
+                }
+            }
+        }
+
+        if (rcOrders.length > 0) {
+            kpi.howMuchEmployeePaidAvg = kpi.howMuchEmployeePaidTotal / rcOrders.length;
+        }
+
+        return kpi;
     }
+
+
+
+
 
 };
 
