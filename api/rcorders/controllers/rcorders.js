@@ -73,7 +73,8 @@ module.exports = {
         return myProduct
     },
     async controlOrderItems(ctx) {
-        const { productId, spId, rcEmployee, quantity } = ctx.params;
+        try {
+            const { productId, spId, rcEmployee, quantity } = ctx.params;
         console.log(productId);
         console.log(spId);
         console.log(rcEmployee);
@@ -197,6 +198,9 @@ module.exports = {
             }
             let newCreatedOrder = await strapi.services.rcorders.create(newOrder);
             return newCreatedOrder
+        }
+        } catch (error) {
+            console.log(error);
         }
 
     },
