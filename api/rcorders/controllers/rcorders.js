@@ -202,13 +202,18 @@ module.exports = {
                 }
                 newOrder.items.push(myItem)
                 newOrder.subTotal = newOrder.subTotal + myItem.subTotal
-                newOrder.tax = myItem.subTotal * (tax.tvaRestaurationRc / 100)
+                newOrder.tax = newOrder.subTotal * (tax.tvaRestaurationRc / 100)
                 newOrder.total = newOrder.tax + newOrder.subTotal
                 let profileOrders = await strapi.services.rcorders.find({ rcemployee: rcEmployee });
                 let totalOrdersDaily = 0
                 let totalOrdersMonthly = 0
                 let howMuchTheCompanyWillPayDaily = 0
                 let howMuchTheCompanyWillPayMonthly = 0
+                for (let m=0; profileOrders.length;m++){
+                    if(profileOrders[m].id ==newOrder.id){
+                        profileOrders.splice(m,1)
+                    }
+                }
                 for (let k = 0; k < profileOrders.length; k++) {
                     if (isToday(profileOrders[k].scheduledDate)) {
                         totalOrdersDaily = totalOrdersDaily + profileOrders[k].total
