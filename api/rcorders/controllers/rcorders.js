@@ -188,6 +188,7 @@ module.exports = {
             }
             console.log(activeOrder);
             if (activeOrder) {
+                let newOrder = newOrder
                 let itemUP = requestItem.disocunt ? requestItem.price * (1 - parseInt(requestItem.disocunt.percentage) / 100) : requestItem.price
                 let myItem = {
                     itemId: requestItem.id,
