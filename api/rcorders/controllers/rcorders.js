@@ -78,7 +78,7 @@ module.exports = {
             id: spId
         });
         let requestItem
-        for (let p = 0; p<sp.items.length; p++) {
+        for (let p = 0; p < sp.items.length; p++) {
             if (sp.items[p].id == productId) {
                 requestItem = sp.items[p]
             }
@@ -93,9 +93,9 @@ module.exports = {
         });
         rcEmployeeOrders.reverse()
         let activeOrder
-        for (let i = 0; i<rcEmployeeOrders.length; i++) {
+        for (let i = 0; i < rcEmployeeOrders.length; i++) {
             let onlyDraft = true
-            for (let j = 0; j<rcEmployeeOrders[i].status.length; j++) {
+            for (let j = 0; j < rcEmployeeOrders[i].status.length; j++) {
                 if (rcEmployeeOrders[i].status[j].name != "draft") {
                     onlyDraft = false
                     break
@@ -107,7 +107,8 @@ module.exports = {
             }
         }
         if (activeOrder) {
-
+            console.log(profile.address.street);
+            console.log(profile);
         } else {
             let newOrder = {
                 number: rcEmployeeOrders.length + 1,
