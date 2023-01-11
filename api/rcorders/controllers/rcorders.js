@@ -112,7 +112,7 @@ module.exports = {
             }
         }
         if (activeOrder) {
-            
+            return "Already"
         } else {
             let newOrder = {
                 number: (rcEmployeeOrders.length + 1).toString(),
@@ -184,6 +184,8 @@ module.exports = {
                 balanceRemainingMonthly = 0
                 balanceRemainingDaily = 0
             }
+            console.log(balanceRemainingMonthly);
+            console.log(balanceRemainingDaily);
             if (balanceRemainingMonthly > 0) {
                 if (balanceRemainingDaily > 0) {
                     newOrder.employeeToPay = newOrder.total - balanceRemainingDaily
