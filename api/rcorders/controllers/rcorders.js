@@ -160,7 +160,7 @@ module.exports = {
             order.scheduledDate = addMinutes(now, 30)
         }
         let newList = []
-        for (let i = 0; order.status.length; i++) {
+        for (let i = 0;i< order.status.length; i++) {
             newList.push({
                 added: order.status[i].added,
                 status: order.status[i].status
