@@ -252,6 +252,8 @@ module.exports = {
                     newOrder.employeeToPay = newOrder.total * profile.dotation.cotisation / 100
                 }
                 let newUpdatedOrder = await strapi.services.rcorders.update({
+                    id : newOrder.id
+                },{
                     items: newOrder.items,
                     subTotal: newOrder.subTotal,
                     tax: newOrder.tax,
