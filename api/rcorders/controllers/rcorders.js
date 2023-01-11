@@ -163,15 +163,15 @@ module.exports = {
                 let howMuchTheCompanyWillPayMonthly = 0
                 for (let k = 0; k < profileOrders.length; k++) {
                     if (isToday(profileOrders[k].scheduledDate)) {
-                        totalOrdersDaily = totalOrdersDaily + profileOrders[K].total
+                        totalOrdersDaily = totalOrdersDaily + profileOrders[k].total
                         howMuchTheCompanyWillPayDaily = howMuchTheCompanyWillPayDaily +
-                            profileOrders[K].total - profileOrders[k].employeeToPay
+                            profileOrders[k].total - profileOrders[k].employeeToPay
 
                     }
                     if (isThisMonth(profileOrders[k].scheduledDate)) {
-                        totalOrdersMonthly = totalOrdersMonthly + profileOrders[K].total
+                        totalOrdersMonthly = totalOrdersMonthly + profileOrders[k].total
                         howMuchTheCompanyWillPayMonthly = howMuchTheCompanyWillPayMonthly +
-                            profileOrders[K].total - profileOrders[k].employeeToPay
+                            profileOrders[k].total - profileOrders[k].employeeToPay
                     }
                 }
                 let balanceRemainingDaily = 0
