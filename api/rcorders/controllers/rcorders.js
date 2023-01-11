@@ -109,6 +109,7 @@ module.exports = {
         if (activeOrder) {
             
         } else {
+            console.log("XXXXXXXXX");
             console.log(profile.address.street);
             console.log(profile);
             let newOrder = {
