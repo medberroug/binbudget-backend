@@ -201,11 +201,11 @@ module.exports = {
                 console.log("balanceRemainingMonthly: "+balanceRemainingMonthly);
                 console.log("balanceRemainingDaily: "+balanceRemainingDaily);
                 console.log("newOrder.employeeToPay: "+newOrder.employeeToPay);
-                
+
                 if (newOrder.employeeToPay < 0) {
                     newOrder.employeeToPay = 0
                 }
-                if (profile.dotation.cotisation > 0 && (newOrder.employeeToPay / newOrder.total) < profile.dotation.cotisation) {
+                if (profile.dotation.cotisation > 0 && (newOrder.employeeToPay / newOrder.total)*100 < profile.dotation.cotisation) {
                     newOrder.employeeToPay = newOrder.total * profile.dotation.cotisation / 100
                 }
                 let newCreatedOrder = await strapi.services.rcorders.create(newOrder);
