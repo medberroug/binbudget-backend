@@ -231,7 +231,7 @@ module.exports = {
                     quantity: quantity,
                     up: itemUP,
                     itemName: requestItem.name,
-                    photoUrl:  requestItem.firstImage.url ,
+                    photoURL:  requestItem.firstImage.url ,
                     sp: spId,
                     subTotal: itemUP * quantity
                 }
@@ -300,7 +300,7 @@ module.exports = {
                         quantity: newOrder.items[p].quantity,
                         up: newOrder.items[p].up,
                         itemName: newOrder.items[p].itemName,
-                        photoUrl: newOrder.items[p].photoUrl,
+                        photoURL: newOrder.items[p].photoUrl,
                         sp: newOrder.items[p].sp,
                         subTotal: newOrder.items[p].subTotal,
                     })
