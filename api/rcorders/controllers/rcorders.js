@@ -175,7 +175,7 @@ module.exports = {
                 locale: eoLocale
             })
        
-            return formatedDate
+            return {date : formatedDate}
         }
 
         return [false, "No Active Orders"]
