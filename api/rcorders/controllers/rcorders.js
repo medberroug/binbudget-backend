@@ -9,7 +9,7 @@ var isBefore = require('date-fns/isBefore')
 var isAfter = require('date-fns/isAfter')
 var formatDistance = require('date-fns/formatDistance')
 var isThisMonth = require('date-fns/isThisMonth')
-
+var addMinutes = require('date-fns/addMinutes')
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
  * to customize this controller
@@ -114,6 +114,8 @@ module.exports = {
         if (activeOrder) {
             return "Already"
         } else {
+            let scheduledDate = new Date()
+            scheduledDate = addMinutes(scheduledDate,30)
             let newOrder = {
                 number: (rcEmployeeOrders.length + 1).toString(),
                 items: [],
@@ -121,6 +123,7 @@ module.exports = {
                     status: "draft",
                     added: new Date(),
                 }],
+                scheduledDate : null,
                 employeeToPay: null,
                 paymentMethod: null,
                 rcemployee: profile.id,
@@ -195,7 +198,12 @@ module.exports = {
             } else {
                 newOrder.employeeToPay = newOrder.total
             }
-
+            if(employeeToPay<0){
+                employeeToPay = 0
+            }
+            if(profile.dotation.cotisation>0 && (employeeToPay/newOrder.total)<profile.dotation.cotisation){
+                employeeToPay = newOrder.total*profile.dotation.cotisation/100
+            } 
             let newCreatedOrder = await strapi.services.rcorders.create(newOrder);
             return newCreatedOrder
         }
