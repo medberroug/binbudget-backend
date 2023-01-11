@@ -155,8 +155,9 @@ module.exports = {
                 added: new Date(),
                 status: "validated"
             }
-            order.push(newStatus)
-
+            order.status.push(newStatus)
+            let now = new Date()
+            order.scheduledDate = addMinutes(now, 30)
         }
         let newList = []
         for (let i = 0; order.status.length; i++) {
@@ -165,12 +166,14 @@ module.exports = {
                 status: order.status[i].status
             })
         }
+
         let NewOrder = await strapi.services.rcorders.update({
             id: orderId
         }, {
-            status: newList
+            status: newList,
+            scheduledDate: order.scheduledDate
         });
-        return [false, "No Active Orders"]
+        return NewOrder
     },
     async getProposedShippingTime(ctx) {
         const { rcEmployee } = ctx.params;
