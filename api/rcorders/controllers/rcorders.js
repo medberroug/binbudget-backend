@@ -106,15 +106,21 @@ module.exports = {
         if (activeOrder) {
             for (let i = 0; i < activeOrder.items.length; i++) {
                 if (activeOrder.items[i].itemId == productId && activeOrder.items[i].sp == spId) {
-                    return [true, "Vous avez déjà ajouté cet article x " + activeOrder.items[i].quantity + " à votre panier"]
+                    return [true, "Déjà ajouté au panier."]
+                }
+            }
+            for (let i = 0; i < activeOrder.items.length; i++) {
+                if ( activeOrder.items[i].sp != spId) {
+                    return [true, "la commande en vigueur ne peut provenir que d'un seul restaurateur"]
+
                 }
             }
         }
 
         return [false, "Not Added"]
-    }, 
+    },
     async activeOrder(ctx) {
-        const {  rcEmployee } = ctx.params;
+        const { rcEmployee } = ctx.params;
         let rcEmployeeOrders = await strapi.services.rcorders.find({
             rcemployee: rcEmployee
         });
@@ -182,7 +188,75 @@ module.exports = {
             }
             console.log(activeOrder);
             if (activeOrder) {
-                return "Already"
+                let itemUP = requestItem.disocunt ? requestItem.price * (1 - parseInt(requestItem.disocunt.percentage) / 100) : requestItem.price
+                let myItem = {
+                    itemId: requestItem.id,
+                    quantity: quantity,
+                    up: itemUP,
+                    itemName: requestItem.name,
+                    photoUrl: requestItem.firstImage ? requestItem.firstImage.url : null,
+                    sp: spId,
+                    subTotal: itemUP * quantity
+                }
+                newOrder.items.push(myItem)
+                newOrder.subTotal = newOrder.subTotal + myItem.subTotal
+                newOrder.tax = myItem.subTotal * (tax.tvaRestaurationRc / 100)
+                newOrder.total = newOrder.tax + newOrder.subTotal
+                let profileOrders = await strapi.services.rcorders.find({ rcemployee: rcEmployee });
+                let totalOrdersDaily = 0
+                let totalOrdersMonthly = 0
+                let howMuchTheCompanyWillPayDaily = 0
+                let howMuchTheCompanyWillPayMonthly = 0
+                for (let k = 0; k < profileOrders.length; k++) {
+                    if (isToday(profileOrders[k].scheduledDate)) {
+                        totalOrdersDaily = totalOrdersDaily + profileOrders[k].total
+                        howMuchTheCompanyWillPayDaily = howMuchTheCompanyWillPayDaily +
+                            profileOrders[k].total - profileOrders[k].employeeToPay
+
+                    }
+                    if (isThisMonth(profileOrders[k].scheduledDate)) {
+                        totalOrdersMonthly = totalOrdersMonthly + profileOrders[k].total
+                        howMuchTheCompanyWillPayMonthly = howMuchTheCompanyWillPayMonthly +
+                            profileOrders[k].total - profileOrders[k].employeeToPay
+                    }
+                }
+                let balanceRemainingDaily = 0
+                let balanceRemainingMonthly = 0
+                if (profile.dotation.monthlyLimit > howMuchTheCompanyWillPayMonthly) {
+                    balanceRemainingMonthly = profile.dotation.monthlyLimit - howMuchTheCompanyWillPayMonthly
+                    if (profile.dotation.dailyLimit > howMuchTheCompanyWillPayDaily) {
+                        balanceRemainingDaily = profile.dotation.dailyLimit - howMuchTheCompanyWillPayDaily
+                    } else {
+                        balanceRemainingDaily = 0
+                    }
+                } else {
+                    balanceRemainingMonthly = 0
+                    balanceRemainingDaily = 0
+                }
+                console.log(balanceRemainingMonthly);
+                console.log(balanceRemainingDaily);
+                if (balanceRemainingMonthly > 0) {
+                    if (balanceRemainingDaily > 0) {
+                        newOrder.employeeToPay = newOrder.total - balanceRemainingDaily
+                    } else {
+                        newOrder.employeeToPay = newOrder.total
+                    }
+                } else {
+                    newOrder.employeeToPay = newOrder.total
+                }
+                if (newOrder.employeeToPay < 0) {
+                    newOrder.employeeToPay = 0
+                }
+                if (profile.dotation.cotisation > 0 && (newOrder.employeeToPay / newOrder.total) * 100 < profile.dotation.cotisation) {
+                    newOrder.employeeToPay = newOrder.total * profile.dotation.cotisation / 100
+                }
+                let newUpdatedOrder = await strapi.services.rcorders.update({
+                    items: newOrder.items,
+                    subTotal: newOrder.subTotal,
+                    tax: newOrder.tax,
+                    total: newOrder.total
+                });
+                return newUpdatedOrder
             } else {
                 let scheduledDate = new Date()
                 scheduledDate = addMinutes(scheduledDate, 30)
@@ -268,10 +342,6 @@ module.exports = {
                 } else {
                     newOrder.employeeToPay = newOrder.total
                 }
-                console.log("balanceRemainingMonthly: " + balanceRemainingMonthly);
-                console.log("balanceRemainingDaily: " + balanceRemainingDaily);
-                console.log("newOrder.employeeToPay: " + newOrder.employeeToPay);
-
                 if (newOrder.employeeToPay < 0) {
                     newOrder.employeeToPay = 0
                 }
