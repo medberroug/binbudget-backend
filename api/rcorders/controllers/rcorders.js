@@ -111,6 +111,7 @@ module.exports = {
                     break
                 }
             }
+            console.log(activeOrder);
             if (activeOrder) {
                 return "Already"
             } else {
