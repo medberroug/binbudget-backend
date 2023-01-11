@@ -9,6 +9,7 @@ var isBefore = require('date-fns/isBefore')
 var isAfter = require('date-fns/isAfter')
 var formatDistance = require('date-fns/formatDistance')
 var isThisMonth = require('date-fns/isThisMonth')
+var isThisWeek = require('date-fns/isThisWeek')
 var addMinutes = require('date-fns/addMinutes')
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
