@@ -114,9 +114,6 @@ module.exports = {
         if (activeOrder) {
             
         } else {
-            // console.log("XXXXXXXXX");
-            // console.log(profile.address.street);
-            // console.log(profile);
             let newOrder = {
                 number: rcEmployeeOrders.length + 1,
                 items: [],
@@ -196,8 +193,9 @@ module.exports = {
             } else {
                 newOrder.employeeToPay = newOrder.total
             }
-            let newCreatedOrder = await strapi.services.rcorders.create(newOrder);
-            return newCreatedOrder
+
+            // let newCreatedOrder = await strapi.services.rcorders.create(newOrder);
+            return newOrder
         }
         } catch (error) {
             console.log(error);
