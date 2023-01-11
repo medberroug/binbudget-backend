@@ -138,7 +138,7 @@ module.exports = {
                 total: null
             }
             // requestItem
-            let itemUP = requestItem.disocunt ? requestItem.price * (1 - parseInt(requestItem.disocunt) / 100) : requestItem.price
+            let itemUP = requestItem.disocunt ? requestItem.price * (1 - parseInt(requestItem.disocunt.percentage) / 100) : requestItem.price
             let myItem = {
                 itemId: requestItem.id,
                 quantity: quantity,
