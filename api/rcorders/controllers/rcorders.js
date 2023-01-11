@@ -271,7 +271,8 @@ module.exports = {
                     items: newItems,
                     subTotal: newOrder.subTotal,
                     tax: newOrder.tax,
-                    total: newOrder.total
+                    total: newOrder.total, 
+                    employeeToPay : newOrder.employeeToPay
                 });
                 return newUpdatedOrder
             } else {
