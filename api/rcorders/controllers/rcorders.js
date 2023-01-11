@@ -256,13 +256,13 @@ module.exports = {
                 let newItems = []
                 for (let p = 0; p < newOrder.items.length; p++) {
                     newItems.push({
-                        itemId: newOrder.items[i].itemId,
-                        quantity: newOrder.items[i].quantity,
-                        up: newOrder.items[i].up,
-                        itemName: newOrder.items[i].itemName,
-                        photoUrl: newOrder.items[i].photoUrl,
-                        sp: newOrder.items[i].sp,
-                        subTotal: newOrder.items[i].subTotal,
+                        itemId: newOrder.items[p].itemId,
+                        quantity: newOrder.items[p].quantity,
+                        up: newOrder.items[p].up,
+                        itemName: newOrder.items[p].itemName,
+                        photoUrl: newOrder.items[p].photoUrl,
+                        sp: newOrder.items[p].sp,
+                        subTotal: newOrder.items[p].subTotal,
                     })
                 }
                 let newUpdatedOrder = await strapi.services.rcorders.update({
