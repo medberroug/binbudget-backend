@@ -85,7 +85,7 @@ module.exports = {
         }
         let tax = await strapi.services.generalsettingsdefaults.find();
         console.log(tax.tvaRestaurationRc);
-        let rcEmployeeOrders = await strapi.services.restauration.find({
+        let rcEmployeeOrders = await strapi.services.rcorders.find({
             rcemployee: rcEmployee
         });
         let profile = await strapi.services.rcemployees.find({
