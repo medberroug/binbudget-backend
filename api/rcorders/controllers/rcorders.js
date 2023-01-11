@@ -72,6 +72,72 @@ module.exports = {
         }
         return myProduct
     },
+    async itemAlreadyExistInCart(ctx) {
+        const { productId, spId, rcEmployee } = ctx.params;
+        let sp = await strapi.services.restauration.findOne({
+            id: spId
+        });
+        let oneProduct
+        for (let i = 0; i < sp.items.length; i++) {
+            if (sp.items[i].id == productId) {
+                oneProduct = sp.items[i]
+            }
+        }
+        let rcEmployeeOrders = await strapi.services.rcorders.find({
+            rcemployee: rcEmployee
+        });
+        let activeOrder
+        for (let i = 0; i < rcEmployeeOrders.length; i++) {
+            let onlyDraft = true
+            for (let j = 0; j < rcEmployeeOrders[i].status.length; j++) {
+                console.log("Checking Order : " + rcEmployeeOrders[i].number);
+                if (rcEmployeeOrders[i].status[j].status != "draft") {
+                    onlyDraft = false
+                    console.log("Order is not Pending : " + rcEmployeeOrders[i].number);
+                    break
+                }
+            }
+            if (onlyDraft) {
+                console.log("Order is Pending :" + rcEmployeeOrders[i].number);
+                activeOrder = rcEmployeeOrders[i]
+                break
+            }
+        }
+        if (activeOrder) {
+            for (let i = 0; i < activeOrder.items.length; i++) {
+                if (activeOrder.items[i].itemId == productId && activeOrder.items[i].sp == spId) {
+                    return [true, "Vous avez déjà ajouté cet article x " + activeOrder.items[i].quantity + " à votre panier"]
+                }
+            }
+        }
+
+        return [false, "Not Added"]
+    }, 
+    async activeOrder(ctx) {
+        const {  rcEmployee } = ctx.params;
+        let rcEmployeeOrders = await strapi.services.rcorders.find({
+            rcemployee: rcEmployee
+        });
+        let activeOrder
+        for (let i = 0; i < rcEmployeeOrders.length; i++) {
+            let onlyDraft = true
+            for (let j = 0; j < rcEmployeeOrders[i].status.length; j++) {
+                if (rcEmployeeOrders[i].status[j].status != "draft") {
+                    onlyDraft = false
+                    break
+                }
+            }
+            if (onlyDraft) {
+                activeOrder = rcEmployeeOrders[i]
+                break
+            }
+        }
+        if (activeOrder) {
+            return [true, activeOrder]
+        }
+
+        return [false, "No Active Orders"]
+    },
     async controlOrderItems(ctx) {
         try {
             const { productId, spId, rcEmployee, quantity } = ctx.params;
@@ -104,12 +170,12 @@ module.exports = {
                     console.log("Checking Order : " + rcEmployeeOrders[i].number);
                     if (rcEmployeeOrders[i].status[j].status != "draft") {
                         onlyDraft = false
-                        console.log("Order is not Pending : "+rcEmployeeOrders[i].number);
+                        console.log("Order is not Pending : " + rcEmployeeOrders[i].number);
                         break
                     }
                 }
                 if (onlyDraft) {
-                    console.log("Order is Pending :"+ rcEmployeeOrders[i].number);
+                    console.log("Order is Pending :" + rcEmployeeOrders[i].number);
                     activeOrder = rcEmployeeOrders[i]
                     break
                 }
@@ -202,14 +268,14 @@ module.exports = {
                 } else {
                     newOrder.employeeToPay = newOrder.total
                 }
-                console.log("balanceRemainingMonthly: "+balanceRemainingMonthly);
-                console.log("balanceRemainingDaily: "+balanceRemainingDaily);
-                console.log("newOrder.employeeToPay: "+newOrder.employeeToPay);
+                console.log("balanceRemainingMonthly: " + balanceRemainingMonthly);
+                console.log("balanceRemainingDaily: " + balanceRemainingDaily);
+                console.log("newOrder.employeeToPay: " + newOrder.employeeToPay);
 
                 if (newOrder.employeeToPay < 0) {
                     newOrder.employeeToPay = 0
                 }
-                if (profile.dotation.cotisation > 0 && (newOrder.employeeToPay / newOrder.total)*100 < profile.dotation.cotisation) {
+                if (profile.dotation.cotisation > 0 && (newOrder.employeeToPay / newOrder.total) * 100 < profile.dotation.cotisation) {
                     newOrder.employeeToPay = newOrder.total * profile.dotation.cotisation / 100
                 }
                 let newCreatedOrder = await strapi.services.rcorders.create(newOrder);

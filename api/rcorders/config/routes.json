@@ -70,6 +70,21 @@
       "config": {
         "policies": []
       }
+    },{
+      "method": "GET",
+      "path": "/itemAlreadyExistInCart/:productId/:spId/:rcEmployee",
+      "handler": "rcorders.itemAlreadyExistInCart",
+      "config": {
+        "policies": []
+      }
+    }
+    ,{
+      "method": "GET",
+      "path": "/activeOrder/:rcEmployee",
+      "handler": "rcorders.activeOrder",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
