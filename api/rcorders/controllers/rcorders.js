@@ -107,9 +107,10 @@ module.exports = {
             }
         }
         if (activeOrder) {
+            
+        } else {
             console.log(profile.address.street);
             console.log(profile);
-        } else {
             let newOrder = {
                 number: rcEmployeeOrders.length + 1,
                 items: [],
