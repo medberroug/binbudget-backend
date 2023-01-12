@@ -472,7 +472,7 @@ module.exports = {
                 let totalOrdersMonthly = 0
                 let howMuchTheCompanyWillPayDaily = 0
                 let howMuchTheCompanyWillPayMonthly = 0
-                for (let m = 0; profileOrders.length; m++) {
+                for (let m = 0; m<profileOrders.length; m++) {
                     if (profileOrders[m].id == newOrder.id) {
                         profileOrders.splice(m, 1)
                     }
