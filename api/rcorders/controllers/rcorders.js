@@ -150,10 +150,10 @@ module.exports = {
         let order = await strapi.services.rcorders.findOne({
             id: orderId
         });
-        if (newStatus == "validated") {
+        if (newStatus == "created") {
             let newStatus = {
                 added: new Date(),
-                status: "validated"
+                status: "created"
             }
             order.status.push(newStatus)
             let now = new Date()
@@ -227,27 +227,23 @@ module.exports = {
                     });
                     spName = spName.knownName
                     let myStatus
-                    switch (rcEmployeeOrders[i].status[rcEmployeeOrders[i].status.length - 1].status) {
-                        case "created":
-                            myStatus = "En cours"
-                            break;
-                        case "preparationFinished":
-                            myStatus = "En cours"
-                            break;
-                        case "deliveryTookOrder":
-                            myStatus = "En cours"
-                            break;
-                        case "shipped":
-                            myStatus = "Livré"
-                            break;
+                    let latestStatus = rcEmployeeOrders[i].status[rcEmployeeOrders[i].status.length - 1].status
+                    if (latestStatus == "created") {
+                        myStatus = "En cours"
+                    } else if (latestStatus == "preparationFinished") {
+                        myStatus = "En cours"
+                    } else if (latestStatus == "deliveryTookOrder") {
+                        myStatus = "En cours"
+                    } else if (latestStatus == "shipped") {
+                        myStatus = "Livré"
                     }
-                    let now = new Date()
+                    console.log(latestStatus);
+                    console.log(rcEmployeeOrders[i].status[rcEmployeeOrders[i].status.length - 1]);
                     let myClosedOrder = {
                         number: rcEmployeeOrders[i].number,
                         spName: spName,
                         employeeToPay: rcEmployeeOrders[i].employeeToPay,
                         status: myStatus
-
                     }
                     closedOrders.push(myClosedOrder)
                 }
@@ -267,31 +263,28 @@ module.exports = {
                 });
                 spName = spName.knownName
                 let myStatus
-                switch (rcEmployeeOrders[i].status[rcEmployeeOrders[i].status.length - 1].status) {
-                    case "cancelled":
-                        myStatus = "Annulé"
-                        break;
-                    case "notValidated":
-                        myStatus = "Annulé"
-                        break;
-                    case "closed":
-                        myStatus = "Clôturé"
-                        break;
+                let latestStatus = rcEmployeeOrders[i].status[rcEmployeeOrders[i].status.length - 1].status
+              
+                if (latestStatus == "cancelled") {
+                    myStatus = "Annulé"
+                } else if (latestStatus == "notValidated") {
+                    myStatus = "Annulé"
+                } else if (latestStatus == "closed") {
+                    myStatus = "Clôturé"
                 }
-                let now = new Date()
                 let myPendingOrder = {
                     number: rcEmployeeOrders[i].number,
                     spName: spName,
                     employeeToPay: rcEmployeeOrders[i].employeeToPay,
                     status: myStatus
-
                 }
                 pendingOrders.push(myPendingOrder)
             }
         }
 
 
-
+        pendingOrders.reverse()
+        closedOrders.reverse()
         return [pendingOrders, closedOrders]
     },
     async controlOrderItems(ctx) {
