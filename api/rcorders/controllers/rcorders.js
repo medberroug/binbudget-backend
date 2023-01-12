@@ -239,6 +239,7 @@ module.exports = {
                     }
                     console.log(latestStatus);
                     console.log(rcEmployeeOrders[i].status[rcEmployeeOrders[i].status.length - 1]);
+
                     let myClosedOrder = {
                         number: rcEmployeeOrders[i].number,
                         spName: spName,
@@ -285,7 +286,15 @@ module.exports = {
 
         pendingOrders.reverse()
         closedOrders.reverse()
-        return [pendingOrders, closedOrders]
+        let pendingExist = false 
+        let closedExist= false 
+        if(pendingOrders.length>0){
+            pendingExist = true
+        } 
+        if (closedOrders.length>0){
+            closedExist = true
+        }
+        return [pendingOrders, closedOrders , pendingExist , closedExist]
     },
     async controlOrderItems(ctx) {
         try {
