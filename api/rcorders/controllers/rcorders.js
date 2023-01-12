@@ -160,7 +160,7 @@ module.exports = {
             order.scheduledDate = addMinutes(now, 30)
         }
         let newList = []
-        for (let i = 0;i< order.status.length; i++) {
+        for (let i = 0; i < order.status.length; i++) {
             newList.push({
                 added: order.status[i].added,
                 status: order.status[i].status
@@ -209,6 +209,90 @@ module.exports = {
         }
 
         return [false, "No Active Orders"]
+    },
+    async getRcEmployeeOrders(ctx) {
+        const { rcEmployee } = ctx.params;
+        let rcEmployeeOrders = await strapi.services.rcorders.find({
+            rcemployee: rcEmployee
+        });
+        let pendingOrders = []
+        let closedOrders = []
+
+        for (let i = 0; i < rcEmployeeOrders.length; i++) {
+            for (let j = 0; j < rcEmployeeOrders[i].status.length; j++) {
+                if (rcEmployeeOrders[i].status[j].status == "closed" || rcEmployeeOrders[i].status[j].status == "notValidated"
+                    || rcEmployeeOrders[i].status[j].status == "cancelled") {
+                    let spName = await strapi.services.restauration.findOne({
+                        id: rcEmployeeOrders[i].items[0].sp
+                    });
+                    spName = spName.knownName
+                    let myStatus
+                    switch (rcEmployeeOrders[i].status[rcEmployeeOrders[i].status.length - 1].status) {
+                        case "created":
+                            myStatus = "En cours"
+                            break;
+                        case "preparationFinished":
+                            myStatus = "En cours"
+                            break;
+                        case "deliveryTookOrder":
+                            myStatus = "En cours"
+                            break;
+                        case "shipped":
+                            myStatus = "Livré"
+                            break;
+                    }
+                    let now = new Date()
+                    let myClosedOrder = {
+                        number: rcEmployeeOrders[i].number,
+                        spName: spName,
+                        employeeToPay: rcEmployeeOrders[i].employeeToPay,
+                        status: myStatus
+
+                    }
+                    closedOrders.push(myClosedOrder)
+                }
+            }
+        }
+        for (let i = 0; i < rcEmployeeOrders.length; i++) {
+            let itsClosed = false
+            for (let j = 0; j < closedOrders.length; j++) {
+                if (closedOrders[j].id == rcEmployeeOrders[i].id) {
+                    itsClosed = true
+                    break
+                }
+            }
+            if (!itsClosed) {
+                let spName = await strapi.services.restauration.findOne({
+                    id: rcEmployeeOrders[i].items[0].sp
+                });
+                spName = spName.knownName
+                let myStatus
+                switch (rcEmployeeOrders[i].status[rcEmployeeOrders[i].status.length - 1].status) {
+                    case "cancelled":
+                        myStatus = "Annulé"
+                        break;
+                    case "notValidated":
+                        myStatus = "Annulé"
+                        break;
+                    case "closed":
+                        myStatus = "Clôturé"
+                        break;
+                }
+                let now = new Date()
+                let myPendingOrder = {
+                    number: rcEmployeeOrders[i].number,
+                    spName: spName,
+                    employeeToPay: rcEmployeeOrders[i].employeeToPay,
+                    status: myStatus
+
+                }
+                pendingOrders.push(myPendingOrder)
+            }
+        }
+
+
+
+        return [pendingOrders, closedOrders]
     },
     async controlOrderItems(ctx) {
         try {

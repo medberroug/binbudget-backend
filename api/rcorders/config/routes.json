@@ -120,6 +120,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getRcEmployeeOrders/:rcEmployee",
+      "handler": "rcorders.getRcEmployeeOrders",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
