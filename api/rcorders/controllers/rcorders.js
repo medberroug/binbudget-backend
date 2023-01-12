@@ -242,7 +242,10 @@ module.exports = {
                         employeeToPay: rcEmployeeOrders[i].employeeToPay,
                         status: myStatus
                     }
-                    closedOrders.push(myClosedOrder)
+                    if (myStatus != "draft") {
+                        closedOrders.push(myClosedOrder)
+                    }
+
                 }
             }
         }
@@ -278,7 +281,10 @@ module.exports = {
                     employeeToPay: rcEmployeeOrders[i].employeeToPay,
                     status: myStatus
                 }
-                pendingOrders.push(myPendingOrder)
+                if (myStatus != "draft") {
+                    pendingOrders.push(myPendingOrder)
+                }
+
             }
         }
 
@@ -378,7 +384,7 @@ module.exports = {
         let startHour = order.scheduledDate
         let formatedDate = format(startHour, "EEEE d LLL yyyy - HH:mm", {
             locale: eoLocale
-        }) 
+        })
         let deliveryoperator
         if (order.deliveryoperator) {
             deliveryoperator = await strapi.services.deliveryoperators.findOne({
