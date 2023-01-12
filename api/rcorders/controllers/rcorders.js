@@ -242,7 +242,7 @@ module.exports = {
                         employeeToPay: rcEmployeeOrders[i].employeeToPay,
                         status: myStatus
                     }
-                    if (myStatus != "draft") {
+                    if (!myStatus ) {
                         closedOrders.push(myClosedOrder)
                     }
 
@@ -281,7 +281,7 @@ module.exports = {
                     employeeToPay: rcEmployeeOrders[i].employeeToPay,
                     status: myStatus
                 }
-                if (myStatus != "draft") {
+                if (!myStatus) {
                     pendingOrders.push(myPendingOrder)
                 }
 
