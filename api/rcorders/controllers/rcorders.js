@@ -341,7 +341,7 @@ module.exports = {
             total: order.total,
             shippingFees: order.shippingFees,
             address: order.address,
-            employeeToPay: order.employee,
+            employeeToPay: order.employeeToPay,
             rcemployee: order.rcEmployee,
             scheduledDate: formatedDate,
             deliveryoperator : deliveryoperator
