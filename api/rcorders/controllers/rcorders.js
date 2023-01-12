@@ -334,7 +334,7 @@ module.exports = {
         let myOrder = {
             id: order.id,
             number: order.number,
-            items: order.id,
+            items: order.items,
             status: myStatus,
             subTotal: order.subTotal,
             tax: order.tax,
