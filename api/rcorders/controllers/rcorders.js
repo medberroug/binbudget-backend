@@ -344,7 +344,61 @@ module.exports = {
             employeeToPay: order.employeeToPay,
             rcemployee: order.rcEmployee,
             scheduledDate: formatedDate,
-            deliveryoperator : deliveryoperator
+            deliveryoperator: deliveryoperator
+        }
+        return myOrder
+    },
+    async getOneClosedPending(ctx) {
+        const { orderId } = ctx.params;
+        let order = await strapi.services.rcorders.findOne({
+            id: orderId
+        });
+        let myStatus
+        let latestStatus = order.status[order.status.length - 1].status
+        if (latestStatus == "created") {
+            myStatus = "En cours"
+        } else if (latestStatus == "preparationFinished") {
+            myStatus = "En cours"
+        } else if (latestStatus == "deliveryTookOrder") {
+            myStatus = "En cours"
+        } else if (latestStatus == "shipped") {
+            myStatus = "Livré"
+        } else if (latestStatus == "cancelled") {
+            myStatus = "Annulé"
+        } else if (latestStatus == "notValidated") {
+            myStatus = "Annulé"
+        } else if (latestStatus == "closed") {
+            myStatus = "Clôturé"
+        }
+        for (let k = 0; k < order.status.length; k++) {
+            if (order.status[k].status == "shipped") {
+                order.scheduledDate = order.status[k].added
+            }
+        }
+        let startHour = order.scheduledDate
+        let formatedDate = format(startHour, "EEEE d LLL yyyy - HH:mm", {
+            locale: eoLocale
+        }) 
+        let deliveryoperator
+        if (order.deliveryoperator) {
+            deliveryoperator = await strapi.services.deliveryoperators.findOne({
+                id: order.deliveryoperator
+            });
+        }
+        let myOrder = {
+            id: order.id,
+            number: order.number,
+            items: order.items,
+            status: myStatus,
+            subTotal: order.subTotal,
+            tax: order.tax,
+            total: order.total,
+            shippingFees: order.shippingFees,
+            address: order.address,
+            employeeToPay: order.employeeToPay,
+            rcemployee: order.rcEmployee,
+            scheduledDate: formatedDate,
+            deliveryoperator: deliveryoperator
         }
         return myOrder
     },

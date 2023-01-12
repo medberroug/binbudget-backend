@@ -136,6 +136,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getOneClosedPending/:orderId",
+      "handler": "rcorders.getOneClosedPending",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
