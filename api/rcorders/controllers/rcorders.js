@@ -228,18 +228,13 @@ module.exports = {
                     spName = spName.knownName
                     let myStatus
                     let latestStatus = rcEmployeeOrders[i].status[rcEmployeeOrders[i].status.length - 1].status
-                    if (latestStatus == "created") {
-                        myStatus = "En cours"
-                    } else if (latestStatus == "preparationFinished") {
-                        myStatus = "En cours"
-                    } else if (latestStatus == "deliveryTookOrder") {
-                        myStatus = "En cours"
-                    } else if (latestStatus == "shipped") {
-                        myStatus = "Livré"
+                    if (latestStatus == "cancelled") {
+                        myStatus = "Annulé"
+                    } else if (latestStatus == "notValidated") {
+                        myStatus = "Annulé"
+                    } else if (latestStatus == "closed") {
+                        myStatus = "Clôturé"
                     }
-                    console.log(latestStatus);
-                    console.log(rcEmployeeOrders[i].status[rcEmployeeOrders[i].status.length - 1]);
-
                     let myClosedOrder = {
                         number: rcEmployeeOrders[i].number,
                         spName: spName,
@@ -265,14 +260,16 @@ module.exports = {
                 spName = spName.knownName
                 let myStatus
                 let latestStatus = rcEmployeeOrders[i].status[rcEmployeeOrders[i].status.length - 1].status
-              
-                if (latestStatus == "cancelled") {
-                    myStatus = "Annulé"
-                } else if (latestStatus == "notValidated") {
-                    myStatus = "Annulé"
-                } else if (latestStatus == "closed") {
-                    myStatus = "Clôturé"
+                if (latestStatus == "created") {
+                    myStatus = "En cours"
+                } else if (latestStatus == "preparationFinished") {
+                    myStatus = "En cours"
+                } else if (latestStatus == "deliveryTookOrder") {
+                    myStatus = "En cours"
+                } else if (latestStatus == "shipped") {
+                    myStatus = "Livré"
                 }
+                
                 let myPendingOrder = {
                     number: rcEmployeeOrders[i].number,
                     spName: spName,
