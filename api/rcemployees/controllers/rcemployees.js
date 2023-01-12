@@ -25,35 +25,45 @@ module.exports = {
         });
         let remainingDaily = rcEmployee.dotation.dailyLimit
         let remainingMonthly = rcEmployee.dotation.monthlyLimit
+        let totalOrdersDaily = 0
+        let totalOrdersMonthly = 0
+        let howMuchEmployeePaidDaily = 0
+        let howMuchEmployeePaidMonthly = 0
         for (let i = 0; i < rcOrders.length; i++) {
             if (isToday(rcOrders[i].scheduledDate)) {
-                remainingDaily = remainingDaily - rcOrders[i].employeeToPay 
+                remainingDaily = remainingDaily - rcOrders[i].employeeToPay
+                totalOrdersDaily = totalOrdersDaily + rcOrders[i].total
+                howMuchEmployeePaidDaily = howMuchEmployeePaidDaily + rcOrders[i].employeeToPay
             }
             if (isThisMonth(rcOrders[i].scheduledDate)) {
-                remainingMonthly = remainingMonthly - rcOrders[i].employeeToPay 
+                remainingMonthly = remainingMonthly - rcOrders[i].employeeToPay
+                totalOrdersMonthly = totalOrdersMonthly + rcOrders[i].total
+                howMuchEmployeePaidMonthly = howMuchEmployeePaidMonthly + rcOrders[i].employeeToPay
             }
         }
+        let howMuchTheCompanyPaidDaily = totalOrdersDaily - howMuchEmployeePaidDaily
+        let howMuchTheCompanyPaidMonthly = totalOrdersMonthly - howMuchEmployeePaidMonthly
         console.log(rcEmployee.dotation.cotisation);
         let cotisation = rcEmployee.dotation.cotisation + "% Salarié + " + (100 - rcEmployee.dotation.cotisation) + "% Entreprise"
         let today = new Date()
         let accountCreatedDate = formatDistance(today, rcEmployee.createdAt, {
             locale: eoLocale
         })
-        let dotationRequests = await strapi.services.dotationraiserequests.find({rcemployee : rcEmployee.id});
+        let dotationRequests = await strapi.services.dotationraiserequests.find({ rcemployee: rcEmployee.id });
         let dotationPendingNotFound = true
-        for (let i = 0;i<dotationRequests.length;i++){
-            let finishedRequest = false 
-            for (let j= 0; j<dotationRequests[i].status.length; j++){
-                if (dotationRequests[i].status[j].name =="finished"){
+        for (let i = 0; i < dotationRequests.length; i++) {
+            let finishedRequest = false
+            for (let j = 0; j < dotationRequests[i].status.length; j++) {
+                if (dotationRequests[i].status[j].name == "finished") {
                     finishedRequest = true
                 }
             }
-            if (!finishedRequest){
+            if (!finishedRequest) {
                 dotationPendingNotFound = false
             }
         }
-        let dailyText = (((-remainingDaily + rcEmployee.dotation.dailyLimit) / rcEmployee.dotation.dailyLimit) * 100) + "% (" + (-remainingDaily + rcEmployee.dotation.dailyLimit) + " DH/" + rcEmployee.dotation.dailyLimit + " DH)"
-        let monthlyText = (((rcEmployee.dotation.monthlyLimit - remainingMonthly) / rcEmployee.dotation.monthlyLimit)*100) + "% ("+(rcEmployee.dotation.monthlyLimit-remainingMonthly)+" DH/"+rcEmployee.dotation.monthlyLimit+" DH)"
+        let dailyText = ((howMuchTheCompanyPaidDaily / rcEmployee.dotation.dailyLimit) * 100) + "% (" + howMuchTheCompanyPaidDaily + " DH/" + rcEmployee.dotation.dailyLimit + " DH)"
+        let monthlyText = ((howMuchTheCompanyPaidMonthly / rcEmployee.dotation.monthlyLimit) * 100) + "% (" + howMuchTheCompanyPaidMonthly + " DH/" + rcEmployee.dotation.monthlyLimit + " DH)"
         let myEmployee = {
             id: id,
             firstName: rcEmployee.firstName,
@@ -68,12 +78,12 @@ module.exports = {
                 remainingMonthly: remainingMonthly,
                 dailyText: dailyText,
                 monthlyText: monthlyText,
-                dailyProgress : 1- remainingDaily/rcEmployee.dotation.dailyLimit,
-                monthlyProgress : 1 - remainingMonthly/rcEmployee.dotation.monthlyLimit
+                dailyProgress: 1 - remainingDaily / rcEmployee.dotation.dailyLimit,
+                monthlyProgress: 1 - remainingMonthly / rcEmployee.dotation.monthlyLimit
             },
-            canRequestMoreDotation : rcEmployee.canRequestMoreDotation,
+            canRequestMoreDotation: rcEmployee.canRequestMoreDotation,
             companyName: rcEmployee.company.companyDetails.knowenName,
-            dotationPendingNotFound : dotationPendingNotFound,
+            dotationPendingNotFound: dotationPendingNotFound,
             status: rcEmployee.status,
             walletBalance: rcEmployee.walletBalance,
             accountCreatedDate: accountCreatedDate,
@@ -87,7 +97,7 @@ module.exports = {
 
     },
 
-    
+
 
     // XXXXXXXX
 

@@ -47,6 +47,14 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/extractKpiInvoices1",
+      "handler": "invoice.extractKpiInvoices1",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
