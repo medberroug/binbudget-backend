@@ -236,6 +236,7 @@ module.exports = {
                         myStatus = "Clôturé"
                     }
                     let myClosedOrder = {
+                        id: rcEmployeeOrders[i].id,
                         number: rcEmployeeOrders[i].number,
                         spName: spName,
                         employeeToPay: rcEmployeeOrders[i].employeeToPay,
@@ -269,8 +270,9 @@ module.exports = {
                 } else if (latestStatus == "shipped") {
                     myStatus = "Livré"
                 }
-                
+
                 let myPendingOrder = {
+                    id: rcEmployeeOrders[i].id,
                     number: rcEmployeeOrders[i].number,
                     spName: spName,
                     employeeToPay: rcEmployeeOrders[i].employeeToPay,
@@ -283,15 +285,68 @@ module.exports = {
 
         pendingOrders.reverse()
         closedOrders.reverse()
-        let pendingExist = false 
-        let closedExist= false 
-        if(pendingOrders.length>0){
+        let pendingExist = false
+        let closedExist = false
+        if (pendingOrders.length > 0) {
             pendingExist = true
-        } 
-        if (closedOrders.length>0){
+        }
+        if (closedOrders.length > 0) {
             closedExist = true
         }
-        return [pendingOrders, closedOrders , pendingExist , closedExist]
+        return [pendingOrders, closedOrders, pendingExist, closedExist]
+    },
+    async getOneOrderPending(ctx) {
+        const { orderId } = ctx.params;
+        let order = await strapi.services.rcorders.findOne({
+            id: orderId
+        });
+        let myStatus
+        let latestStatus = order.status[order.status.length - 1].status
+        if (latestStatus == "created") {
+            myStatus = "En cours"
+        } else if (latestStatus == "preparationFinished") {
+            myStatus = "En cours"
+        } else if (latestStatus == "deliveryTookOrder") {
+            myStatus = "En cours"
+        } else if (latestStatus == "shipped") {
+            myStatus = "Livré"
+        } else if (latestStatus == "cancelled") {
+            myStatus = "Annulé"
+        } else if (latestStatus == "notValidated") {
+            myStatus = "Annulé"
+        } else if (latestStatus == "closed") {
+            myStatus = "Clôturé"
+        }
+        let startHour = order.scheduledDate
+        let endHour = order.scheduledDate
+        endHour = addMinutes(endHour, 30)
+        let formatedDate = format(startHour, "EEEE d LLL yyyy - HH:mm", {
+            locale: eoLocale
+        }) + format(endHour, " 'et' HH:mm", {
+            locale: eoLocale
+        })
+        let deliveryoperator
+        if (order.deliveryoperator) {
+            deliveryoperator = await strapi.services.deliveryoperators.findOne({
+                id: order.deliveryoperator
+            });
+        }
+        let myOrder = {
+            id: order.id,
+            number: order.number,
+            items: order.id,
+            status: myStatus,
+            subTotal: order.subTotal,
+            tax: order.tax,
+            total: order.total,
+            shippingFees: order.shippingFees,
+            address: order.address,
+            employeeToPay: order.employee,
+            rcemployee: order.rcEmployee,
+            scheduledDate: formatedDate,
+            deliveryoperator : deliveryoperator
+        }
+        return myOrder
     },
     async controlOrderItems(ctx) {
         try {
